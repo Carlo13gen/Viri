@@ -1,0 +1,141 @@
+#
+#  GDToolkit makefile for Windows XP/VISTA
+#  Microsoft Visual Studio .NET 2005
+#
+
+# ----------------------------------------------------
+
+
+!include ..\custom.win32
+
+
+OBJDIR       = ..\obj
+LIBDIR       = ..\lib
+INCDIR 	     = ..\incl
+
+
+
+# ----------------------------------------------------
+
+
+
+INC       = $(INCDIR)/GDT/
+HEADERS =\
+	  $(INC)rm3_global.h \
+	  $(INC)rm3_constraints.h \
+          $(INC)rm3_undi_graph.h \
+          $(INC)rm3_draw_undi_graph.h \
+          $(INC)rm3_plan_undi_graph.h \
+          $(INC)rm3_orth_plan_undi_graph.h \
+          $(INC)rm3_dime_orth_plan_undi_graph.h \
+          $(INC)rm3_dire_graph.h \
+          $(INC)rm3_tree.h \
+          $(INC)rm3_SPQR_tree.h \
+          $(INC)rm3_flow_dire_graph.h \
+	    $(INC)rm3_upwa_plan_undi_graph.h \
+	    $(INC)rm3_morpher.h \
+	    $(INC)gdt_geometry.h \
+	    $(INC)date.h
+
+OBJ_EXT = .obj
+
+OBJECTS =\
+	rel_coord_orth$(OBJ_EXT) \
+	gdt_graph_array$(OBJ_EXT) \
+      gdt_error$(OBJ_EXT) \
+	gdt_geometry$(OBJ_EXT) \
+	stopwatch_win$(OBJ_EXT) \
+      _rm3_global$(OBJ_EXT) \
+	_rm3_constraints$(OBJ_EXT) \
+      _rm3_undi_graph$(OBJ_EXT) \
+	_rm3_dire_graph$(OBJ_EXT) \
+	_rm3_plan_undi_graph$(OBJ_EXT) \
+      _rm3_orth_plan_undi_graph$(OBJ_EXT) \
+	_rm3_upwa_plan_undi_graph$(OBJ_EXT) \
+	_rm3_flow_dire_graph$(OBJ_EXT) \
+	_rm3_dime_slicing$(OBJ_EXT) \
+	_rm3_dime_orth_plan_undi_graph$(OBJ_EXT) \
+      _rm3_draw_undi_graph$(OBJ_EXT) \
+      _rm3_tree$(OBJ_EXT) \
+      _rm3_SPQR_tree$(OBJ_EXT) \
+      _rm3_interval_set$(OBJ_EXT) \
+      _rm3_simple_graph$(OBJ_EXT) \
+	  _rm3_layered_undi_graph$(OBJ_EXT) \
+	  _rm3_upwa_plan_undi_graph$(OBJ_EXT) \
+	  _rm3_morpher$(OBJ_EXT)  \
+	  date$(OBJ_EXT)
+	  	  
+
+# ------------------------------------------ targets & rules
+
+default_target: options.cfg $(LIBDIR)\libGDT.lib
+
+!include ..\common.make.win32
+
+
+####################################################
+#
+#   static library creation
+#
+
+# for Microsoft dev. system
+!if "$(LIB)" == "lib"
+linklist.cfg :
+   echo $(OBJECTS)>>$@
+
+$(LIBDIR)\libGDT.lib: linklist.cfg  $(OBJECTS)
+    $(LIB) /out:$@ @linklist.cfg
+!ENDIF
+
+
+# for Borland dev. system
+!if "$(LIB)" == "tlib"
+linklist.cfg :
+   Copy &&|
++_rm3_global \
++_rm3_constraints \
++_rm3_undi_graph \
++_rm3_draw_undi_graph \
++_rm3_plan_undi_graph \
++_rm3_orth_plan_undi_graph \
++_rm3_dime_orth_plan_undi_graph \
++_rm3_dire_graph \
++_rm3_tree \
++_rm3_SPQR_tree \
++_rm3_flow_dire_graph \
++_rm3_upwa_plan_undi_graph \
++_rm3_interval_set
+| $@
+
+
+PAGESIZE = 128 # this must grow if the library grows
+$(LIBDIR)\libGDT.lib: linklist.cfg $(OBJECTS)
+	del $@
+	tlib /p$(PAGESIZE) /c $@ @linklist.cfg
+!endif
+
+
+#-----------------------------------------------------
+#  utilities
+
+clean:
+	del *.bak
+	del *.obj
+	del *.cfg
+
+delete: clean
+	del $(LIBDIR)\libGDT.lib 
+#   	del $(LIBDIR)\libGDTd.dll
+#   	del $(LIBDIR)\libGDTd.lib
+
+
+
+
+# ----------------------------------------------------
+
+debug:
+	echo $(CFLAGS)
+	echo $(CINCLUDE)
+
+
+

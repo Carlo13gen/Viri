@@ -1,0 +1,126 @@
+#------------------------------------------------------------------------------
+#  This file is part of the GDToolkit distribution
+#  (c) 1999-2007 Third University of Rome (DIA) & University of Perugia (DIEI) 
+#
+#  This file contains basic information about GDT 4.0 release
+#
+# ------------------------------------------------------------------------------
+
+Summary
+
+1) Files contained in the GDT 4.0 release
+2) New features of the GDT 4.0 release
+3) How to install the GDT 4.0 release
+4) How to test your installation
+5) Further commands
+6) How to use the library
+7) Contacts
+
+
+# --------------------------------------
+# Files contained in the GDT 4.0 release
+# --------------------------------------
+
+The GDT 4.0 home contains the following files and directories:
+
+- File "README" (this file)
+- File "custom.i386-linux-example" 
+- Directory "incl" (include files)
+- Directory "src" (source files, not available in the DEMO version)  
+- Directory "lib" (compiled files, available in the DEMO version only)
+- Directory "bin" (precompiled applications, available in the DEMO version only)
+- Directory "tools" (source fils for some applications)
+
+# -------------------------------------
+# New features of the GDT 4.0 release
+# -------------------------------------
+
+The main feature of GDT 4.0 is that it is now completely LEDA free!! All basic
+data structures like lists, maps, heaps, and some geometric functions have
+been re-implemented from scratch. As a consequence, GDT 4.0 now offers its own
+classes and API for these data structures. Further, GDT 4.0 implements a new
+planarity testing and embedding algorithm, which is shown in an experimental comparison
+to be faster than the LEDA one.  The GDT API are equipped with namespaces that 
+makes it possible to use the GDT library along with other libraries, like LEDA and STL.
+
+Unfortunately, codes written using previous versions of the library are not
+compatible with the GDT 4.0 release, but in most cases old codes can be
+adapted to the new release with a small effort. Notice that the GDT 4.0 API does
+not offer functionalities for constructing and managing graphical user
+interfaces.  The GDT 4.0 API is only intended as a graph drawing engine,
+although it can be integrated with external (and independent) graphical user
+environments. 
+
+Some other algorithmic features have been added in GDT 4.0 with respect to
+previous releases. More information can be found in the GDToolkit 
+documentation. 
+
+# --------------------------------------
+# How to install the GDT 4.0 release
+# --------------------------------------
+
+- Step 1 - Go to the GDT home 
+
+- Step 2 - Create your "custom.$HOSTTYPE" file, using file
+"custom.i386-linux-example" as a template. In most cases it is sufficient to
+change the name of this file, without editing it.
+
+- Step 3 - Execute the command "make all", and both the library and the related
+tools will be built.
+
+# --------------------------------------
+# How to test your installation
+# --------------------------------------
+
+From the GDT home, execute the command "make self-test". 
+A self-test application will start and terminate in a few minutes.
+If the self-test finishes normally, then your installation should be OK.
+
+# --------------------------------------
+# Further commands
+# --------------------------------------
+
+The "makefile" in the GDT home offers some
+additional commands. They are listed below:
+
+- make gdt              only the (static) library is built (libGDT.a) 
+- make tools            only tools are built
+- make <tool-name>      only the specified tool is built
+- make clean            clean all obj files but not the library and the binary files
+- make delete           clean all obj files, the library, and the binary files
+
+From the "src" directory you can also execute the following command
+
+- make gdtdin           builds a dynamic version of the library (libGDT.so)
+
+# --------------------------------------
+# How to use the library
+# --------------------------------------
+
+The GDT library can be linked and used in your C++ programs.
+This is done with standard compiling and linking procedures.
+Namely, to use a GDT class in your source code, 
+use an include macro at the beginning of your code, like for example
+
+#include<GDT/gdt_file.h>
+
+To compile your application, specify the GDT include files path in the compiling command, 
+like for example  
+
+g++ -c MyApplication.cpp -O3 -DNDEBUG -I/myhome/gdt4.0/incl -I. 
+
+To definitively build your binary file, specify the library GDT path in the linking command,
+like for example
+
+g++ -L /myhome/gdt4.0/lib/$HOSTTYPE/libGDT.a -o MyApplication.o
+
+Notice that, if you want to use the dynamic library libGDT.so, you need to add its path to
+the linux/Unix environment variable LD_LIBRARY_PATH.
+
+# --------------------------------------
+# Contacts
+# --------------------------------------
+
+For any problem or question, please send an e-mail to gdt@dia.uniroma3.it.
+
+ 

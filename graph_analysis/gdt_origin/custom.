@@ -1,0 +1,42 @@
+#------------------------------------------------------------------------------
+#  This file is part of the GDToolkit distribution
+#  (c) 1999-2005 Third University of Rome (DIA) & University of Perugia (DIEI) 
+#
+#  This file is an example of what a "custom.$HOSTTYPE" file should contain.
+#  We suggest to make a copy of this file and edit it.
+#   
+#  use "#" to comment lines
+#
+# ------------------------------------------------------------------------------
+
+HOSTTYPE=$$HOSTTYPE
+
+
+# ------------------------------------------------------------
+# specify the compiler, the linker, and runlib you want to use
+# ------------------------------------------------------------
+
+CC = g++
+LD = g++
+RANLIB = ranlib
+
+ 
+# -----------------------------------------------------------
+# choose (uncomment) one of the following compilation options
+# -----------------------------------------------------------
+
+CUSTOM_CFLAGS= -O3 -DNDEBUG #maximum optimized code without debugging information (default)
+#CUSTOM_CFLAGS= -O3 -DNDEBUG -DBOUNDEDNODES #maximum optimized code with limitations
+#CUSTOM_CFLAGS= -O2 -DNDEBUG #medium optimized code without debugging information (default)
+#CUSTOM_CFLAGS= -O  -DNDEBUG #minimum optimized code without debugging information (default)
+#CUSTOM_CFLAGS= -Wall -g -DNDEBUG # for developers, with warnings and debugging information
+#CUSTOM_CFLAGS= -Wall -g  # for developers, maximum warnings and debugging information
+
+
+# ------------------------------------------------------
+# choose (uncomment) one of the following linker options
+# according to your platform
+# ------------------------------------------------------ 
+
+CUSTOM_LDFLAGS= -L/usr/X11R6/lib              # use this for linux 
+# CUSTOM_LDFLAGS= -L/usr/X11R6/lib -lsocket   # try this for sun solaris 

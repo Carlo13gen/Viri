@@ -1,0 +1,25 @@
+This is README-win32.bin file for BLAG 2.1 binary distribution
+==============================================================
+
+This directory contains a precompiled version of BLAG for Windows.
+The directory contains the following files:
+
+- README-win32.bin  : this file.
+- graph             : a sample input graph in GDT format (only topology) 
+- blag.exe          : the BLAG executable for the windows platform
+- blag.ini          : a sample ini file instructing blag about the 
+                      layout to be generated
+- run_me.bat         : a DOS batch file launching blag on the sample graph.
+
+In order to test blag.exe, just run the run_me.bat batch file.
+The following files should be generated:
+
+- graph.exp     : the output layout in export simplified format;
+- graph.gdt     : the output layout in GDT internal format;
+- gdt_report    : a log of the algorithmic steps performed;
+- gdt_test_true : a flag file to acknowledge that the algorithm
+                  specified in the blag.ini file could be
+                  applied on the input graph. 
+
+Please refer to the BLAG documentation at http://www.dia.uniroma3.it/~gdt
+for writing your own input graphs and ini files.

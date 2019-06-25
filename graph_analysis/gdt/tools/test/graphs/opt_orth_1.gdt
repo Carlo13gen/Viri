@@ -1,0 +1,45 @@
+
+<UNDISECTION>
+	<NODELIST>
+		<NODE>
+			0
+			<EDGE> 0 --
+			<EDGE> 2 --
+		</NODE>
+		<NODE>
+			1
+			<EDGE> 0 --
+			<EDGE> 1 --
+		</NODE>
+		<NODE>
+			2
+			<EDGE> 1 --
+			<EDGE> 2 --
+		</NODE>
+	</NODELIST>
+</UNDISECTION>
+<DRAWSECTION>
+	<NODELIST>
+		<NODE>
+			0 (28.8333,56.8333) 0 5 5 0.5 11 1 1 0 (28.8333,56.8333) 
+		</NODE>
+		<NODE>
+			1 (27.5,41.6667) 0 5 5 0.5 11 1 1 1 (27.5,41.6667) 
+		</NODE>
+		<NODE>
+			2 (49.5,40.8333) 0 5 5 0.5 11 1 1 2 (49.5,40.8333) 
+		</NODE>
+	</NODELIST>
+	<EDGELIST>
+		<EDGE>
+			0 0 4 1 0 (29.6667,49.25) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			1 1 4 1 1 (38.5,42.75) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			2 2 4 1 2 (50.8333,48.5833) 0 (0,0) (0,0) 
+			<BEND> (49.1667,56.3333) 
+		</EDGE>
+	</EDGELIST>
+</DRAWSECTION>

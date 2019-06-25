@@ -1,0 +1,142 @@
+
+<UNDISECTION>
+	<NODELIST>
+		<NODE>
+			0
+			<EDGE> 6 --
+			<EDGE> 10 --
+			<EDGE> 11 --
+			<EDGE> 9 --
+		</NODE>
+		<NODE>
+			1
+			<EDGE> 1 --
+			<EDGE> 0 --
+			<EDGE> 12 --
+		</NODE>
+		<NODE>
+			2
+			<EDGE> 1 --
+			<EDGE> 7 --
+			<EDGE> 2 --
+			<EDGE> 3 --
+		</NODE>
+		<NODE>
+			3
+			<EDGE> 3 --
+			<EDGE> 4 --
+		</NODE>
+		<NODE>
+			4
+			<EDGE> 6 --
+			<EDGE> 9 --
+			<EDGE> 0 --
+		</NODE>
+		<NODE>
+			5
+			<EDGE> 7 --
+			<EDGE> 5 --
+		</NODE>
+		<NODE>
+			6
+			<EDGE> 2 --
+			<EDGE> 8 --
+		</NODE>
+		<NODE>
+			7
+			<EDGE> 10 --
+			<EDGE> 4 --
+		</NODE>
+		<NODE>
+			8
+			<EDGE> 11 --
+			<EDGE> 8 --
+		</NODE>
+		<NODE>
+			9
+			<EDGE> 12 --
+			<EDGE> 5 --
+		</NODE>
+	</NODELIST>
+</UNDISECTION>
+<DRAWSECTION>
+	<NODELIST>
+		<NODE>
+			0 (25,10) 0 5 5 0.5 5 1 1 0 (25,10) 
+		</NODE>
+		<NODE>
+			1 (25,70) 0 5 5 0.5 5 1 1 1 (25,70) 
+		</NODE>
+		<NODE>
+			2 (25,40) 0 5 5 0.5 5 1 1 2 (25,40) 
+		</NODE>
+		<NODE>
+			3 (30,30) 0 5 5 0.5 5 1 1 3 (30,30) 
+		</NODE>
+		<NODE>
+			4 (25,80) 0 5 5 0.5 5 1 1 4 (25,80) 
+		</NODE>
+		<NODE>
+			5 (20,50) 0 5 5 0.5 5 1 1 5 (20,50) 
+		</NODE>
+		<NODE>
+			6 (20,30) 0 5 5 0.5 5 1 1 6 (20,30) 
+		</NODE>
+		<NODE>
+			7 (30,20) 0 5 5 0.5 5 1 1 7 (30,20) 
+		</NODE>
+		<NODE>
+			8 (20,20) 0 5 5 0.5 5 1 1 8 (20,20) 
+		</NODE>
+		<NODE>
+			9 (20,60) 0 5 5 0.5 5 1 1 9 (20,60) 
+		</NODE>
+	</NODELIST>
+	<EDGELIST>
+		<EDGE>
+			1 1 1 1 1 (31.5,55) 0 (0,0) (0,0) 
+			<BEND> (30,60) 
+			<BEND> (30,50) 
+		</EDGE>
+		<EDGE>
+			3 2 1 1 3 (29,35) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			6 0 1 1 6 (41.5,45) 0 (0,0) (0,0) 
+			<BEND> (40,20) 
+			<BEND> (40,70) 
+		</EDGE>
+		<EDGE>
+			0 1 1 1 0 (26.5,75) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			7 2 1 1 7 (24,45) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			2 2 1 1 2 (24,35) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			10 0 1 1 10 (29,15) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			4 3 1 1 4 (31.5,25) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			11 0 1 1 11 (24,15) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			8 6 1 1 8 (21.5,25) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			12 1 1 1 12 (24,65) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			5 5 1 1 5 (21.5,55) 0 (0,0) (0,0) 
+		</EDGE>
+		<EDGE>
+			9 0 1 1 9 (11.5,45) 0 (0,0) (0,0) 
+			<BEND> (10,20) 
+			<BEND> (10,70) 
+		</EDGE>
+	</EDGELIST>
+</DRAWSECTION>

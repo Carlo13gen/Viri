@@ -1,0 +1,36 @@
+Cose utili da fare prima possibile:
+
+ - distinguere tra "salva" e "salva con nome" (ora c'è solo la seconda opzione)
+ - indentatura nel salvataggio dei file
+ - creare una cartella per le icone dei pulsanti
+ - le etichette devono essere più grandi
+ - etichette degli archi, controllare la posizione rispetto all'arco (adesso sono molto vicine)
+ - quando in un disegno ortogonale si sposta un nodo con grado>4 oppure un nodo adiacente a questo, gli archi incidenti non entrano più in modo corretto
+ - conferma prima di uscire o caricare un nuovo disegno quando il disegno corrente non è salvato
+ - lo scorrimento è molto lento utilizzando la rotellina del mouse
+ - il tasto zoom default dovrebbe anche riportare il focus sul disegno
+ - le funzioni per mostrare/nascondere le etichette devono funzionare anche sui nuovi nodi o archi aggiunti
+ - la creazione di un disegno ortogonale dovrebbe mantenere il livello di zoom corrente
+ 
+--------------------------------------------------------------------------------------------------------------------------------
+Eventuali nuove funzioni:
+
+ - salvataggio dei colori in uno dei 16 colori di gdtoolkit
+ - salvataggio della forma
+ - Stampa
+ - rotazione del disegno
+ - trascinamento del disegno
+ - nuovi algoritmi (aggiungere menu' "drawings" )
+	-- distinguere tra optimal orthogonal e slow orthogonal
+	-- upward
+	-- tree
+ - considerare i vincoli di dimensione dei nodi nella creazione dei disegni
+ - esportazione del disegno in un formato grafico
+ - barra di stato nella parte inferiore dell'editor, con informazioni sul grafo corrente
+ - gestione di grafi con self-loop e non connessi
+
+
+
+ 
+
+

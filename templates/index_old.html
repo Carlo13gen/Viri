@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS libs -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icicle-plus-tree.css') }}"/>
+
+    <!-- JS libs -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script> 
+	<script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery/jquery-2.2.3.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap/bootstrap.js') }}"></script>
+
+    <!-- JS -->
+
+        <!-- OperationOfGraph -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findNodeById.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findChildrenIdsOfHostOrParasiteNode.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findLeftOrRightChildId.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/numberOfChildrenSwitchingHost.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findChildNotSwitchingHostId.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findParentIdsOfHostOrParasiteNode.js') }}"></script>
+
+        <!-- Host -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesXCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesWidth.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesBoxesHeight.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesDepths.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesBoxesYCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/computeHeightOfHostTree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/extendHostNodesBoxesHeight.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/computeSVGPathHost.js') }}"></script>    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/drawnHost.js') }}"></script>
+
+
+
+
+        <!-- Parasite -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/parasiteNodesYCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/parasiteNodesXCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/computeSVGPathSwitchEdgesParasiteTree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/computeSVGPathNonSwitchEdgesParasiteTree.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteNodes.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteEdgeSwitch.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteEdgeNonSwitch.js') }}"></script>
+
+
+
+
+
+        <!-- FirstOperation -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/firstOperation/euristica.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/firstOperation/precalcolo.js') }}"></script>
+
+        <!-- Main -->
+        
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/mostraOpzioni.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/down.js') }}"></script>
+
+   
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/icicle-tree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/ridisegna.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/changeNumberSolution.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/loadNumberSolution.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/animazioni.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parametri.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/salva.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/calcolaIncroci.js') }}"></script>
+
+
+
+
+    <title>Co-phylogenetic trees</title>
+<script type="text/javascript">
+    mostraOpzioni();
+</script>
+
+</head>
+<body>
+<!--
+<nav id=primaRiga hidden="" class="navbar navbar-default navbar-fixed-top" height="10">
+  <div class="container-fluid">
+<script type="text/javascript">
+d3.select("#primaRiga")
+    .transition()
+    .duration(120)
+	.attr("hidden",null)
+d3.select("#primaRiga")
+    .transition()
+    .duration(120)
+	.attr("hidden","")
+
+</script>
+-->
+
+
+<table  style="visibility" >
+<tr>
+
+	<td>
+		cost co-speciation:
+		</td><td> 
+		<input type="text" id="cc" onchange="grafic()">
+	</td>
+
+	<td>
+		cost duplication:
+		</td><td> 
+		<input type="text" id="cd" onchange="grafic()">
+	</td>
+
+	<td>
+		cost host-switch:
+	</td><td> 
+		<input type="text" id="ch" onchange="grafic()">
+	</td>
+
+	<td>
+		cost sorting ( loss ):
+		</td><td> 
+		<input type="text" id="cs" onchange="grafic()">
+	</td>
+
+
+
+
+
+</tr>
+
+<tr >
+
+	<td >
+		file.nex :
+
+<button hidden=(false) value="ssss" id="oldName"></button>
+
+
+		</td><td> 
+		<select id="select"  onchange="changeNexusFile()" >
+		</select>
+	</td>
+	<td>
+		numberMaxSolution :
+		</td><td> 
+		<input type="text" id="numberMaxSolution" value="1" onchange="grafic()">
+	</td>
+	<td>
+			<table>
+		<tr>
+		<td>
+		rootToRoot :
+		</td><td> 
+		<input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" onchange="grafic()" />
+		</td></tr></table>
+	
+	</td>
+
+	<td>
+		<table>
+		<tr>
+		<td>
+		soluzioni random :
+		</td><td> 
+		<input name="html" type="checkbox" id="soluzioniRandomiche" value="html" onchange="changeRandomSolution()" />
+		</td></tr></table>
+	
+	</td>
+
+	</tr>
+	<tr>
+
+	<td>
+<form action="">
+		Cyclicity test model: </td><td>
+		1-Stolzer et al.,2012 <input type="radio" name="linguaggio" value="1" checked="checked" id="test1" onchange="changeTest()" />
+        </td><td>
+        2-Tofigh et al.,2011 <input type="radio" name="linguaggio" value="2" id="test2" onchange="changeTest()" />
+</form>
+	</td>
+
+	<td>
+		<table>
+		<tr>
+		<td>
+		Togliere time-inconsistence :
+		</td><td> 
+		<input name="html" type="checkbox" id="rimuoviCicli" value="html" onchange="grafic()" />
+		</td></tr></table>
+	
+	</td>
+
+	<td>
+		max H.-Swi. Dist :
+		</td><td> 
+		<input type="text" id="maximumHostSwitchDistance" value="" onchange="grafic()">
+	</td>
+	
+	<!--<td>
+		<button onclick="salva()">Piccola</button>
+	</td>
+	-->
+</tr>
+<tr>
+	<td>
+		numberSolution :
+		</td><td> 
+		<select id="numberSolutionGraph" value="1" onchange="changeNumberSolution()">
+		</select>
+	</td>
+	<td>
+		<table>
+		<tr>
+		<td>
+		longLeaves :
+		</td><td> 
+		<input name="html" type="checkbox" id="longLeaves" value="html" checked="checked" onchange="ridisegna()" />
+		</td>
+		</tr></table>
+	<td>
+		<table>
+		<tr>
+		<td>
+		Bloccato :
+		</td><td> 
+		<input name="html" type="checkbox" id="bloccato" value="html" onchange="bloccato()" />
+		</td> </tr></table>
+	</td>
+	<td>
+		<table>
+		<tr>
+		<td>
+		curveNonSwitch :
+		</td><td> 
+		<input name="html" type="checkbox" id="curve" value="html" checked="checked" onchange="ridisegna()" />
+		</td> </tr></table>
+
+	</td>
+
+	<td>
+		<table>
+		<tr>
+		<td>
+		curveSwitch :
+		</td><td> 
+		<input name="html" type="checkbox" id="curveSwitch" value="html" onchange="ridisegna()" />
+		</td> </tr></table>
+
+	</td>
+
+	<td> 
+		<table>
+		<tr>
+		<td>
+		save:
+		</td><td> 
+				<a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()" >Salva</a>			
+		</td>
+		</tr>
+		</table>
+
+	</td>
+
+
+	<td>
+				<table>
+		<tr>
+		<td>
+		equalsLevelEqualsHeight :
+		</td><td> 
+		<input name="html" type="checkbox" id="equalsLivelEqualsHeight" value="html" onchange="ridisegna()" />
+		</td>
+		</tr></table>
+	</td>
+
+</tr>
+<tr>
+	<td>
+		width :
+		</td><td> 
+		<input type="text" id="width" width="100%" onchange="ridisegna()">
+	</td>
+
+	<td>
+		height :
+		</td><td> 
+		<input type="text" id="height" width="100%" onchange="ridisegna()">
+	</td>
+
+	<td>
+		separetor width :
+		</td><td> 
+		<input type="text" id="select5" onchange="ridisegna()">
+	</td>
+
+	<td>
+		separator Height:
+		</td><td> 
+		<input type="text" id="select6" onchange="ridisegna()">
+	</td>
+
+</tr>
+<tr>
+	<td>
+	<form action="">
+		Euristiche: </td><td>
+		1- Rapp. <input type="radio" name="linguaggio" value="1" id="euristica1" onchange="ridisegna()" />
+        </td><td>
+        2- GDT Universal. <input type="radio" name="linguaggio" checked="checked" value="2" id="euristica2" onchange="ridisegna()"" />
+        </td><td>
+        3- GDT for Solution. <input type="radio" name="linguaggio" value="3" id="euristica3" onchange="ridisegna()"" />
+
+	</form>
+	</td>
+
+</tr>
+
+</table>
+
+<!--
+<form action="/test" method="GET" autocomplete="off" >
+    Password:<br>
+    <input type="text" name="testo" value="Pippo col cane">
+    <br><br>
+    <input type="submit" value="Login">
+</form>
+-->
+
+
+<!--
+</div>
+</nav>
+-->
+
+
+<div id="spazioSvg"> </div>
+
+<!--<img src="out.gif"> -->
+
+
+<!--
+<input type="file" id="fileinput" />
+<script type="text/javascript">
+  function readSingleFile(evt) {
+    //Retrieve the first (and only!) File from the FileList object
+    var f = evt.target.files[0]; 
+
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) { 
+	      var contents = e.target.result;
+        alert( "Got the file.n" 
+              +"name: " + f.name + "n"
+              +"type: " + f.type + "n"
+              +"size: " + f.size + " bytesn"
+              + "starts with: " + contents.substr(1, contents.indexOf("n"))
+        );  
+      }
+      r.readAsText(f);
+    } else { 
+      alert("Failed to load file");
+    }
+  }
+
+  document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+</script>
+-->
+
+<div id= "problem"></div>
+
+</body>
+</html>

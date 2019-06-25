@@ -1,0 +1,12 @@
+
+EXEC = test
+
+$(EXEC): $(EXEC).obj
+        link -out:$(EXEC).exe -libpath:$(MSVCDir)\Lib -libpath:$(LEDAROOT) $(EXEC).obj ..\..\lib\libGDT.lib libW.lib libP.lib libG.lib libL.lib user32.lib gdi32.lib  comdlg32.lib shell32.lib advapi32.lib
+
+
+$(EXEC).obj: $(EXEC).c
+        cl -TP -Ox -DNDEBUG -DLEDA_INSTALL -J -c -nologo -I../../incl -I$(LEDAROOT)/incl -I$(MSVCDir)/include $(EXEC).c -Fo$(EXEC).obj 
+
+
+

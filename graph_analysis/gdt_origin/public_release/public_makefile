@@ -1,0 +1,59 @@
+#------------------------------------------------------------------------------
+#  This file is part of the GDToolkit distribution
+#  (c) 1999-2007 Third University of Rome (DIA) & University of Perugia (DIEI) 
+#
+#  This file contains commands to automatically compile and link 
+#  the GDToolkit library and its related tools.
+#   
+#  use "#" to comment lines
+#
+# ------------------------------------------------------------------------------
+
+HOST=$$HOSTTYPE
+
+EXAMPLE_DIR=../../examples
+OUTPUT_DIR=../../output
+
+all: .chk simpletest 
+
+
+# -------------------------
+# compile single tools 
+# -------------------------
+
+simpletest:  
+	(cd tools/simpletest; $(MAKE) HOST=$(HOST))
+
+test:
+	(cd bin/${HOST}; ./simpletest $(EXAMPLE_DIR)/graph1.gdt 0 $(OUTPUT_DIR)/output1.gdt; ./simpletest $(EXAMPLE_DIR)/graph2.gdt 1 $(OUTPUT_DIR)/output2.gdt; ./simpletest $(EXAMPLE_DIR)/graph3.gdt 0 $(OUTPUT_DIR)/output3.gdt;)
+
+# ------------------------------------
+# private targets: directories manager
+# ------------------------------------
+
+.chk:.host custom.$(HOST)
+
+# -------------------
+# Warnings and Errors
+# -------------------
+
+.host:
+	@echo ""
+	@if [ $(HOST) = "" ]; then \
+	echo "The environment variable HOSTTYPE is not set.";\
+	echo "Please read the troubleshooting section in the INSTALL file";\
+	echo "";\
+	exit 1;\
+	fi
+
+custom.$(HOST):
+	@echo ""
+	@if [ ! -f custom.$(HOST) ]; then \
+	echo "Please create a file \"custom.$(HOST)\" for your platform";\
+	echo "according to the example \"custom.i386-linux-example\".";\
+	echo "If you experience any problem, please email to gdt@dia.uniroma3.it";\
+	echo "";\
+	exit 1;\
+	fi
+
+

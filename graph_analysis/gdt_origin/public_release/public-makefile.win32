@@ -1,0 +1,43 @@
+#######################################################################
+#
+# GDToolkit Makefile for Win32 Platform
+#
+#######################################################################
+
+MAKE= $(MAKE) -f makefile.win32
+
+all: simpletest
+
+
+#------------------------------------------- package specifics publics
+
+simpletest:
+	cd tools\simpletest
+	$(MAKE)
+
+test:
+	cd bin
+	simpletest.exe ..\examples\graph1.gdt 0 ..\output\output1.gdt
+	simpletest.exe ..\examples\graph2.gdt 1 ..\output\output2.gdt
+	simpletest.exe ..\examples\graph3.gdt 0 ..\output\output3.gdt
+
+
+#------------------------------------------ standard publics
+
+clean:
+   
+   cd tools
+   $(MAKE) clean
+   cd ..
+
+delete:
+   
+   cd tools
+   $(MAKE) delete
+   cd ..
+   deltree /y lib bin obj
+
+
+
+
+	

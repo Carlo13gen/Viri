@@ -1,0 +1,35 @@
+
+.SUFFIXES:  .cpp
+
+CINCLUDE = -I$(INCDIR) -I"$(VS80DIR)\VC\include"
+CFLAGS = $(CUSTOM_CFLAGS) 
+
+
+
+# for Microsoft compiler
+
+!if "$(CC)"=="cl"
+CFLAGS= $(CFLAGS) -TP -J -c -nologo -DTIME_LIMITED
+
+options.cfg :
+    echo  $(CFLAGS)>>$@
+    echo  $(CINCLUDE)>>$@
+
+.cpp.obj:
+	$(CC) $(CINCLUDE) $(CFLAGS)  $< -Fo$@  
+
+.app.obj:
+	$(CC) @options.cfg  $< -Fo$@  
+
+.c.obj:
+	$(CC) @options.cfg  $< -Fo$@  
+!ENDIF
+
+
+
+
+
+
+
+
+

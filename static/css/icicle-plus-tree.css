@@ -1,0 +1,21 @@
+.hostNode {
+    fill: #1f77b4;
+    stroke-width: 1px;
+    stroke: white
+}
+
+.parasiteNode {
+    fill: white;
+    stroke-width: 2px;
+    stroke: black
+}
+
+.parasiteLinkNonSwitch {
+    stroke: black;
+    fill: transparent;
+}
+
+.parasiteLinkSwitch {
+    stroke: black;
+    fill: transparent;
+}

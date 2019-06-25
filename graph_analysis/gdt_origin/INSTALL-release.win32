@@ -1,0 +1,132 @@
+This is the GDToolkit 3.0 INSTALL.win32 file
+===========================================
+
+This file explains all the steps you need to do in order to make
+GDToolkit work on a Windows Microsoft Visual C++ 6.0 platform.
+
+Table of Contents
+-----------------
+
+1. Preconditions 
+2. Installing from Your Binary Distribution
+3. Troubleshooting
+4. Short description of the provided demos
+
+
+1. Preconditions
+----------------
+
+The following preconditions should be verified 
+
+ - Your platform should be supported by the current version of
+GDT.  Presently GDToolkit was tested on Windows 95/98/NT using the
+MSVC 6.0 compiler.
+
+- A compatible release of LEDA is currently installed on your
+system. This version of GDToolkit was compiled and tested with LEDA-4.1.
+Namely, our library and makefiles works correctly for the package 
+single thread, static (ml) of VisualC++ provided by LEDA (see the LEDA's web documentation)
+
+   If you do not have a compatible LEDA version installed on your
+   system, you can download it (free of charge for academic research and
+   teaching) from the Max Plank Institute:
+
+   http://www.mpi-sb.mpg.de/LEDA/leda.html 
+
+   LEDA-R is Copyright (c) 1991-1999 by Max-Planck-Institut fuer
+   Informatik Im Stadtwald, 66123 Saarbruecken, Germany. All rights
+   reserved.
+
+- You have write permission on the directory where you want install GDT
+
+- You have at least 30Mb available on your disk for compiling GDT.
+
+
+2. Installing from Your Binary Distribution "xxx"
+-------------------------------------------------
+
+Download GDT-3.0-xxx.tgz () file and issue first the command
+"gunzip GDT-3.0-xxx.tgz" in order to get a GDT-3.0-xxx.tar file, 
+and then issue the command "tar xvf GDT-3.0-xxx.tar".
+
+At the end of this step you should have a GDT directory containing the
+following files and subdirectories:
+
+	INSTALL  <-- this file
+	LICENCE
+	README 
+	makefile
+	incl/
+	lib/
+	tools/
+
+In the "lib" directory you will find the binary file "libGDT.lib". To get a complete installation
+you can compile all demos in the "tools" directory.
+To do that, please, execute the following steps:
+
+1 - set the "LEDAROOT" environment variable in order to specify the correct path for the 
+    LEDA libraries on your machine (example: set LEDAROOT= C:\LEDA-4.1). 
+
+2 - Start to compile all demos typing "nmake" from your GDT-3.0-xxx main directory.
+    At the end of the process you will find an executable file in each one of the provided 
+    tools directories.
+
+
+4. Troubleshooting
+------------------
+
+- The "nmake" command generate an error involving the LEDAROOT variable:
+  
+You have to assign the right value to the environment variable LEDAROOT,
+which specifies the path for the LEDA libraries on your system.
+Follows the syntax of your shell to assign a value. For example:
+"set LEDAROOT= C:\LEDA-4.1".
+
+For other problems you will encounter about the "nmake" command, please, 
+also refer to the MVC 6.0 User's Manual
+
+If you experience any other problem please contact the GDToolkit team.
+
+  gdt@dia.uniroma3.it
+
+
+
+5. Short description of the provided demos
+------------------------------------------
+
+
+blag : 
+	is a useful tool that allows you to use the library as a black box.
+	Namely, blag takes in input a graph and a configuration file specifying the layout 
+	algorithm to apply, and the constraints on the graph. 
+	Then return the drawing. A detailed description of blag, including a simple tutorial,
+	is available on the gdt's web site.
+
+gdtdemo: 
+	provides a simple graphical interface for running some of the
+        layout algorithms implemented in GDT. You can edit a graph by using a
+	simple editor and then apply one of the listed algorithms. 
+	NOTE: this tool does not allow you to deal with the new constraints
+	      on the size of the nodes. To have this possibility, please, run
+	      the applications "visual_dime" and/or "boxer". 
+
+GRID: 
+	provides a graphical interface for running some of the layout algorithms
+        implemented in GDT. You can edit a graph by using a simple editor and 
+        then apply one of the listed algorithms. GRID also provides a very
+        interesting environment to interactively handle the planar embeddings of
+        biconnected graphs, by investigating the nodes of SPQR-trees. You can also
+        run an animated (and interactive) version of the SLOW_ORTHOGONAL
+        algorithms. Finally, GRID provides an editors for setting several kinds of
+        constraints on the drawing, and evaluate their effectiveness.
+        NOTE: this tool does not allow you to deal with the new constraints
+	      on the size of the nodes. To have this possibility, please, run
+	      the application "visual_dime". 
+      
+
+visual_dime: 
+	is a specific tool that shows you how the new constraints on
+        the size of the vertices work. You can edit a graph and
+	set the size (width and height) of each node independently. Each
+	time you change the size of a node, the drawing is recomputed
+	automatically. We suggest to try it.

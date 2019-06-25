@@ -1,0 +1,32 @@
+#-----------------------------------------------------------------------------
+#   This file is part of the GDToolkit distribution
+#   (c) 1999-2008 Third University of Rome - DIA
+#
+#   This file is an example of what a "custom.win32" file should contain.
+#   We suggest to make a copy of this file and modify that.
+#   
+#   use "#" to coment lines
+#
+# -----------------------------------------------------------------------------
+
+
+
+# -------------------------------------------------------------
+# specify the location of the MVC60 developement environment
+# -------------------------------------------------------------
+
+CC = cl
+LIB = lib
+LD = link
+MVC_HOME = $(VS80DIR)
+
+# --------------------------------------------------------------
+# compilation options
+# --------------------------------------------------------------
+
+CUSTOM_CFLAGS   =  -TP  -GA -Ox  -DNDEBUG -EHsc -DWIN32
+#CUSTOM_CFLAGS   =  -TP -MD -ZI -Yd -GX
+
+
+
+

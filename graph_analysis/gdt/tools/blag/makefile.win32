@@ -1,0 +1,5 @@
+!include ../../custom.win32
+
+EXECNAME = blag
+
+!include ../common.make.win32

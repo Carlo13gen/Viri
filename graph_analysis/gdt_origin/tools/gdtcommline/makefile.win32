@@ -1,0 +1,6 @@
+!include ../../custom.win32
+
+EXECNAME = gdtcommline
+AUX_OBJ = gdtcommline_init.obj
+!include ../common.make.win32
+

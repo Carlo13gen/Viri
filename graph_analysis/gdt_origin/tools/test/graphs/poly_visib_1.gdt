@@ -1,0 +1,28 @@
+
+<UNDISECTION>
+	<NODELIST>
+		<NODE>
+			0
+			<EDGE> 0 --
+		</NODE>
+		<NODE>
+			1
+			<EDGE> 0 --
+		</NODE>
+	</NODELIST>
+</UNDISECTION>
+<DRAWSECTION>
+	<NODELIST>
+		<NODE>
+			0 (42.24,43.44) 0 5 5 0.5 5 1 1 0 (42.24,43.44) 
+		</NODE>
+		<NODE>
+			1 (41.04,67.68) 0 5 5 0.5 5 1 1 1 (41.04,67.68) 
+		</NODE>
+	</NODELIST>
+	<EDGELIST>
+		<EDGE>
+			0 0 1 1 0 (43.14,55.56) 0 (0,0) (0,0) 
+		</EDGE>
+	</EDGELIST>
+</DRAWSECTION>

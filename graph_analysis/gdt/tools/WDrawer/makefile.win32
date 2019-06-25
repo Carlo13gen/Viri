@@ -1,0 +1,6 @@
+!include ../../custom.win32
+
+EXECNAME = WDrawer
+
+!include ../common.make.win32
+

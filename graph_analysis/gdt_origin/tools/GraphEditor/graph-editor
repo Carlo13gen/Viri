@@ -1,0 +1,21 @@
+#!/bin/sh
+echo
+echo GDToolkit Java Graph Editor
+echo
+if  [ "$1" != "" ]; then
+#	echo "Input file: "$1  	
+	FN=$(echo $PWD/$1)
+#else 
+#	echo "No input file"
+fi
+
+if [ -z $GDTHOME ]; then  
+	echo	
+	echo The variable GDTHOME is not set.
+	echo 
+	exit 1  
+else
+	cd $GDTHOME/tools/GraphEditor
+	if [ ! -e Test/Test.class ]; then compile.sh;  fi
+	java -cp .:../../lib/$HOSTTYPE/GdtJavaWrapper.jar -Djava.library.path=$GDTHOME/lib/$HOSTTYPE/ Test.Test $FN
+fi

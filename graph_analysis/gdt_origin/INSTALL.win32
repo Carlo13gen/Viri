@@ -1,0 +1,192 @@
+This is the GDToolkit 3.0 INSTALL.win32 file
+============================================
+
+This file explains the all the steps you need to do in order to make
+GDToolkit work on a Windows platform, under Microsoft Visual C++ 6.0.
+
+Table of Contents
+-----------------
+
+1. Preconditions 
+2. Installing from Source Distribution
+3. Testing The Installation
+4. Troubleshooting
+5. Short description of some provided demos
+
+
+1. Preconditions
+----------------
+
+The following preconditions should be verified 
+
+- Your compiler should be supported by the current version of GDT.
+Presently GDToolkit was compiled only on Microsoft Visual C++ 6.0. 
+
+- A compatible release of LEDA is currently installed on your
+system. This version of GDToolkit was compiled and tested with LEDA-4.0 and LEDA-4.1.
+
+   If you don't have a compatible LEDA version installed on your
+   system, you can download it (free of charge for academic research and
+   teaching) from the Max Plank Institute:
+
+   http://www.mpi-sb.mpg.de/LEDA/leda.html 
+
+   LEDA-R is Copyright (c) 1991-1999 by Max-Planck-Institut fuer
+   Informatik Im Stadtwald, 66123 Saarbruecken, Germany. All rights
+   reserved.
+
+IMPORTANT NOTE: there are some differences between LEDA-4.0 and LEDA-4.1. In
+	        particular, if with LEDA-4.1 you can download several kinds of
+		packages for MSVisualC++ depending on your needs.
+		Each one of these packages has a different name for its libraries.
+		Our makefiles are for a general use, and define always the same 
+		names for the LEDA libraries (libW.lib, libP.lib..). 
+		Thus, there is the possibility you have to manually
+		change these names, depending on the LEDA-4.1 libraries you have
+		chosen. To do that, open the file "common.make.win32" in the tools
+		directory and change the names of the 
+		libraries at label: # Microsoft style linkage
+
+
+- You have at least 30Mb available on your disk for compiling GDT.
+
+
+2. Installing from Source Distribution
+--------------------------------------
+
+Get the GDT-3.0-src.tgz file and expand it using Winzip.
+At the end of this step you should have a GDT directory containing the
+following files and subdirectories:
+
+	INSTALL.unix  
+        INSTALL.win32      <--- this file
+	LICENCE
+	README 
+	VERSION
+	custom.example
+	custom.win32.example
+	incl/
+	makefile
+	makefile.win32
+	src/
+	tools/
+
+To compile GDT you have to create a simple configuration file named
+custom.win32.  To create the configuration file copy and edit the file
+custom.win32.example you find in the root directory of the GDToolkit
+distribution. Be careful to specify the correct pathname of the LEDA
+library and of the Ms. Visual C++ compiler installation.
+
+Start the compilation process typing "nmake -f makefile.win32". 
+At the end of the process
+the following library and executable files will be present in the GDT 
+directory
+
+binaries
+   GDT/bin/GRID
+   GDT/bin/blag
+   GDT/bin/gdtdemo
+   GDT/bin/test
+   GDT/bin/visual_dime
+   (and possibly others)
+
+libraries
+   GDT/lib/libGDT.lib
+
+3. Testing The Installation
+---------------------------
+
+To test your installation run "nmake -f makefile.win32 self-test". It executes a
+self-test of the library, by applying many algorithms provided by the
+GDToolkit GAPI on a set of graphs (provided with the package).  If the
+self-test is executed without any problem, you can be reasonably sure
+that the GAPI was compiled without any problem on your platform.
+
+It will take a couple of minutes (depending on the CPU clock and,
+expecially, the amount of RAM) for the self-test utility to perform
+all the tests. Also, at the end of the self-test, it displays the
+CPU-time required for testing the system. You may use it as a
+primitive bechmark to estimate the efficiency of the GAPI algorithms
+on your platform. You may want to compare your results with those that
+we report on the performances page for our platforms.
+
+The set of the tested graphs and algorithms can be also extended. For
+more details about the self-test see the file "README" in the
+/GDT/tools/test directory. If you want to execute other tests or to
+get other examples of GAPI applications you may want to run gdtdemo
+and/or GRID applications that are distributed with GDToolkit.
+
+
+
+4. Troubleshooting
+------------------
+
+
+IMPORTANT NOTE: there are some differences between LEDA-4.0 and LEDA-4.1. In
+	        particular, if with LEDA-4.1 you can download several kinds of
+		packages for MSVisualC++ depending on your needs.
+		Each one of these packages has a different name for its libraries.
+		Our makefiles are for a general use, and define always the same 
+		names for the LEDA libraries (libW.lib, libP.lib..). 
+		Thus, there is the possibility you have to manually
+		change these names, depending on the LEDA-4.1 libraries you have
+		chosen. To do that, open the file "common.make.win32" in the tools
+		directory and change the names of the 
+		libraries at label: # Microsoft style linkage.
+
+If you experience any problem please contact the GDToolkit team.
+
+  gdt@dia.uniroma3.it
+
+
+
+5. Short description of some provided demos
+-------------------------------------------
+
+test: 
+	executes a self-test of the GDT, by running most the algorithms of the
+      	library on a set of selected input graphs.
+	
+      
+blag : 
+	is a useful tool that allows you to use the library as a black box.
+	Namely, blag takes in input a graph and a configuration file specifying the layout 
+	algorithm to apply, and the constraints on the graph. 
+	Then return the drawing. A detailed description of blag, including a simple tutorial,
+	is available on the gdt's web site.
+	       
+ 
+gdtdemo: 
+	provides a simple graphical interface for running some of the
+        layout algorithms implemented in GDT. You can edit a graph by using a
+	simple editor and then apply one of the listed algorithms. 
+	NOTE: this tool does not allow you to deal with the new constraints
+	      on the size of the nodes. To have this possibility, please, run
+	      the applications "visual_dime" and/or "boxer". 
+
+GRID: 
+	provides a graphical interface for running some of the layout algorithms
+        implemented in GDT. You can edit a graph by using a simple editor and 
+        then apply one of the listed algorithms. GRID also provides a very
+        interesting environment to interactively handle the planar embeddings of
+        biconnected graphs, by investigating the nodes of SPQR-trees. You can also
+        run an animated (and interactive) version of the SLOW_ORTHOGONAL
+        algorithms. Finally, GRID provides an editors for setting several kinds of
+        constraints on the drawing, and evaluate their effectiveness.
+        NOTE: this tool does not allow you to deal with the new constraints
+	      on the size of the nodes. To have this possibility, please, run
+	      the application "visual_dime". 
+      
+
+visual_dime: 
+	is a specific tool that shows you how the new constraints on
+        the size of the vertices work. You can edit a graph and
+	set the size (width and height) of each node independently. Each
+	time you change the size of a node, the drawing is recomputed
+	automatically. We suggest to try it.
+
+
+	     
+
+
+

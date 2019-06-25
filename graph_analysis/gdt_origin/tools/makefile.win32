@@ -1,0 +1,88 @@
+
+MAKE= $(MAKE) -f makefile.win32
+
+all: tools
+
+
+#------------------------------------------- package specifics publics
+
+
+#tools: t_blag t_test t_simpletest  t_WDrawer t_gdtcommline t_designgraphconv
+#   echo tools built
+
+tools: t_blag t_test t_simpletest  t_WDrawer t_gdtcommline t_designgraphconv
+   echo tools built
+
+
+t_blag:
+   cd blag
+   $(MAKE)
+   cd ..
+
+t_test:
+   cd test
+   $(MAKE)
+   cd ..
+
+t_simpletest:
+   cd simpletest
+   $(MAKE)
+   cd ..
+
+t_gdtcommline:
+   cd gdtcommline
+   $(MAKE)
+   cd ..
+
+t_WDrawer:
+   cd WDrawer
+   $(MAKE)
+   cd ..
+
+t_designgraphconv:
+  cd designgraphconv
+  $(MAKE)
+  cd..
+
+
+#------------------------------------------ standard publics
+
+clean:
+	cd test
+   $(MAKE) clean
+   cd ..
+	cd blag
+   $(MAKE) clean
+   cd ..
+	cd simpletest
+   $(MAKE) clean
+   cd ..	
+	cd gdtcommline
+   $(MAKE) clean
+   cd ..
+	cd WDrawer
+   $(MAKE) clean
+   cd ..
+  cd designgraphconv
+  $(MAKE) clean
+  cd..
+
+delete:
+	cd test
+   $(MAKE) delete
+   cd ..
+	cd blag
+   $(MAKE) delete
+   cd ..
+	cd simpletest
+   $(MAKE) delete
+   cd ..	
+	cd gdtcommline
+   $(MAKE) delete
+   cd ..
+	cd WDrawer
+   $(MAKE) delete
+   cd ..
+	cd designgraphconv
+  $(MAKE) delete
+  cd..

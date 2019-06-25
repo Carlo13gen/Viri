@@ -1,0 +1,80 @@
+<!--PLACEHOLDER 1-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>CophyTrees - Cophylogeny Viewer</title>
+<meta charset="utf-8">
+<script>
+var error="";
+</script>
+
+<!--PLACEHOLDER 2-->
+<link rel="stylesheet" href="http://eucalypt.gforge.inria.fr/viewer.css" type="text/css">
+
+</head>
+
+<body> 
+    <!-- Page contents -->
+    <div id="titleBox">
+       <h2 style="text-align:center; font-family:sans"> <a href="http://eucalypt.gforge.inria.fr/index.html"><img style="vertical-align:-18px; margin-right:30px" src="images/logo_eucalypt.png" height="80px"></a> CophyTrees</h2>
+       <i>A cophylogeny viewer for Eucalypt</i>
+    </div>
+    <div id = "menubar">
+       <a href="viewer.html" id="back" title="CophyTrees home" ><img src="http://eucalypt.gforge.inria.fr/images/btn-back.svg" ></a>
+       <a href="#" id="reset" title="Reset the view" onclick="forest.reset()"><img src="http://eucalypt.gforge.inria.fr/images/btn-reload.svg" ></a>
+       <a href="#" id="save" title="Download this image as SVG" download="CophyTrees.svg" target="blank"><img src="http://eucalypt.gforge.inria.fr/images/btn-svg.svg" ></a>
+       <a href="#"  id="savePng" title="Download this image as PNG"  ><img src="http://eucalypt.gforge.inria.fr/images/btn-png.svg" ></a>
+    </div>
+    <span id="svgWindow"></span>
+    <div style=" overflow:auto;max-height:300px;"><div id="TreeSelector"></div></div>
+    <canvas width="2000" height="1200" scale="2" style="display:none"></canvas>
+     
+    
+    <!-- Scripts and Data  --> 
+ 
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://eucalypt.gforge.inria.fr/trees.js" ></script>
+<script> var InputData = [
+ '#--------------------',
+ '#Host tree          = ((h000,h001)!H1,(h002,(h003,(h004,(h005,(h006,h007)!H12)!H10)!H8)!H6)!H4)!H0',
+ '#Parasite tree      = ((h000-002,h001-002)!P1,((h000-001,(h001-001,h002-001)!P7)!P5,(h003-001,((h004-001,h005-001)!P13,(h006-001,h007-001)!P16)!P12)!P10)!P4)!P0',
+ '#Host tree size     = 15',
+ '#Parasite tree size = 19',
+ '#Leaf mapping       = {h007-001=h007, h001-002=h001, h006-001=h006, h000-002=h000, h003-001=h003, h005-001=h005, h004-001=h004, h001-001=h001, h000-001=h000, h002-001=h002}',
+ '#--------------------',
+ '#Co-speciation cost = -1.000',
+ '#Duplication cost   = 1.000',
+ '#Host-switch cost   = 1.000',
+ '#Loss cost          = 1.000',
+ '#Maximum jump       = No limit',
+ '#Optimum cost       = -2.000',
+ '#--------------------',
+ '#Root mapping = !P0@!H0',
+ '!P0@!H0, !P1@!H1, h000-002@h000, h001-002@h001, !P4@!H4, !P5@h002, h000-001@h000, !P7@h002, h001-001@h001, h002-001@h002, !P10@!H6, h003-001@h003, !P12@!H8, !P13@h004, h005-001@h005, h004-001@h004, !P16@!H12, h006-001@h006, h007-001@h007',
+ '[6, 0, 3, 1]',
+ '!P0@!H0, !P1@!H1, h000-002@h000, h001-002@h001, !P4@!H4, !P5@h002, h000-001@h000, !P7@h002, h001-001@h001, h002-001@h002, !P10@!H6, h003-001@h003, !P12@!H10, !P13@h005, h004-001@h004, h005-001@h005, !P16@!H12, h006-001@h006, h007-001@h007',
+ '[6, 0, 3, 1]',
+ '#Number of solutions = 2',
+ '#--------------------',
+ '#Total number of solutions = 2',
+''].join('\n'); </script> 
+<script>
+
+var forest= cophyloForest();
+
+forest.svgWindow("#svgWindow").treeSelector("#TreeSelector").size([1000,600]);
+
+defineSaveButton(d3.select("#save"));
+defineSavePngButton(d3.select("#savePng"));
+
+if (typeof InputData== "undefined") { 
+  d3.select("body").append("div").attr("class","msgBox").style("position", "absolute").style("top",0).style("border-radius", "5px").html(error+(error.length>0?"<br>":"")+ "Displaying the <a href=\"default\">demonstration</a> file") 
+  d3.text("default", function (err, d) {
+     forest.open(d)
+  })
+} else {
+  forest.open(InputData)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+include ../../ld_flags
+
+EXEC= test
+
+
+$(EXEC): $(EXEC).o
+	g++ $< -o $@ $(CUSTOM_LD_FLAGS) -L$(LEDAROOT) ../../lib/libGDT.a  -lW -lP -lG -lL -lX11 -lm
+
+$(EXEC).o: $(EXEC).cpp
+	g++ -c -O3 -DNDEBUG -DLEDA_INSTALL $< -I ../../incl -I$(LEDAROOT)/incl $(CUSTOM_CC_FLAGS) 
+

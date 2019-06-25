@@ -1,0 +1,45 @@
+graphs/quick_orth_1.gdt		0		3
+graphs/quick_orth_2.gdt		0		3
+graphs/quick_orth_3.gdt		0		3
+graphs/quick_orth_4.gdt		0		3
+graphs/quick_orth_5.gdt		0		2
+
+graphs/opt_orth_1.gdt		1		3
+graphs/opt_orth_2.gdt		1		3
+graphs/opt_orth_3.gdt		1		3
+graphs/opt_orth_4.gdt		1		3
+graphs/opt_orth_5.gdt		1		3
+graphs/opt_orth_6.gdt		1		3
+graphs/opt_orth_7.gdt		1		3
+graphs/opt_orth_8.gdt		1		3
+graphs/opt_orth_9.gdt		1		3
+graphs/opt_orth_10.gdt		1		3
+
+graphs/slow_orth_1.gdt		2		1
+graphs/slow_orth_2.gdt		2		1
+graphs/slow_orth_3.gdt		2		1
+
+graphs/opt_upward_1.gdt		3		3
+graphs/opt_upward_2.gdt		3		3
+graphs/opt_upward_3.gdt		3		3
+graphs/opt_upward_4.gdt		3		3
+graphs/opt_upward_5.gdt		3		3
+graphs/opt_upward_6.gdt		3		3
+graphs/opt_upward_7.gdt		3		3
+graphs/opt_upward_8.gdt		3		3
+graphs/opt_upward_9.gdt		3		3
+graphs/opt_upward_10.gdt	3		3
+
+graphs/slow_upward_1.gdt	4		1
+graphs/slow_upward_2.gdt	4		1
+graphs/slow_upward_3.gdt	4		1
+
+graphs/poly_visib_1.gdt		5		3
+graphs/poly_visib_2.gdt		5		3
+graphs/poly_visib_3.gdt		5		3
+
+graphs/poly_visib_2.gdt		6		3
+graphs/poly_visib_3.gdt		6		3
+
+END
+

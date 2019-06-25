@@ -1,0 +1,43 @@
+<UNDISECTION>
+        <NODELIST>
+                <NODE>
+                        1
+                        <EDGE> 1 ->
+                        <EDGE> 2 ->
+                        <EDGE> 3 ->
+                </NODE>
+                <NODE>
+                        2
+                        <EDGE> 4 ->
+                        <EDGE> 5 ->
+                        <EDGE> 6 ->
+                        <EDGE> 8 <-
+                </NODE>
+                <NODE>
+                        3
+                        <EDGE> 2 <-
+                        <EDGE> 7 ->
+                </NODE>
+                <NODE>
+                        4
+                        <EDGE> 8 ->
+                        <EDGE> 9 <-
+                </NODE>
+                <NODE>
+                        5
+                        <EDGE> 3 <-
+                        <EDGE> 6 <-
+                        <EDGE> 9 ->
+                </NODE>
+                <NODE>
+                        6
+                        <EDGE> 1 <-
+                        <EDGE> 4 <-
+                </NODE>
+                <NODE>
+                        7
+                        <EDGE> 5 <-
+                        <EDGE> 7 <-
+                </NODE>
+        </NODELIST>
+</UNDISECTION>

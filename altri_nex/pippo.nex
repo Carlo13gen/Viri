@@ -1,0 +1,278 @@
+#NEXUS
+BEGIN TAXA;
+	DIMENSIONS NTAX = 40;
+	TAXLABELS
+		H4
+		H5
+		H10
+		H11
+		H12
+		H14
+		H17
+		H18
+		H20
+		H26
+		H27
+		H28
+		H29
+		H32
+		H33
+		H34
+		H35
+		H36
+		H37
+		H38
+		P1
+		P4
+		P9
+		P10
+		P11
+		P12
+		P13
+		P16
+		P20
+		P23
+		P24
+		P26
+		P27
+		P28
+		P32
+		P33
+		P35
+		P36
+		P37
+		P38
+		;
+ENDBLOCK;
+
+BEGIN TREES;
+	TRANSLATE
+		H0	H0,
+		H1	H1,
+		H2	H2,
+		H3	H3,
+		H4	H4,
+		H5	H5,
+		H6	H6,
+		H7	H7,
+		H8	H8,
+		H9	H9,
+		H10	H10,
+		H11	H11,
+		H12	H12,
+		H13	H13,
+		H14	H14,
+		H15	H15,
+		H16	H16,
+		H17	H17,
+		H18	H18,
+		H19	H19,
+		H20	H20,
+		H21	H21,
+		H22	H22,
+		H23	H23,
+		H24	H24,
+		H25	H25,
+		H26	H26,
+		H27	H27,
+		H28	H28,
+		H29	H29,
+		H30	H30,
+		H31	H31,
+		H32	H32,
+		H33	H33,
+		H34	H34,
+		H35	H35,
+		H36	H36,
+		H37	H37,
+		H38	H38,
+		P0	P0,
+		P1	P1,
+		P2	P2,
+		P3	P3,
+		P4	P4,
+		P5	P5,
+		P6	P6,
+		P7	P7,
+		P8	P8,
+		P9	P9,
+		P10	P10,
+		P11	P11,
+		P12	P12,
+		P13	P13,
+		P14	P14,
+		P15	P15,
+		P16	P16,
+		P17	P17,
+		P18	P18,
+		P19	P19,
+		P20	P20,
+		P21	P21,
+		P22	P22,
+		P23	P23,
+		P24	P24,
+		P25	P25,
+		P26	P26,
+		P27	P27,
+		P28	P28,
+		P29	P29,
+		P30	P30,
+		P31	P31,
+		P32	P32,
+		P33	P33,
+		P34	P34,
+		P35	P35,
+		P36	P36,
+		P37	P37,
+		P38	P38
+		;
+	TREE HOST = ((((H4,H5)H3,((((H10,H11)H9,H12)H8,(H14,((H17,H18)H16,(H20,(((((H26,H27)H25,H28)H24,H29)H23,((H32,H33)H31,H34)H30)H22,H35)H21)H19)H15)H13)H7,H36)H6)H2,H37)H1,H38)H0;
+	TREE PARASITE = (P1,((P4,((((P9,P10)P8,P11)P7,P12)P6,P13)P5)P3,((P16,(((P20,((P23,P24)P22,(P26,P27)P25)P21)P19,P28)P18,(((P32,P33)P31,(P35,P36)P34)P30,P37)P29)P17)P15,P38)P14)P2)P0;
+ENDBLOCK;
+
+BEGIN COPHYLOGENY;
+[RANKS represents the ranks of the nodes in the tree]
+[Syntax is: nodename timezone_from timezone_to]
+	RANKS
+		H0	1	1,
+		H1	2	2,
+		H2	3	3,
+		H3	19	19,
+		H4	19	19,
+		H5	19	19,
+		H6	4	4,
+		H7	5	5,
+		H8	7	7,
+		H9	8	8,
+		H10	19	19,
+		H11	19	19,
+		H12	19	19,
+		H13	6	6,
+		H14	19	19,
+		H15	9	9,
+		H16	10	10,
+		H17	19	19,
+		H18	19	19,
+		H19	11	11,
+		H20	19	19,
+		H21	12	12,
+		H22	13	13,
+		H23	16	16,
+		H24	17	17,
+		H25	18	18,
+		H26	19	19,
+		H27	19	19,
+		H28	19	19,
+		H29	19	19,
+		H30	14	14,
+		H31	15	15,
+		H32	19	19,
+		H33	19	19,
+		H34	19	19,
+		H35	19	19,
+		H36	19	19,
+		H37	19	19,
+		H38	19	19,
+		P0	0	19,
+		P1	1	19,
+		P2	0	19,
+		P3	0	19,
+		P4	7	19,
+		P5	0	19,
+		P6	0	19,
+		P7	0	19,
+		P8	0	19,
+		P9	4	19,
+		P10	18	19,
+		P11	15	19,
+		P12	10	19,
+		P13	11	19,
+		P14	0	19,
+		P15	0	19,
+		P16	10	19,
+		P17	0	19,
+		P18	0	19,
+		P19	0	19,
+		P20	18	19,
+		P21	0	19,
+		P22	0	19,
+		P23	4	19,
+		P24	1	19,
+		P25	0	19,
+		P26	19	19,
+		P27	17	19,
+		P28	7	19,
+		P29	0	19,
+		P30	0	19,
+		P31	0	19,
+		P32	1	19,
+		P33	18	19,
+		P34	0	19,
+		P35	17	19,
+		P36	6	19,
+		P37	6	19,
+		P38	1	19
+		;
+[PHI represents the associations from the parasite leaf nodes to the host leaf nodes]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	PHI
+		P1	H38,
+		P4	H12,
+		P9	H36,
+		P10	H26,
+		P11	H32,
+		P12	H18,
+		P13	H20,
+		P16	H17,
+		P20	H27,
+		P23	H36,
+		P24	H38,
+		P26	H5,
+		P27	H28,
+		P28	H12,
+		P32	H38,
+		P33	H26,
+		P35	H28,
+		P36	H14,
+		P37	H14,
+		P38	H38
+		;
+[RECONSTRUCTIONEVENTS represents the events which occurred in the reconstruction. It includes 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	RECONSTRUCTIONEVENTS
+		COSPECIATION	5,
+		SORTING	3,
+		DUPLICATION	6,
+		HOSTSWITCH	1
+		;
+[RECONSTRUCTION represents the associations from the parasite nodes to the host nodes as they occured in the reconstruction/simulation]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	RECONSTRUCTION
+		;
+[COSTS represents the cost table for the operations 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	COSTS
+		COSPECIATION	0,
+		SORTING	1,
+		DUPLICATION	2,
+		HOSTSWITCH	3
+		;
+[OPTIONS represents the options for calculating the reconstruction]
+[Syntax is: option value]
+	OPTIONS
+		FULLHOSTSWITCH	0,
+		AUTOMATICCOSTS	0,
+		RANDOMSEED	auto,
+		RANK	0,
+		RANDOMCYCLES	5000,
+		PROBABILITYCOSTS	0,
+		ROOTMAPPING	0,
+		AUTOMATICMETHOD	2,
+		LEAFSPECIACIONCOST	0,
+		CHECKCHRONOLOGY	0,
+		SORTING	1,
+		DUPLICATION	1,
+		HOSTSWITCH	1
+		;
+ENDBLOCK;
+

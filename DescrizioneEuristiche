@@ -1,0 +1,173 @@
+RAPP.
+
+La rapp.  una euristica indipendente dall'uso di gdt.
+è implementata interamente in js.
+il calcolo di questa euristica avviene nel momento in cui viene richiesta la visualizzazione.
+L'euristica Rapp tenta di evitare che ci siano archi host-switch che attraversano tutto il grafo.
+L'algoritmo funziona nel seguente modo:
+-per ogni nodo host abbiamo come informazione la lista dei nodi parassiti contenuti nel suo sottoalbero(albero che ha come radice il nodo host)
+-ora immaginiamo di essere in un nodo host e ci vengono passati come parametri la lista dei nodi parassiti che abbiamo a destra e i nodi parassita che abbiamo a sinistra:
+	se il nodo host è una foglia termina.
+	se il nodo host non è una foglia:
+		- prendi il figlio 1 e prendi la lista dei nodi parassiti nel suo sottoalbero
+		- prendi il figlio 2 e prendi la lista dei nodi parassiti nel suo sottoalbero
+		- con la funzione rapporto calcola quanti sono gli host switch che vanno dal sottoalbero del figlio1 a destra (lo chiamiamo 1d)
+		- con la funzione rapporto calcola quanti sono gli host switch che vanno dal sottoalbero del figlio1 a sinistra (lo chiamiamo 1s)
+		- con la funzione rapporto calcola quanti sono gli host switch che vanno dal sottoalbero del figlio2 a destra (lo chiamiamo 2d)
+		- con la funzione rapporto calcola quanti sono gli host switch che vanno dal sottoalbero del figlio2 a sinistra (lo chiamiamo 2s)
+		- ora vendo questi valori abbiamo che:
+			se 1d+2s > 2d + 1s
+				allora  il figlio 1 diventa il figlio destro
+						il filgio 2 diventa il figlio sinistro
+			altrimenti 
+						il figlio 2 diventa il figlio destro
+						il filgio 1 diventa il figlio sinistro
+			ora rilancio la funzione sui figli
+				funzione(figlioDestro, listaDeiNodiADestra, listaDeiNodiASinista a cui concateniamo listaDeiNodiDelSottoalberoDelFratelloSinistro)
+				funzione(figlioSinistro, listaDeiNodiADestra concateni listaDeiNodiDelSottoalberoDelFratelloDestro , listaDeiNodiASinista)
+	La funzione parte con funzione(radice,[],[]);
+
+Ora le foglie dell'albero dei parassiti come vengono piazzate nelle foglie degli host?
+Ogni foglia dell'host ha diverse "postaizioni" in cui può essere inserito il nodo parassita tante quante sono i nodi parassita foglia contenuti.
+come primo passo si disegna tutto l'albero degli host e poi quello dei parassiti posizionando tali foglie alla postazione 0
+poi tali nodi parassiti vengono ordinati un questo modo:
+	- se i due nodi hanno i genitori in direzioni diverse
+		- mettere prima nella lista chi ha il parent più a sinistra
+	- se vanno nella stessa direzione, 
+		- prima chi ha il genitore più in basso se la direzione è a sinistra, se a destra invece il contrario
+	- a parità di altezza dei genitori vedere allora la coordinata x che hanno i genitori 
+
+		function compareLeafParassite(a,b,widthHostNode,xHostCoordinate){
+			var xb = xHostCoordinate;
+			var xa = xb + widthHostNode;
+			var parentA = findNodeById(findParentIdsOfHostOrParasiteNode(a, "P", graph),graph);
+			var parentB = findNodeById(findParentIdsOfHostOrParasiteNode(b, "P", graph),graph);
+			var x1 = parentA["x"];
+			var x2 = parentB["x"];
+			var y1 = parentA["y"];
+			var y2 = parentB["y"];
+			
+			var nodoA=findNodeById(a,graph);
+			if ((longLeaves)|| (nodoA["y"]>y1) ) {
+				// se uno sfora dall'host e l'altro no
+				if((( x1 > xb ) && ( xb > x2 )) || (( x2 > xb ) && ( xb > x1 ))){return x1 - x2;}
+				if((( x1 > xa ) && ( xa > x2 )) || (( x2 > xa ) && ( xa > x1 ))){return x1 - x2;}
+				
+				// a parità di altezza del parent
+				if ((y1-y2)==0) {
+					return x1-x2;
+				}else{
+					//  in base al valore della x comportarsi in modo diverso
+					if (x1>xa){
+						// se sforano a destra
+						return y1 - y2;
+					} else {
+						if (x1<xb){
+							// se sforano a sinistra
+							return y2 - y1;
+						} else {
+
+							return x1-x2;
+						}
+					}
+				}
+			} else {
+				if((( x1 > xb ) && ( xb > x2 )) || (( x2 > xb ) && ( xb > x1 ))){return x1 - x2;}
+				if((( x1 > xa ) && ( xa > x2 )) || (( x2 > xa ) && ( xa > x1 ))){return x1 - x2;}
+				if ((y1-y2)==0) {
+					return x1-x2;
+				}else{
+					if (x1>xa){
+						return y2 - y1;
+					} else {
+						if (x1<xb){ 
+							return y1 - y2;
+						} else {
+							return x1-x2;
+						}
+					}
+				}
+			}
+		}
+
+Ordinate nell'host vengono poi posizionati i parassiti nell'host e riviene disegnato tutto l'albero dei parassiti.
+
+--------------------------------------------------------------------------------
+GDT for Solution.
+
+Usa GDT quindi in un ottica in cui il sistema venga messo online tale calcolo deve essere effettuato da un futuro server.
+L'euristica usa come informazione se un arco è collegato a un evento di host switch o meno e quindi è sensibile al cambiamento del mapping del parassita nell'host.
+Questo porta a dire che l'euristica deve trovare un embedding diverso per ogni soluzione che viene calcolata da Eucalypt.
+
+Come funziona:
+	costruiamo un grafo:
+		- viene copiato l'albero degli host in un grafo
+		- al grafo vengono aggiunti tutti i nodi parassiti
+		- per ogni nodo dell' albero parassita, che non è foglia, si effettuano i seguenti passi :
+			1- si vede se un arco che collega il nodo a uno dei figli è host-switch se si:
+				- l'altro arco non host-switch viene inserito nel grafo mentre l'altro in una lista hostSwitchRimossi.
+				- il nodo non collegato al padre viene collegato alla radice dell'host
+			in caso negativo si prende un arco e viene inserito nel grafo mentre l'altro in una lista ArchiRimossi e anche in questo caso il nodo non collegato con il padre viene collegato con la radice dell'host.
+		- mettiamo il rootConnector tra le due radici(parassita-host)
+		- mettiamo un arco tra foglia foglia per ogni mapping foglia-foglia dei due alberi
+	Ora costruiamo una lista ordinata di tutti gli archi che sono stati tolti: 
+		- ordiniamo i gli archi sia della lista ArchiRimossi e sia hostSwitchRimossi nel seguente modo:
+			- diamo la precedenza a tutti gli archi che hanno profondita maggiore.
+			- a parità di profondita diamo la precedenza a chi ha un sottoalbero più piccolo.
+		- una volta ordinati si mettono in coda alla lista alla lista degli ArchiRimossi la lista degli archi hostSwitchRimossi.
+	Arrivati a questo punto si procede in questo modo:
+		prendo il primo arco che è nella lista degli archi rimossi.
+		testare(arco):
+			rimuovo l'arco del grafo prima costruito che collega la radice dell'host con il "to" dell'arco
+			provo ad inserire l' arco nel grafo e vedo se il grafo rimane planare :
+				- se si lascio l'arco nel grafo e passo a testare l'arco successivo con il nuovo grafo
+				- se no passo a testare l'arco successivo con il vecchio grafo senza l'arco testato nel grafo.
+Risultato finale: avremo un grafo planare con almeno la meta del numero degli archi parassiti.
+
+MIGLIORIE: USO DI SKIPLIST:
+	- al posto di provare arco per arco ogni volta, si prova a fare dei tentativi anche con più archi.
+		- ogni sqrt(ArchiRimossi) si effettua la seguente prova:
+			inserisco al posto di un solo arco sqrt(archiRimossi.length) archi.
+			se il grafo rimane planare -> il salto è riuscito e quindi vado avanti con il nuovo grafo con tutti gli archi considerati.
+			se il grafo non risulterà planare -> il salto non è riuscito e quindi si torna al grafo prima della prova del salto e si procede arco per arco.
+		- con questo salto abbiamo che: 
+			- se i salti vanno tutti a vuoto abbiamo fatto girare GDT un numero di volte pari a (archiRimossi.length + sqrt(archiRimossi.length));
+			- se un salto va a segno archiRimossi.length
+			- se tutti i salti vanno a segno sqrt(archiRimossi.length)
+
+---------------------------------------------------------
+GDT universal 
+
+L'euristica è come la precedente ma non usa l'informazione se un arco è hostSwitch o meno.
+Tale assunzione lo rende meno preciso della precedente poiche ogni arco viene considerato allo stesso modo ovvero come arco non host-switch
+Il procedimento e le migliorie viste prima sono implementate anche in questa euristica.
+
+Vantaggi e svantaggi rispetto alla precedente:
+	svantaggi: - l'euristica non facendo distinzione tenta a planarizzare alcuni host-switch prima di altri archi.
+	vantaggi:
+		- l'euristica non è sensibile al cambiamento del mapping dei parassiti nell'host -> non cambia al variare della soluzione 
+		- il embedding finale non cambia al variare dei parametri passati a Eucalipt -> possiamo salvare l'embedding e ripescarlo ogni volta che ci serve -> possiamo slegare il calcolo dell'embedding dell'euristica dalla visualizzazione.
+
+---------------------------------------------------------
+In caso di planarità:
+
+Per caso di planarità si intende quando:
+	- prendo un grafo costruito con tutti gli archi e i nodi di tutto l'albero degli host e di tutto l'albero dei parassiti.
+	- inserisco a tale grafo un arco per ogni mapping foglia foglia.
+	- inserisco a tale grafo un arco radice radice.
+Se tale grafo è planare e la soluzione di Eucalipt non è time-inconsistence allora possiamo avere un disegno dell'albero dei parassiti senza incroci.
+
+Questo come la GDT universal è immune al camibamento dei valori passati ad eucalipt e non cambia tra soluzione e soluzione -> quindi anche in questo caso possiamo salvare l'embedding e riprenderlo quando serve.
+
+tale embending viene prenso come prima scelta prima di selezionare una euristica ovvero se è planare l'euristica non viene usata ma si prende direttamente questa soluzione ritenuta la soluzione ottima.
+----------------------------------------------------------
+
+Osservazioni:
+in caso di GDT universal e in caso di planarità l'ebbending non cambia e quindi la disposizione delle foglie sia dell'host e sia del parassita non cambia.
+Ciò permette di avere bloccato l'albero degli host.
+
+-----------------------------------------------------------
+In caso di mettere il tutto online:
+	- per non sovraccaricare troppo il server e per non far attendere troppo all'utente la visualizzazione di una soluzione cosiglio di non inserire la GDT for Solution.
+	poiche i tempi per l'utente che aspetta la risposta del server possono diventare O(s*n*T(GDT(grafo))) dove s è il numero di soluzioni, n è il numero dei nodi parassiti e T(GDT(grafo)) è il tempo che impiega GDT a elaborare il la planarità del grafo.
+	Contro O(s) dove s sono il numero delle soluzioni.

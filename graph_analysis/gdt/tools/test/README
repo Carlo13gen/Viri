@@ -1,0 +1,60 @@
+				----------------------
+				   GAPI self-test
+				----------------------
+
+
+"test" is a program that you can run to make a self-test of the GDToolkit core
+library (GAPI) on your platfrom. It executes a set of specified GAPI
+algorithms on a given set of graphs.
+When 'test' is executaed, it gets as input a file called "test-table" that should be present in the current directory.
+
+Such file is a table with 3 columns for each row. A row specifies:
+
+- a graph file name (column 1)
+
+- an algorithm code, that is an integer value specifying the drawing
+algorithm to apply over the graph (column 2)
+
+- an integer value specifying the number of times to apply the above
+algorithm (column 3).
+
+About the algorithm code, allowed values are the following:
+
+0 - quick orthogonal (heuristic algorithm that finds an orthogonal
+drawing with few bends in linear time; the graph must be biconnected and
+4-planar)
+
+1 - optimal orthogonal (it finds an orthogonal drawing with the minimum
+number of bends within a given embedding in polynomial time; the graph
+must be connected)
+
+2 - slow orthogonal (it finds an orthogonal drawing with the minimum
+number of bends over all possible embeddings by a Branch and Bound
+approach; it requires exponential time in general; thegraph must be
+planar and biconnected)
+
+3 - optimal upward (it finds a quasi-upward drawing with the minimum
+number of bends within a given embedding in polynomial time; the graph
+must be connected and directed)
+
+4 - slow upward (it finds a quasi-upward drawing with the minimum number
+of bends over all possible planar embeddings of the graph by a Branch
+and Bound approach; it requires exponential time in general; thegraph
+must be planar bimodal and biconnected)
+
+5 - polyline (it finds a polyline drawing of the graph in linear time;
+the graph must be biconnected)
+
+6 - visibility (it finds a visibility drawing of the graph in linear
+time; the graph must be biconnected)
+
+More details about the above algorithms can be found on the Web pages.
+Observe that for each algorithm several drawing methods are applied,
+so, this is a fairly good test of the librar.
+
+We provide a default "test_table" file composed by 33 graphs and
+algorithms to test. You may extend or customize such table to
+automatically execute the tests on other graphs.
+
+
+

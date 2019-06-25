@@ -1,0 +1,93 @@
+
+MAKE= $(MAKE) -f makefile.win32
+
+all: chk dirs gdt tools 
+
+
+#------------------------------------------- package specifics publics
+
+gdt: dirs
+   cd src
+   $(MAKE)
+   cd ..
+
+tools: dirs
+   cd tools
+   $(MAKE)
+   cd ..
+
+grid:
+   cd tools\grid
+   $(MAKE)
+   cd ..
+
+gdtdemo:
+   cd tools\gdtdemo
+   $(MAKE)
+   cd ..
+
+blag:
+   cd tools\blag
+   $(MAKE)
+   cd ..
+
+test:
+   cd tools\test
+   $(MAKE)
+   cd ..
+
+visual_dime:
+   cd visual_dime\visual_dime
+   $(MAKE)
+   cd ..
+
+self-test:
+   cd tools\test
+   ..\..\bin\test
+   cd ..\..
+
+#------------------------------------------ standard publics
+
+clean:
+   cd src
+   $(MAKE) clean
+   cd ..
+   cd tools
+   $(MAKE) clean
+   cd ..
+
+delete:
+   cd src
+   $(MAKE) delete
+   cd ..
+   cd tools
+   $(MAKE) delete
+   cd ..
+   deltree /y lib bin obj
+
+
+#----------------------------------------- directory managment
+
+dirs: chk lib bin
+
+deldirs:
+	deltree  /y lib bin 
+
+#----------------------------------------- privates for directory management
+lib:
+	mkdir lib
+
+bin:
+	mkdir bin
+
+chk: custom.win32
+
+custom.win32:
+   @echo .
+   @echo === Please create a file "custom.win32" for your platform            
+   @echo === according to the example "custom.win32.example".                 
+   @echo === If you experience any problem please email to gdt@dia.uniroma3.it
+   @echo .
+   @echo IGNORE ANY ERROR THAT FOLLOWS THIS LINE
+   @echo .
+	

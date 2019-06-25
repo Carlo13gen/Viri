@@ -1,0 +1,26 @@
+Modifiche principali rispetto alla versione 4.0:
+-------------------------------------
+
+- Metodo make_biconnected, aggiunge archi per rendere il grafo biconnesso senza modificarne la planarita'.
+
+- Aggiunto il tool "orthobox", già presente nella versione 3.0
+
+- Aggiunto il tool "javaTest" per testare il funzionamento della libreria nativa in un programma Java
+
+- Il planarizzatore non viene avviato se il grafo contiene self-loop
+
+- Corretto un bug nella funzione di rotazione di un disegno
+- Corretto un bug nella funzione di flip verticale di un disegno
+
+- Wrapper Java incluso nel progetto:
+	Oggetti Java: Graph, OrthogonalGraph e OrthogonalDrawing
+	test di planarita'
+	creazione di disegni ortogonali
+	vincoli sulla dimensione dei nodi, 
+	vincolo per imporre archi senza piegamenti, 
+	costruttore di OrthogonalGraph che permette di specificare la faccia esterna
+	rotazione e flip dei disegni OrthogonalDrawing
+
+- Editor Java incluso nel progetto
+	Creazione, salvataggio e apertuta di file in formato GDT
+	Algoritmo Orthogonal

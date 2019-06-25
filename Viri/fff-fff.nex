@@ -1,0 +1,168 @@
+#NEXUS
+BEGIN TAXA;
+	DIMENSIONS NTAX = 20;
+	TAXLABELS
+		H2
+		H7
+		H8
+		H9
+		H10
+		H11
+		H15
+		H16
+		H17
+		H18
+		P1
+		P3
+		P6
+		P8
+		P12
+		P13
+		P14
+		P16
+		P17
+		P18
+		;
+ENDBLOCK;
+
+BEGIN TREES;
+	TRANSLATE
+		H0	H0,
+		H1	H1,
+		H2	H2,
+		H3	H3,
+		H4	H4,
+		H5	H5,
+		H6	H6,
+		H7	H7,
+		H8	H8,
+		H9	H9,
+		H10	H10,
+		H11	H11,
+		H12	H12,
+		H13	H13,
+		H14	H14,
+		H15	H15,
+		H16	H16,
+		H17	H17,
+		H18	H18,
+		P0	P0,
+		P1	P1,
+		P2	P2,
+		P3	P3,
+		P4	P4,
+		P5	P5,
+		P6	P6,
+		P7	P7,
+		P8	P8,
+		P9	P9,
+		P10	P10,
+		P11	P11,
+		P12	P12,
+		P13	P13,
+		P14	P14,
+		P15	P15,
+		P16	P16,
+		P17	P17,
+		P18	P18
+		;
+	TREE HOST = ((H2,((((H7,H8)H6,H9)H5,H10)H4,H11)H3)H1,(((H15,H16)H14,H17)H13,H18)H12)H0;
+	TREE PARASITE = (P1,(P3,((P6,(P8,(((P12,P13)P11,P14)P10,(P16,P17)P15)P9)P7)P5,P18)P4)P2)P0;
+ENDBLOCK;
+
+BEGIN COPHYLOGENY;
+[RANKS represents the ranks of the nodes in the tree]
+[Syntax is: nodename timezone_from timezone_to]
+	RANKS
+		H0	1	1,
+		H1	2	2,
+		H2	9	9,
+		H3	3	3,
+		H4	4	4,
+		H5	8	8,
+		H6	9	9,
+		H7	9	9,
+		H8	9	9,
+		H9	9	9,
+		H10	9	9,
+		H11	9	9,
+		H12	5	5,
+		H13	6	6,
+		H14	7	7,
+		H15	9	9,
+		H16	9	9,
+		H17	9	9,
+		H18	9	9,
+		P0	0	9,
+		P1	7	9,
+		P2	0	9,
+		P3	6	9,
+		P4	0	9,
+		P5	0	9,
+		P6	5	9,
+		P7	0	9,
+		P8	9	9,
+		P9	0	9,
+		P10	0	9,
+		P11	0	9,
+		P12	4	9,
+		P13	4	9,
+		P14	4	9,
+		P15	0	9,
+		P16	2	9,
+		P17	2	9,
+		P18	8	9
+		;
+[PHI represents the associations from the parasite leaf nodes to the host leaf nodes]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	PHI
+		P1	H16,
+		P3	H17,
+		P6	H18,
+		P8	H7,
+		P12	H10,
+		P13	H10,
+		P14	H10,
+		P16	H2,
+		P17	H2,
+		P18	H9
+		;
+[RECONSTRUCTIONEVENTS represents the events which occurred in the reconstruction. It includes 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	RECONSTRUCTIONEVENTS
+		COSPECIATION	-1,
+		SORTING	-1,
+		DUPLICATION	-1,
+		HOSTSWITCH	-1
+		;
+[RECONSTRUCTION represents the associations from the parasite nodes to the host nodes as they occured in the reconstruction/simulation]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	RECONSTRUCTION
+		;
+[COSTS represents the cost table for the operations 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	COSTS
+		COSPECIATION	0,
+		SORTING	1,
+		DUPLICATION	2,
+		HOSTSWITCH	3
+		;
+[OPTIONS represents the options for calculating the reconstruction]
+[Syntax is: option value]
+	OPTIONS
+		FULLHOSTSWITCH	0,
+		AUTOMATICCOSTS	0,
+		RANDOMSEED	auto,
+		RANK	0,
+		RANDOMCYCLES	5000,
+		PROBABILITYCOSTS	0,
+		ROOTMAPPING	0,
+		AUTOMATICMETHOD	2,
+		LEAFSPECIACIONCOST	0,
+		CHECKCHRONOLOGY	0,
+		SORTING	1,
+		DUPLICATION	1,
+		HOSTSWITCH	1
+		;
+ENDBLOCK;
+

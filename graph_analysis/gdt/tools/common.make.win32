@@ -1,0 +1,48 @@
+#MAKE = $(MAKE)  -f makefile.win32_bc5
+
+BINDIR       = ..\..\bin
+OBJDIR       = ..\..\obj
+LIBDIR       = ..\..\lib
+INCDIR 	     = ..\..\incl
+
+MVC_HOME	= c:\Program Files\Microsoft Visual Studio 8\VC
+
+
+CINCLUDE = -I$(INCDIR) 
+CFLAGS = $(CUSTOM_CFLAGS) 
+
+SRC = $(EXECNAME).c
+EXEC = $(BINDIR)\$(EXECNAME).EXE
+OBJ = $(EXECNAME).OBJ
+
+# ----------------------------------------------- targets
+
+default_target: options.cfg $(EXEC)
+
+!include ..\..\common.make.win32
+
+# -----------------------
+# Microsoft style linkage
+# -----------------------
+
+!if "$(LD)" == "link" 
+$(EXEC): $(OBJ) $(AUX_OBJ)
+        link -out:$(EXEC) -libpath:"$(MVC_HOME)\Lib" -libpath:"$(MVC_HOME)\PlatformSDK\Lib" $(OBJ) $(AUX_OBJ) ..\..\lib\libGDT.lib gdi32.lib  user32.lib comdlg32.lib shell32.lib advapi32.lib
+!ENDIF
+
+
+# -------------
+# some commands
+# -------------
+
+clean:
+	del *.bak
+	del *.OBJ
+	del *.cfg
+
+delete: clean
+	del $(EXEC)
+	del *.exe
+
+
+

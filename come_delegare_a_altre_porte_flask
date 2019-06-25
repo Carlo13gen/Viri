@@ -1,0 +1,16 @@
+in py:
+	-aggiungere la funzione crossdomain
+	-inserire la riga @crossdomain(origin="*")
+	Es. vedere project2.py
+
+
+in js:
+
+d3.json("http://localhost:9000/graphs_gdt/pelecan-lice-mp/-1/1/1/1/1/true/false/1/false/NaN" , function(error, dataOriginal) {
+
+        // bind the dom element to the chart.
+        d3.select("body")
+            .datum(data);
+
+    });
+
