@@ -11,6 +11,7 @@ function metodoSoluzioniRandomDefined(soluzioniRandomiche){
 
 function maximumHostSwitchDistanceDefined(maximumHostSwitchDistance){
     if( maximumHostSwitchDistance ==undefined){
+        //if not set is NaN
         var maximumHostSwitchDistance = parseFloat(document.getElementById("maximumHostSwitchDistance").value);
     }
     return maximumHostSwitchDistance;
