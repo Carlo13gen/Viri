@@ -1,8 +1,8 @@
 #/bin/bash
 
 echo "killing:"
-ps aux | grep xterm | grep iconic  
+ps aux | grep gnome-terminal
 
-ps aux | grep xterm | grep iconic | gawk -F" " '{print  $2}' | xargs kill -9
-
+ps aux | grep gnome-terminal | gawk -F" " '{print  $2}' | xargs kill -9
+z
 

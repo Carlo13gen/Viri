@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS libs -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/uploaded_file/max_size.js') }}"></script>
+    <title>Upload</title>
+</head>
+<body>
+     <nav id=primaRiga class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand"> VIRI </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()">Save</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">LOGIN</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+
+    </nav>
+
+    <nav class="navbar navbar-default navbar-static-top"></nav>
+
+    <div class="container-fluid">
+        <div class="modal-title">
+            <h4>Upload new file</h4>
+        </div>
+        <form action="/upload-graph" method="POST" enctype="multipart/form-data">
+            <div class="form-group" action="upload.js">
+                <script>
+                    function filesize(elem){
+                    document.cookie = `filesize=${elem.files[0].size}`
+                    }
+                </script>
+                <label for="input_file">Add a new input file .nex</label>
+                <input type="file" accept=".nex" class="form-control-file" name="input" id="exampleFormControlFile1" oninput="filesize(this);" required>
+            </div>
+            <div class="form-group">
+                <label for="input_file">Add a new output file .out</label>
+                <input type="file" accept=".out" class="form-control-file" name="output" id="exampleFormControlFile1" oninput="filesize(this);" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">File description</label>
+                <input type="text" class="form-control" id="input_description" placeholder="Enter description" required>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
