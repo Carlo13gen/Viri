@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect
-from flask import request
 from werkzeug.utils import secure_filename
 import os
 import verificaFileCompatibili as file_compatibili
@@ -75,10 +74,12 @@ def upload_file():
 				return redirect(request.url)
 
 			if allowed_file(input.filename, output.filename) and file_compatibili.verifica_file_compatibili(input, output):
+				input.stream.seek(0, 0)
+				output.stream.seek(0, 0)
 				input_filename = secure_filename(input.filename)
-				output_filename1 = secure_filename(output.filename)
+				output_filename = secure_filename(output.filename)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
-				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename1))
+				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename))
 				print(input)
 				print(output)
 				return redirect(request.url)
