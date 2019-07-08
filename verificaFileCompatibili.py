@@ -1,9 +1,9 @@
 
 
-def verifica_file_compatibili(input, output):
+def verifica_file_compatibili(input, file):
 
-    _input = input.stream.read()
-    _output = output.stream.read()
+    _input = input.stream
+    _file = file.stream
     parentesi_host_nex = ""
     parentesi_parasite_nex = ""
     parentesi_host_out = ""
@@ -22,7 +22,7 @@ def verifica_file_compatibili(input, output):
             for c in parasite_tree:
                 if c == "(" or c == ")":
                     parentesi_parasite_nex += c
-        for line in _output:
+        for line in _file:
             if line.find("#Host tree          ") != -1:
                 line_partition = line.partition("=")
                 host_tree_out = line_partition[2]

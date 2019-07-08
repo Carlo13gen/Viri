@@ -54,23 +54,23 @@ def upload_file():
 
 			if "filesize" in request.cookies:
 				if not allowed_filesize(request.cookies["filesize"]):
-					print("Max file size exceeded")
+					#print("Max file size exceeded")
 					redirect(request.url)
 
 			if "filesize1" in request.cookies:
 				if not allowed_filesize(request.cookies["filesize1"]):
-					print("Max file size exceeded")
+					#print("Max file size exceeded")
 					redirect(request.url)
 
 			input = request.files["input"]
 			output = request.files["output"]
 
 			if input.filename == "":
-				print("No filename")
+				#print("No filename")
 				return redirect(request.url)
 
 			if output.filename == "":
-				print("No filename")
+				#print("No filename")
 				return redirect(request.url)
 
 			if allowed_file(input.filename, output.filename) and file_compatibili.verifica_file_compatibili(input, output):
@@ -80,11 +80,11 @@ def upload_file():
 				output_filename = secure_filename(output.filename)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
 				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename))
-				print(input)
-				print(output)
+				#print(input)
+				#print(output)
 				return redirect(request.url)
 			else:
-				print("File extension not allowed")
+				#print("File extension not allowed")
 				return redirect(request.url)
 
 	return render_template('index.html')
