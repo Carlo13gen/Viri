@@ -5,6 +5,6 @@ function ValidateSize(file) {
             f = document.getElementById("file")
             f.value=""
         } else {
-
+            console.log(file.files[0]);
         }
     }

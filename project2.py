@@ -4,6 +4,7 @@ from flask import request, redirect
 from flask import request
 from werkzeug.utils import secure_filename
 import os
+import verificaFileCompatibili as file_compatibili
 from createJsonWeb import jsonOutGrafo as inizio
 from createJsonWeb import generaListaFile as glf
 from createJsonWeb import nomeFile as nf
@@ -73,8 +74,7 @@ def upload_file():
 				print("No filename")
 				return redirect(request.url)
 
-
-			if allowed_file(input.filename, output.filename):
+			if allowed_file(input.filename, output.filename) and file_compatibili.verifica_file_compatibili(input, output):
 				input_filename = secure_filename(input.filename)
 				output_filename1 = secure_filename(output.filename)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
