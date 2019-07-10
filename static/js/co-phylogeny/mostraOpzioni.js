@@ -19,7 +19,7 @@ function mostraOpzioni(){
           p.innerHTML = dataOriginal[0]+'<span class="caret"></span>';
         var p = document.getElementById("mostraNomeFile").setAttribute("value", dataOriginal[0]);
 
-    	    grafic(dataOriginal[0])
+    	    grafic_output(dataOriginal[0])
 
 		});
 	}
@@ -37,7 +37,7 @@ function cambiaFile(nomeFile){
         var p = document.getElementById("mostraNomeFile");
           p.innerHTML = nomeFile+'<span class="caret"></span>';
         var p = document.getElementById("mostraNomeFile").setAttribute("value", nomeFile);
-          grafic(nomeFile)
+          grafic_output(nomeFile)
 
 }
 
