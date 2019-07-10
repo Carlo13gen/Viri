@@ -4,7 +4,7 @@ function ValidateSize(file) {
             alert('File size exceeds 2 MB');
             f = document.getElementById("file")
             f.value=""
-        } else {
-            console.log(file.files[0]);
         }
+        else
+            console.log(file)
     }

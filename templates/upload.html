@@ -5,6 +5,11 @@
     <!-- CSS libs -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
 
+    <!--JS libs -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery/jquery-2.2.3.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap/bootstrap.js') }}"></script>
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/uploaded_file/max_size.js') }}"></script>
     <title>Upload</title>
@@ -20,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <a class="navbar-brand"> VIRI </a>
+                <a class="navbar-brand" href="/"> VIRI </a>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
@@ -42,7 +47,7 @@
         <div class="modal-title">
             <h4>Upload new file</h4>
         </div>
-        <form action="/upload-graph" method="POST" enctype="multipart/form-data">
+        <form action="/upload-graph" method="POST" enctype="multipart/form-data" onreset="are_compatible()">
             <div class="form-group">
                 <label for="input_file">Add a new input file .nex</label>
                 <input type="file" accept=".nex" class="form-control-file" name="input" id="file" onchange="ValidateSize(this)" required>
@@ -58,6 +63,11 @@
             </div>
             <button type="submit" class="btn btn-primary">Upload</button>
         </form>
+        <div>
+            <h4>
+                {{ ritorno }}
+            </h4>
+        </div>
     </div>
 </body>
 </html>

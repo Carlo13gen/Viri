@@ -3,6 +3,8 @@ from flask import render_template
 from flask import request, redirect
 from werkzeug.utils import secure_filename
 import os
+import json
+import datetime
 import verificaFileCompatibili as file_compatibili
 from createJsonWeb import jsonOutGrafo as inizio
 from createJsonWeb import generaListaFile as glf
@@ -76,18 +78,23 @@ def upload_file():
 			if allowed_file(input.filename, output.filename) and file_compatibili.verifica_file_compatibili(input, output):
 				input.stream.seek(0, 0)
 				output.stream.seek(0, 0)
-				input_filename = secure_filename(input.filename)
-				output_filename = secure_filename(output.filename)
+				name_partition_nex = input.filename.partition(".")
+				name_partition_out = output.filename.partition(".")
+				new_nex_name = name_partition_nex[0] + "_" + str(datetime.datetime.now().day) + "_" + str(datetime.datetime.now().month) + "_" + str(datetime.datetime.now().hour) + "_" + str(datetime.datetime.now().minute) + "_" + str(datetime.datetime.now().second) + "." + name_partition_nex[2]
+				new_out_name = name_partition_out[0] + "_" + str(datetime.datetime.now().day) + "_" + str(datetime.datetime.now().month) + "_" + str(datetime.datetime.now().hour) + "_" + str(datetime.datetime.now().minute) + "_" + str(datetime.datetime.now().second) + "." + name_partition_out[2]
+				input_filename = secure_filename(new_nex_name)
+				output_filename = secure_filename(new_out_name)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
 				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename))
 				#print(input)
 				#print(output)
 				return redirect(request.url)
 			else:
-				#print("File extension not allowed")
-				return redirect(request.url)
-
-	return render_template('index.html')
+				x = 'The two input files are not compatible, check them and upload again!'
+				ritorno = json.dumps(x)
+				return render_template('upload.html', ritorno=ritorno)
+	else:
+		return render_template('index.html')
 
 # Templates
 @app.route('/test')
