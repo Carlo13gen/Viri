@@ -103,7 +103,8 @@ def get_graph_from_outputs(name):
 
     result = '[{"graph":[' + graphs_json_result[1:] + '],"number":' + str(
         len(str(solutions.items()).split("}")) - 1) + '}]'
-    eu.pulisciServer(output_name);
+    #Commentato per evitare di eliminare i file una volta calcolati
+    #eu.pulisciServer(output_name);
 
     if ((len(str(solutions.items()).split("}")) - 1) == 0):
         return '[{"graph":[],"number":1 , "problem": "number of solution"}]'
