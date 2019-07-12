@@ -10,13 +10,13 @@ def verifica_file_compatibili(input, file):
     parentesi_parasite_out = ""
 
     for line in _input:
-        if line.find("TREE * Host") != -1:
+        if line.find("TREE * Host") != -1 or line.find("TREE HOST" != -1):
             line_partition = line.partition("=")
             host_tree = line_partition[2]
             for c in host_tree:
                 if c == "(" or c == ")":
                     parentesi_host_nex += c
-        if line.find("TREE * Parasite") != -1:
+        if line.find("TREE * Parasite") != -1 or line.find("TREE PARASITE" != -1):
             line_partition = line.partition("=")
             parasite_tree = line_partition[2]
             for c in parasite_tree:
