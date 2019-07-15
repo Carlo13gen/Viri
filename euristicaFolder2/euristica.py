@@ -25,8 +25,8 @@ def euristicaGDT(original_parasite_tree, original_host_tree, mapping, graph5):
 		#non salto mai
 		lunghezzaSalto = 2
 	else:
-		lunghezzaSalto = int(math.ceil(math.sqrt(numeroDiArchiTolti)))-1;
-	print lunghezzaSalto
+		lunghezzaSalto = int(math.ceil(math.sqrt(numeroDiArchiTolti)))-1
+	print(lunghezzaSalto)
 	#print graph5.edges()
 
 	while i<numeroDiArchiTolti :
@@ -68,7 +68,7 @@ def provaSalto(lunghezzaSalto, indice, old_graph_solution, graph_create, graph_o
 		result = provoGDT(graph_create2, graph_original);
 		graph_solution = result["graph_solution"];
 		new_embedding = result["embedding"]
-		print "yuppppiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+		print("yuppppiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
 		return { "grafo_creato" : graph_create2 , "grafo_risultato" : graph_solution , "indiceNuovo" : lunghezzaSalto , "embedding" : new_embedding }
 	except Exception:
 		result = provaAggiungereArco(old_graph_solution, graph_create, graph_original,indice,listaArchi, old_embedding, host_tree_root);

@@ -12,6 +12,7 @@ import time
 import re
 import os
 
+#Funzione che lancia
 def get_graph_from_outputs(name):
     name_partitioned = name.partition(".")
     output_name = "./eucaliptFolder/eucalypt_outputs/" + name_partitioned[0] + ".out"
