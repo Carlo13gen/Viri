@@ -11,15 +11,19 @@
     <div class="login-page">
     <div class="form">
         <h4 class="title">REGISTER</h4>
-        <form class="register-form">
-            <input type="text" placeholder="name" required/>
-            <input type="text" placeholder="username" required/>
-            <input id="password" type="password" placeholder="password" required onkeyup="check();"/>
+        <form action="/register" method="POST" class="register-form">
+            <input type="text" placeholder="first name" name="first" required/>
+            <input type="text" placeholder="last name" name="last" required>
+            <input type="text" placeholder="username" name="username" required/>
+            <input id="password" type="password" placeholder="password" name="password" required onkeyup="check();"/>
             <input id="confirm_password" type="password" placeholder="confirm password" required onkeyup="check()"/>
             <span id="message"></span>
-            <button>create</button>
+            <button type="submit">create</button>
             <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
         </form>
+    </div>
+    <div>
+        <h4>{{ ritorno }}</h4>
     </div>
     </div>
 </body>

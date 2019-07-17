@@ -5,11 +5,9 @@ from werkzeug.utils import secure_filename
 import os
 import json
 import datetime
-import verificaFileCompatibili as file_compatibili
-from createJsonWeb import jsonOutGrafo as inizio
-from createJsonWeb import generaListaFile as glf
-from createJsonWeb import nomeFile as nf
-from salvaDati import salva
+from varie_supporto import verificaFileCompatibili as file_compatibili
+from varie_supporto import check_input as check
+from persistence import persistence_handler as perhand
 
 app = Flask(__name__)
 
@@ -101,8 +99,32 @@ def login_form():
 	return render_template('login.html')
 
 @app.route('/register_form')
-def refister_form():
+def register_form():
 	return render_template('register.html')
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+
+	if request.method == "POST":
+		first_name = request.form['first']
+		last_name = request.form['last']
+		username = request.form['username']
+		password = request.form['password']
+
+		if check.check(first_name, last_name, username, password):
+			print(perhand.save_user(first_name, last_name, username, password))
+			return redirect(request.url)
+			'''else:
+				x = 'Something went wrong, try again!'
+				ritorno = json.dumps(x)
+				return render_template('register.html', ritorno=ritorno)'''
+		else:
+			x = 'Something went wrong, try again!'
+			ritorno = json.dumps(x)
+			return render_template('register.html', ritorno=ritorno)
+	else:
+		return render_template('login.html')
+
 
 # Templates
 @app.route('/test')
