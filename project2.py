@@ -96,6 +96,14 @@ def upload_file():
 	else:
 		return render_template('index.html')
 
+@app.route('/login_form')
+def login_form():
+	return render_template('login.html')
+
+@app.route('/register_form')
+def refister_form():
+	return render_template('register.html')
+
 # Templates
 @app.route('/test')
 def test():

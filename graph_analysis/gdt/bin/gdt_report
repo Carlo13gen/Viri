@@ -3,3 +3,9 @@ STEP 0 - Reading Option File ...
        - (1.2 Blag Opt. File Form. recognized)
        - Normally Executed
 STEP 1 - Checking Feasibility and Planarizing..
+       - Normally Executed
+STEP 2 - Applying Layout Algorithm ..
+       - Normally Executed ..
+STEP 3 - Writing output file..
+       - Normally Executed
+

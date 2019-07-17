@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/check_pwd/check.js') }}"></script>
+</head>
+<body>
+    <div class="login-page">
+    <div class="form">
+        <h4 class="title">REGISTER</h4>
+        <form class="register-form">
+            <input type="text" placeholder="name" required/>
+            <input type="text" placeholder="username" required/>
+            <input id="password" type="password" placeholder="password" required onkeyup="check();"/>
+            <input id="confirm_password" type="password" placeholder="confirm password" required onkeyup="check()"/>
+            <span id="message"></span>
+            <button>create</button>
+            <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
