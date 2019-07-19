@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect
 from werkzeug.utils import secure_filename
+import time
 import os
 import json
 import datetime
@@ -106,25 +107,27 @@ def register_form():
 def register():
 
 	if request.method == "POST":
-		first_name = request.form['first']
-		last_name = request.form['last']
-		username = request.form['username']
-		password = request.form['password']
+		first_name = str(request.form['first'])
+		last_name = str(request.form['last'])
+		username = str(request.form['username'])
+		password = str(request.form['password'])
 
-		if check.check(first_name, last_name, username, password):
-			print(perhand.save_user(first_name, last_name, username, password))
-			return redirect(request.url)
-			'''else:
-				x = 'Something went wrong, try again!'
-				ritorno = json.dumps(x)
-				return render_template('register.html', ritorno=ritorno)'''
+		print(type(first_name))
+
+		bool = perhand.save_user(first_name, last_name, username, password)
+
+		if bool == 1:
+			return render_template('login.html')
+		if bool == 2:
+			x = 'The username is already used, try with another one'
+			ritorno = json.dumps(x)
+			return render_template('register.html', ritorno=ritorno)
 		else:
 			x = 'Something went wrong, try again!'
 			ritorno = json.dumps(x)
 			return render_template('register.html', ritorno=ritorno)
 	else:
 		return render_template('login.html')
-
 
 # Templates
 @app.route('/test')

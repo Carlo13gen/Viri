@@ -12,13 +12,13 @@
     <div class="form">
         <h4 class="title">REGISTER</h4>
         <form action="/register" method="POST" class="register-form">
-            <input type="text" placeholder="first name" name="first" required/>
-            <input type="text" placeholder="last name" name="last" required>
-            <input type="text" placeholder="username" name="username" required/>
-            <input id="password" type="password" placeholder="password" name="password" required onkeyup="check();"/>
-            <input id="confirm_password" type="password" placeholder="confirm password" required onkeyup="check()"/>
+            <input type="text" placeholder="first name" name="first" required onkeyup="return character_control(this)"/>
+            <input type="text" placeholder="last name" name="last" required onkeyup="return character_control(this)"/>
+            <input type="text" placeholder="username" name="username" required onkeyup="return character_control(this)"/>
+            <input id="password" type="password" placeholder="password" name="password" required onkeyup="check(); return character_control(this)"/>
+            <input id="confirm_password" type="password" placeholder="confirm password" required onkeyup="check(); return character_control(this)"/>
             <span id="message"></span>
-            <button type="submit">create</button>
+            <button id="button" type="submit" disabled>create</button>
             <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
         </form>
     </div>
