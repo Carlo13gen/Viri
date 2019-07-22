@@ -12,14 +12,20 @@
     <div class="form">
         <h4 class="title">REGISTER</h4>
         <form action="/register" method="POST" class="register-form">
-            <input type="text" placeholder="first name" name="first" required onkeyup="return character_control(this)"/>
-            <input type="text" placeholder="last name" name="last" required onkeyup="return character_control(this)"/>
-            <input type="text" placeholder="username" name="username" required onkeyup="return character_control(this)"/>
-            <input id="password" type="password" placeholder="password" name="password" required onkeyup="check(); return character_control(this)"/>
-            <input id="confirm_password" type="password" placeholder="confirm password" required onkeyup="check(); return character_control(this)"/>
+            <label for="input_text">First Name*</label>
+            <input type="text" placeholder="first name" maxlength="50" name="first" required onkeyup="return character_control(this)"/>
+            <label for="input_text">Last Name*</label>
+            <input type="text" placeholder="last name" maxlength="50" name="last" required onkeyup="return character_control(this)"/>
+            <label for="input_text">Username*</label>
+            <input type="text" placeholder="username" maxlength="20" name="username" required onkeyup="return character_control(this)"/>
+            <label for="input_password">Password*</label>
+            <input id="password" type="password" placeholder="password" maxlength="25" name="password" required onkeyup="check(); return character_control(this)"/>
+            <label for="input_password">Confirm Password*</label>
+            <input id="confirm_password" type="password" placeholder="confirm password" maxlength="25" required onkeyup="check(); return character_control(this)"/>
             <span id="message"></span>
             <button id="button" type="submit" disabled>create</button>
             <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
+            <p class="message">If the registration is ok you will be redirected to login page</p>
         </form>
     </div>
     <div>

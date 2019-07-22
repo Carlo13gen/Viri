@@ -5,17 +5,21 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
     <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/check_pwd/check.js') }}"></script>
 </head>
 <body>
     <div class="login-page">
   <div class="form">
-    <form class="login-form">
+    <form class="login-form" method="post" action="/login">
         <h4 class="title">LOGIN</h4>
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
+      <input name="username" type="text" placeholder="username" onkeyup="return character_control(this)"/>
+      <input name="password" type="password" placeholder="password" onkeyup="return character_control(this)"/>
+      <button type="submit">login</button>
       <p class="message">Not registered? <a href="/register_form">Create an account</a></p>
     </form>
+    <div>
+        <h4>{{ risultato }}</h4>
+    </div>
   </div>
 </div>
 </body>

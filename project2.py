@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template
 from flask import request, redirect
 from werkzeug.utils import secure_filename
+from flask_bcrypt import Bcrypt
 import time
 import os
 import json
@@ -9,13 +10,24 @@ import datetime
 from varie_supporto import verificaFileCompatibili as file_compatibili
 from varie_supporto import check_input as check
 from persistence import persistence_handler as perhand
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity, set_access_cookies
+
 
 app = Flask(__name__)
+app.secret_key = 'Viri'
+bcrypt = Bcrypt(app)
+
+jwt = JWTManager(app)
 
 app.config["INPUT_UPLOAD"] = "input_data"
 app.config["OUTPUT_UPLOAD"] = "eucaliptFolder/eucalypt_outputs"
 app.config["ALLOWED_FILE_EXTENSIONS"] = ["NEX", "OUT"]
 app.config["MAX_FILESIZE"] = 0.5 * 1024 * 1024
+#Configura l'applicazione per conservare i token nei cookies
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+#Configura il path in cui mandare i cookies
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/'
+
 
 def allowed_filesize(filesize):
     if int(filesize) <= app.config["MAX_FILESIZE"]:
@@ -112,9 +124,11 @@ def register():
 		username = str(request.form['username'])
 		password = str(request.form['password'])
 
+		pwd_crypt = bcrypt.generate_password_hash(password).decode("utf-8")
+
 		print(type(first_name))
 
-		bool = perhand.save_user(first_name, last_name, username, password)
+		bool = perhand.save_user(first_name, last_name, username, pwd_crypt)
 
 		if bool == 1:
 			return render_template('login.html')
@@ -128,6 +142,34 @@ def register():
 			return render_template('register.html', ritorno=ritorno)
 	else:
 		return render_template('login.html')
+
+@app.route('/prova', methods=['GET'])
+@jwt_required
+def prova():
+	current_username = get_jwt_identity()
+	username = json.dumps(current_username)
+	return username
+
+@app.route('/login', methods=["POST"])
+def login():
+	form_username = request.form['username']
+	form_password = request.form['password']
+	db_data = perhand.search_user_pwd(form_username)
+	if db_data == None:
+		x = 'Wrong username'
+		risultato = json.dumps(x)
+		return render_template('login.html', risultato=risultato)
+	else:
+		if bcrypt.check_password_hash(db_data[0], form_password):
+			resp = jsonify({'login': True})
+			access_token = create_access_token(identity=[form_username, db_data[1]])
+			print(access_token)
+			set_access_cookies(resp, access_token)
+			return resp
+		else:
+			x = 'Wrong password'
+			risultato = json.dumps(x)
+			return render_template('login.html', risultato=risultato)
 
 # Templates
 @app.route('/test')

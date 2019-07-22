@@ -1,5 +1,6 @@
 import psycopg2
 from persistence import config as config
+
 import time
 
 def save_user(first_name,last_name, username, pwd):
@@ -37,3 +38,34 @@ def save_user(first_name,last_name, username, pwd):
             conn.close()
             print("connection closed")
             return flag
+
+
+def search_user_pwd(user):
+    conn = None
+    dati = []
+    try:
+        '''params = config.config()'''
+        print("connecting to db")
+        conn = psycopg2.connect(user="chiello",
+                                  password="postgres",
+                                  host="127.0.0.1",
+                                  port="5432",
+                                  database="Viri")
+        print("connesso")
+        cur = conn.cursor()
+        cur.execute("SELECT password, flag from Utente where username = %s", (user,))
+        dati = cur.fetchone()
+    except(Exception, psycopg2.Error) as error:
+        if(conn):
+            return (error)
+
+    finally:
+        if(conn):
+            cur.close()
+            conn.close()
+            print("connection closed")
+            return dati
+
+
+if __name__ == '__main__':
+    search_user_pwd('mario.')

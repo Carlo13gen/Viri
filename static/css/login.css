@@ -47,15 +47,16 @@
      color: #607d8b;
     cursor: pointer;
 }
+
+
 .form button:hover,.form button:active,.form button:focus {
   background:  #607d8b;
     color: white;
 }
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
+  color: #777777;
     font-size: 1.5rem;
-  font-size: 12px;
 }
 .form .message a {
   color: blue;
