@@ -3,6 +3,7 @@ from persistence import config as config
 
 import time
 
+#Funzion che connettendosi a un database salva un'istanza di utente
 def save_user(first_name,last_name, username, pwd):
     conn = None
     flag = 0
@@ -39,7 +40,7 @@ def save_user(first_name,last_name, username, pwd):
             print("connection closed")
             return flag
 
-
+#Funzione che connettendosi al db restituisce la password corrispondente all'utente
 def search_user_pwd(user):
     conn = None
     dati = []
@@ -66,6 +67,28 @@ def search_user_pwd(user):
             print("connection closed")
             return dati
 
-
-if __name__ == '__main__':
-    search_user_pwd('mario.')
+#Funzione che connettendosi al db restituisce l'username
+def find_user(username):
+    conn = None
+    dati = None
+    try:
+        '''params = config.config()'''
+        print("connecting to db")
+        conn = psycopg2.connect(user="chiello",
+                                password="postgres",
+                                host="127.0.0.1",
+                                port="5432",
+                                database="Viri")
+        print("connesso")
+        cur = conn.cursor()
+        cur.execute("SELECT username from Utente where username = %s", (username,))
+        dati = cur.fetchone()
+    except(Exception, psycopg2.Error) as error:
+        if(conn):
+            return (error)
+    finally:
+        if(conn):
+            cur.close()
+            conn.close()
+            print("Connection closed")
+            return dati

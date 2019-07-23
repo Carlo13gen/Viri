@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request, redirect
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
+import flask
 import time
 import os
 import json
@@ -10,14 +11,17 @@ import datetime
 from varie_supporto import verificaFileCompatibili as file_compatibili
 from varie_supporto import check_input as check
 from persistence import persistence_handler as perhand
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity, set_access_cookies
-
+import flask_login
 
 app = Flask(__name__)
 app.secret_key = 'Viri'
 bcrypt = Bcrypt(app)
 
-jwt = JWTManager(app)
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+
+class User(flask_login.UserMixin):
+	pass
 
 app.config["INPUT_UPLOAD"] = "input_data"
 app.config["OUTPUT_UPLOAD"] = "eucaliptFolder/eucalypt_outputs"
@@ -107,6 +111,29 @@ def upload_file():
 	else:
 		return render_template('index.html')
 
+@login_manager.user_loader
+def user_loader(username):
+	data = perhand.find_user(username)
+	username_user = data[0]
+	if username_user == None:
+		return
+	else:
+		user = User()
+		user.id = username_user
+		return user
+
+@login_manager.request_loader
+def request_loader(request):
+	username = request.form.get('username')
+	data = perhand.find_user(username)
+	if data == None:
+		return
+	else:
+		user = User()
+		user.id = data
+		user.is_authenticated = bcrypt.check_password_hash(data, request.form['password'])
+		return user
+
 @app.route('/login_form')
 def login_form():
 	return render_template('login.html')
@@ -144,32 +171,26 @@ def register():
 		return render_template('login.html')
 
 @app.route('/prova', methods=['GET'])
-@jwt_required
+@flask_login.login_required
 def prova():
-	current_username = get_jwt_identity()
-	username = json.dumps(current_username)
-	return username
+	return 'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/login', methods=["POST"])
 def login():
-	form_username = request.form['username']
-	form_password = request.form['password']
-	db_data = perhand.search_user_pwd(form_username)
-	if db_data == None:
-		x = 'Wrong username'
+	username = flask.request.form['username']
+	data = perhand.search_user_pwd(username)
+	user_password = data[0]
+
+	if bcrypt.check_password_hash(user_password, request.form['password']):
+		user = User()
+		user.id = username
+		flask_login.login_user(user)
+		return render_template('index.html')
+	else:
+		x = "Wrong email or password"
 		risultato = json.dumps(x)
 		return render_template('login.html', risultato=risultato)
-	else:
-		if bcrypt.check_password_hash(db_data[0], form_password):
-			resp = jsonify({'login': True})
-			access_token = create_access_token(identity=[form_username, db_data[1]])
-			print(access_token)
-			set_access_cookies(resp, access_token)
-			return resp
-		else:
-			x = 'Wrong password'
-			risultato = json.dumps(x)
-			return render_template('login.html', risultato=risultato)
+
 
 # Templates
 @app.route('/test')
