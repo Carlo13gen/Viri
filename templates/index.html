@@ -8,6 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icicle-plus-tree.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
 
     <!-- JS libs -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script>
@@ -230,6 +231,12 @@
     </nav>
 
     <nav class="navbar navbar-default navbar-static-top"></nav>
+
+    <div class="Tit">
+        {% if user_logged is defined %}
+            <h4 class="Title" >VIRI {{ current_user.id }}</h4>
+        {% endif %}
+    </div>
 
 
     <!--

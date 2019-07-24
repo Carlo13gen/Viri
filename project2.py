@@ -4,6 +4,7 @@ from flask import request, redirect
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
 import flask
+import jinja2
 import time
 import os
 import json
@@ -179,18 +180,23 @@ def prova():
 def login():
 	username = flask.request.form['username']
 	data = perhand.search_user_pwd(username)
-	user_password = data[0]
 
-	if bcrypt.check_password_hash(user_password, request.form['password']):
-		user = User()
-		user.id = username
-		flask_login.login_user(user)
-		return render_template('index.html')
-	else:
-		x = "Wrong email or password"
+	if data == None:
+		x = "Wrong username"
 		risultato = json.dumps(x)
 		return render_template('login.html', risultato=risultato)
-
+	else:
+		user_password = data[0]
+		if bcrypt.check_password_hash(user_password, request.form['password']):
+			user = User()
+			user.id = username
+			flask_login.login_user(user)
+			user_logged = json.dumps(username)
+			return render_template('index.html', user_logged=user_logged)
+		else:
+			x = "Wrong password"
+			risultato = json.dumps(x)
+			return render_template('login.html', risultato=risultato)
 
 # Templates
 @app.route('/test')
