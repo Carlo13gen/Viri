@@ -63,6 +63,7 @@ def upload():
 
 # Templates
 @app.route('/upload-graph', methods=["GET", "POST"])
+@flask_login.login_required
 def upload_file():
 
 	#Controlla che il metodo di richiesta sia POST
@@ -97,14 +98,18 @@ def upload_file():
 				output.stream.seek(0, 0)
 				name_partition_nex = input.filename.partition(".")
 				name_partition_out = output.filename.partition(".")
-				new_nex_name = name_partition_nex[0] + "_" + str(datetime.datetime.now().day) + "_" + str(datetime.datetime.now().month) + "_" + str(datetime.datetime.now().hour) + "_" + str(datetime.datetime.now().minute) + "_" + str(datetime.datetime.now().second) + "." + name_partition_nex[2]
-				new_out_name = name_partition_out[0] + "_" + str(datetime.datetime.now().day) + "_" + str(datetime.datetime.now().month) + "_" + str(datetime.datetime.now().hour) + "_" + str(datetime.datetime.now().minute) + "_" + str(datetime.datetime.now().second) + "." + name_partition_out[2]
+				new_nex_name = name_partition_nex[0] + "_" + str(flask_login.current_user.id) + "." + name_partition_nex[2]
+				new_out_name = name_partition_out[0] + "_" + str(flask_login.current_user.id) + "." + name_partition_out[2]
 				input_filename = secure_filename(new_nex_name)
 				output_filename = secure_filename(new_out_name)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
 				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename))
-				#print(input)
-				#print(output)
+				if perhand.save_files_path(os.path.realpath(input_filename), os.path.realpath(output_filename), flask_login.current_user.id):
+					return redirect(request.url)
+				else:
+					x = 'Something went wrong during the saving on db'
+					ritorno = json.dumps(x)
+					return render_template('upload.html', ritorno=ritorno)
 				return redirect(request.url)
 			else:
 				x = 'The two input files are not compatible, check them and upload again!'
