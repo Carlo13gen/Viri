@@ -57,6 +57,7 @@ def home():
 
 # Templates
 @app.route('/upload')
+@flask_login.login_required
 def upload():
 	return render_template('upload.html')
 
@@ -197,6 +198,12 @@ def login():
 			x = "Wrong password"
 			risultato = json.dumps(x)
 			return render_template('login.html', risultato=risultato)
+
+@app.route('/logout')
+@flask_login.login_required
+def logout():
+	flask_login.logout_user()
+	return render_template('index.html')
 
 # Templates
 @app.route('/test')

@@ -30,10 +30,7 @@
 
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()">Save</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -42,7 +39,9 @@
     </nav>
 
     <nav class="navbar navbar-default navbar-static-top"></nav>
-
+    <div>
+        <h4 class="title">{{ current_user.id }}</h4>
+    </div>
     <div class="container-fluid">
         <div class="modal-title">
             <h4>Upload new file</h4>

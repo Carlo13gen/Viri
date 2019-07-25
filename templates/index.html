@@ -124,17 +124,15 @@
                     </li>
 
 
-
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Options <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a>Eucalypt options</a></li>
                             <li class="divider" role="separator"></li>
-                            <li><a>	Max. # of solutions computed: <input type="text" id="numberMaxSolution" placeholder="Max" size="5" value="1" onchange="grafic()"></a></li>
-                            <li><a>	Root-to-root mapping: <input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" onchange="grafic()" />
+                            <li><a>	Max. # of solutions computed: <input type="text" id="numberMaxSolution" placeholder="Max" size="5" value="1" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
+                            <li><a>	Root-to-root mapping: <input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()" />
 				</a></li>
-                            <li><a>Random sampling: <input name="html" type="checkbox" id="soluzioniRandomiche" value="html" onchange="grafic()"></a></li>
+                            <li><a>Random sampling: <input name="html" type="checkbox" id="soluzioniRandomiche" value="html" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
                         </ul>
                     </li>
 
@@ -143,12 +141,12 @@
                         <ul class="dropdown-menu">
                             <li><a>Reconciliation costs used by Eucalypt</a></li>
                             <li class="divider" role="separator"></li>
-                            <li><a>Cospeciation:    <input type="text" size="5" id="cc" placeholder="-1" onchange="grafic()"></a></li>
-                            <li><a>Duplication: 	<input type="text" size="5" id="cd" placeholder="1"  onchange="grafic()"></a></li>
-                            <li><a>Sorting: 		<input type="text" size="5" id="cs" placeholder="1"  onchange="grafic()"></a></li>
-                            <li><a>Host-switch: 	<input type="text" size="5" id="ch" placeholder="1"  onchange="grafic()"></a></li>
+                            <li><a>Cospeciation:    <input type="text" size="5" id="cc" placeholder="-1" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
+                            <li><a>Duplication: 	<input type="text" size="5" id="cd" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
+                            <li><a>Sorting: 		<input type="text" size="5" id="cs" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
+                            <li><a>Host-switch: 	<input type="text" size="5" id="ch" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
                             <li class="divider" role="separator"></li>
-                            <li><a>Max host-switch distance:	<input type="text" id="maximumHostSwitchDistance" size="10" placeholder="Infinite" value="" onchange="grafic()">
+                            <li><a>Max host-switch distance:	<input type="text" id="maximumHostSwitchDistance" size="10" placeholder="Infinite" value="" {% if user_logged is undefined %} disabled {% endif %} onchange="grafic()">
             </a>  </li>
 
                         </ul>
@@ -161,13 +159,12 @@
                                 <li><a>Eucalypt filtering of time-inconsistent solutions</a></li>
                                 <li class="divider" role="separator"></li>
 
-                                <li><a>Enable filtering: <input name="html" type="checkbox" id="rimuoviCicli" value="html" onchange="grafic()" /></a></li>
-                                <li><a><input type="radio" name="linguaggio" value="1" checked="checked" id="test1" onchange="changeTest()" /> Filtering based on [Stolzer et al., 2012]</a></li>
-                                <li><a><input type="radio" name="linguaggio" value="2" id="test2" onchange="changeTest()" /> Filtering based on [Tofigh et al., 2011]</a></li>
+                                <li><a>Enable filtering: <input name="html" type="checkbox" id="rimuoviCicli" value="html" disabled {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()" /></a></li>
+                                <li><a><input type="radio" name="linguaggio" value="1" checked="checked" id="test1" {% if current_user.id is undefined %} disabled {% endif %} onchange="changeTest()" /> Filtering based on [Stolzer et al., 2012]</a></li>
+                                <li><a><input type="radio" name="linguaggio" value="2" id="test2" {% if current_user.id is undefined %} disabled {% endif %} onchange="changeTest()" /> Filtering based on [Tofigh et al., 2011]</a></li>
 
                             </ul>
                         </li>
-
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heuristics <span class="caret"></span></a>
@@ -179,7 +176,6 @@
 				                <li><a><input type="radio" name="linguaggio" value="5" id="euristica5" onchange="ridisegna()"/> Hierarchy sort </a></li>
                             </ul>
                         </li>
-
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View <span class="caret"></span></a>
@@ -218,12 +214,19 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()">Save</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login_form">LOGIN</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/upload">UPLOAD</a></li>
-                </ul>
+                {% if user_logged is undefined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/login_form">LOGIN</a></li>
+                    </ul>
+                {% endif %}
+                {% if user_logged is defined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/upload">UPLOAD</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                {% endif %}
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -233,7 +236,7 @@
     <nav class="navbar navbar-default navbar-static-top"></nav>
 
     <div class="Tit">
-        {% if user_logged is defined %}
+        {% if current_user.id is defined %}
             <h4 class="Title" >VIRI {{ current_user.id }}</h4>
         {% endif %}
     </div>
