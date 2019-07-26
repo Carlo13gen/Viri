@@ -13,15 +13,15 @@
         <h4 class="title">REGISTER</h4>
         <form action="/register" method="POST" class="register-form">
             <label for="input_text">First Name*</label>
-            <input type="text" placeholder="first name" maxlength="50" name="first" required onkeyup="return character_control(this)"/>
+            <input type="text" placeholder="first name" maxlength="20" name="first" pattern="[A-Za-z0-9]{1,20}" required/>
             <label for="input_text">Last Name*</label>
-            <input type="text" placeholder="last name" maxlength="50" name="last" required onkeyup="return character_control(this)"/>
+            <input type="text" placeholder="last name" maxlength="20" name="last" pattern="[A-Za-z0-9]{1,20}" required />
             <label for="input_text">Username*</label>
-            <input type="text" placeholder="username" maxlength="20" name="username" required onkeyup="return character_control(this)"/>
+            <input type="text" placeholder="username" maxlength="20" name="username" pattern="[A-Za-z0-9]{1,20}" required/>
             <label for="input_password">Password*</label>
-            <input id="password" type="password" placeholder="password" maxlength="25" name="password" required onkeyup="check(); return character_control(this)"/>
+            <input id="password" type="password" placeholder="password" maxlength="25" pattern="[^ ]{1,20}" name="password" required onkeyup="check();"/>
             <label for="input_password">Confirm Password*</label>
-            <input id="confirm_password" type="password" placeholder="confirm password" maxlength="25" required onkeyup="check(); return character_control(this)"/>
+            <input id="confirm_password" type="password" placeholder="confirm password" pattern="[^ ]{1,20}" maxlength="25" required onkeyup="check();"/>
             <span id="message"></span>
             <button id="button" type="submit" disabled>create</button>
             <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
