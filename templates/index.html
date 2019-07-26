@@ -214,12 +214,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()">Save</a></li>
                 </ul>
-                {% if user_logged is undefined %}
+                {% if current_user.id is undefined %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/login_form">LOGIN</a></li>
                     </ul>
                 {% endif %}
-                {% if user_logged is defined %}
+                {% if current_user.id is defined %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/upload">UPLOAD</a></li>
                     </ul>

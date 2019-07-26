@@ -41,7 +41,7 @@ def save_user(first_name,last_name, username, pwd):
             return flag
 
 #Passando username path dei file input e output creo una persistenza per i file
-def save_files_path(input_path, output_path, username):
+def save_files_path(input_path, output_path, username, desc):
     conn = None
     flag = 0
     try:
@@ -56,8 +56,8 @@ def save_files_path(input_path, output_path, username):
         cur = conn.cursor()
         cur.execute("SELECT id from Utente where username = %s", (username,))
         user_id = cur.fetchone()
-        record_to_insert = (input_path, output_path, user_id)
-        cur.execute("INSERT INTO File (input_path, output_path, utente) VALUES (%s, %s, %s)", record_to_insert)
+        record_to_insert = (input_path, output_path, user_id, desc)
+        cur.execute("INSERT INTO File (input_path, output_path, utente, descrizione) VALUES (%s, %s, %s, %s)", record_to_insert)
         conn.commit()
         flag = 1
     except(Exception, psycopg2.Error) as error:
