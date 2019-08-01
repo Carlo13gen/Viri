@@ -68,7 +68,7 @@ def get_graph_from_outputs(name):
     tempoImpiegatoPerPlanarita = e["tempoImpiegatoPerPlanarita"]
     tempoImpiegatoEuristicaGDT = e["tempoImpiegatoEuristicaGDT"]
 
-    for root_mapping, possible_solutions in solutions.iteritems():
+    for root_mapping, possible_solutions in solutions.items():
         for mapping in possible_solutions:
 
             current_parasite_tree = ga.flag_switch_edges(original_parasite_tree, original_host_tree, mapping)

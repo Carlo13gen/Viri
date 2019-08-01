@@ -236,9 +236,7 @@
     <nav class="navbar navbar-default navbar-static-top"></nav>
 
     <div class="Tit">
-        {% if current_user.id is defined %}
-            <h4 class="Title" >VIRI {{ current_user.id }}</h4>
-        {% endif %}
+        <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} {{ current_user.id }} {% endif %}</p>
     </div>
 
 

@@ -1,4 +1,5 @@
 import networkx as nx
+import functools
 
 def makeGraph(host_tree,alberoRimasto,mapping,rootsOfGraph,host_root,parassite_root):
 	# Copy the host tree
@@ -104,7 +105,7 @@ def creaListaArchiToltiEListaRoot(parassite_tree_root, graph):
 
 
 	visitaAlbero(graph,parassite_tree_root,0);
-	archiTolti = sorted(archiTolti, cmp=lambda x,y: cmpArchi(x,y) )
+	archiTolti = sorted(archiTolti, key=functools.cmp_to_key(lambda x,y: cmpArchi(x,y)))
 	#print archiTolti
 	# archiTolti = sorted(archiTolti, cmp=lambda x,y: y[2]-x[2] )
 	# archiTolti = sorted(archiTolti, cmp=lambda x,y: x[2]-y[2] )
@@ -147,7 +148,8 @@ def label_host_tree_nodes(embedding, graph):
 			return
 
 		supporto=[]
-		other_edge_position = sorted( other_edge_position, cmp=lambda x,y: x-y )
+
+		other_edge_position = sorted( other_edge_position, key=functools.cmp_to_key(lambda x,y: x-y ))
 		
 		numeroArchiParassiti = len(other_edge_position)
 		
@@ -217,7 +219,8 @@ def label_host_tree_nodes(embedding, graph):
 			return
 
 		supporto=[]
-		other_edge_position = sorted( other_edge_position, cmp=lambda x,y: x-y )
+
+		other_edge_position = sorted( other_edge_position, key=functools.cmp_to_key(lambda x,y: x-y ))
 		
 		supporto.append(embedding_current_node[other_edge_position[0]]);
 		supporto.append(embedding_current_node[other_edge_position[1]]);
@@ -258,7 +261,8 @@ def label_host_tree_nodes(embedding, graph):
 								 if (edge[0].startswith("H") and edge[1].startswith("H"))]
 		
 		other_edge_position.append(current_edge_position)
-		other_edge_position = sorted( other_edge_position, cmp=lambda x,y: x-y )
+
+		other_edge_position = sorted( other_edge_position,  key=functools.cmp_to_key(lambda x,y: x-y ))
 
 		supporto.append(embedding_current_node[other_edge_position[0]]);
 		supporto.append(embedding_current_node[other_edge_position[1]]);

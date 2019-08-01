@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-from flask import request
 from createJsonWeb import outputCalculator as out
 from createJsonWeb import generaListaFile as glf
 from createJsonWeb import nomeFile as nf
@@ -18,9 +17,9 @@ def crossdomain(origin=None, methods=None, headers=None,
                 automatic_options=True):
     if methods is not None:
         methods = ', '.join(sorted(x.upper() for x in methods))
-    if headers is not None and not isinstance(headers, basestring):
+    if headers is not None and not isinstance(headers, str):
         headers = ', '.join(x.upper() for x in headers)
-    if not isinstance(origin, basestring):
+    if not isinstance(origin, str):
         origin = ', '.join(origin)
     if isinstance(max_age, timedelta):
         max_age = max_age.total_seconds()
@@ -55,9 +54,9 @@ def crossdomain(origin=None, methods=None, headers=None,
     return decorator
 
 
-@app.route('/graphs_output_gdt/<name>')
+@app.route('/graphs_output_gdt/<name>/<username>')
 @crossdomain(origin="*")
-def get_graph_from_outputs(name):
+def get_graph_from_outputs(name, username):
 	return out.get_graph_from_outputs(name)
 
 

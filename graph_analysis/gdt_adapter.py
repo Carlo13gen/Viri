@@ -1,6 +1,10 @@
 from lxml import etree
 from subprocess import call
-import error as err
+from graph_analysis import error as err
+from flask import request
+import json
+from varie_supporto import cookie_decoder as decoder
+from flask_cookie_decode import CookieDecode
 
 #GDT_HOME = "/home/diego/Scrivania/tesi/paper_e_programmi_prof/project/graph_analysis/gdt/bin/x86_64/"
 #GDT_HOME = "./graph_analysis/gdt/bin/x86_64/"
@@ -19,6 +23,7 @@ def fix_symbols(string_graph):
 
 def fix_new_lines_and_tabs_for_graph(string_graph):
 
+    #Tutti i valori sono stati cambiati in tipo byte per ritrnare al punto di prima riportare a stringhe semplicemente levando b e rimenttendo doppi apici
     return string_graph\
         .replace("<NODELIST>", "\n\t<NODELIST>")\
         .replace("</NODELIST>", "\n\t</NODELIST>")\
@@ -44,7 +49,7 @@ def fix_new_lines_and_tabs_for_constraints(string_constraints):
 
 
 def add_constraints_header(string_constraints):
-    return '<BOFF VERSION="1.2"/>' + string_constraints
+    return '<BOFF VERSION="1.2"/>' + string_constraints.decode('utf-8')
 
 
 def assign_ids_to_edges(graph):
@@ -95,7 +100,7 @@ def convert_graph_to_gdt(graph):
 
     # Get the graph_analysis
     string_graph = etree.tostring(root)
-    final_graph = fix_symbols(string_graph)
+    final_graph = fix_symbols(string_graph.decode('utf-8'))
     final_graph = remove_edge_closure(final_graph)
     final_graph = fix_new_lines_and_tabs_for_graph(final_graph)
 
@@ -139,15 +144,38 @@ def create_constraints_in_gdt(graph):
 
 def write_gdt_input_files_on_disk(gdt, constraints):
 
-    graph_file = open(GDT_HOME + "graph_file", "w")
+    #Da provare a decodificare il terzo elemento dello split
+    cookie = request.cookies['session']
+    cookie_str = decoder.decode(cookie)
+    try :
+        print(cookie_str)
+        json_cookie = decoder.flask_loads(cookie_str)
+        pretty = json.dumps(json_cookie,
+                        sort_keys=True,
+                        indent=4,
+                        separators=(',', ': '))
+    except Exception as e:
+        return "[ERR: Not JSON data]"
+
+    graph_file = open(GDT_HOME + "graph_file" + cookie, "w")
     graph_file.write(gdt)
 
-    constraints_file = open(GDT_HOME + "blag.ini", "w")
+    constraints_file = open(GDT_HOME + "blag" + cookie + ".ini", "w")
     constraints_file.write(constraints)
 
 
 def run_gdt():
-    call(["./blag", "graph_file", "blag.ini"], cwd=GDT_HOME)
+    cookie = request.cookies['session']
+    cookie_str = decoder.decode(cookie)
+    try:
+        json_cookie = decoder.flask_loads(cookie_str)
+        pretty = json.dumps(json_cookie,
+                            sort_keys=True,
+                            indent=4,
+                            separators=(',', ': '))
+    except Exception as e:
+        return "[ERR: Not JSON data]"
+    call(["./blag", "graph_file" + cookie, "blag" + cookie + ".ini"], cwd=GDT_HOME)
 
 
 def parse_gdt_embedding(gdt_embedding_file):

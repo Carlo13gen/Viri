@@ -57,6 +57,16 @@ function metodoRimuviCicliDefined(metodoRimuviCicli){
     return metodoRimuviCicli;
 }
 
+function usernameDefined(username){
+    if(username==undefined){
+        var username = document.getElementById("title_user").textContent.trim()
+        if(username==""){
+            username = "guest"
+        }
+    }
+    return username
+}
+
 function curveDefined(curve){
     if(curve==undefined){
         var curve = (document.getElementById("curve").checked).toString()=="true";

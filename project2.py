@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask import render_template
 from flask import request, redirect
+import requests
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
 import flask
@@ -21,18 +22,28 @@ bcrypt = Bcrypt(app)
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
+
+
+
 class User(flask_login.UserMixin):
 	pass
 
+app.config.update(
+	SESSION_COOKIE_HTTPONLY = False,
+)
 app.config["INPUT_UPLOAD"] = "input_data"
 app.config["OUTPUT_UPLOAD"] = "eucaliptFolder/eucalypt_outputs"
 app.config["ALLOWED_FILE_EXTENSIONS"] = ["NEX", "OUT"]
 app.config["MAX_FILESIZE"] = 0.5 * 1024 * 1024
-#Configura l'applicazione per conservare i token nei cookies
+'''#Configura l'applicazione per conservare i token nei cookies
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 #Configura il path in cui mandare i cookies
-app.config['JWT_ACCESS_COOKIE_PATH'] = '/'
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/'''''
 
+
+def load_user():
+	user = flask_login.current_user.id
+	return user
 
 def allowed_filesize(filesize):
     if int(filesize) <= app.config["MAX_FILESIZE"]:
@@ -132,7 +143,7 @@ def user_loader(username):
 
 @login_manager.request_loader
 def request_loader(request):
-	username = request.form.get('username')
+	username = request.form.get('')
 	data = perhand.find_user(username)
 	if data == None:
 		return
