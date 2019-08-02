@@ -144,38 +144,23 @@ def create_constraints_in_gdt(graph):
 
 def write_gdt_input_files_on_disk(gdt, constraints):
 
-    #Da provare a decodificare il terzo elemento dello split
+    #Prendo il cookie dalla richiesta e lo decodifico estraendone solo lo username
     cookie = request.cookies['session']
-    cookie_str = decoder.decode(cookie)
-    try :
-        print(cookie_str)
-        json_cookie = decoder.flask_loads(cookie_str)
-        pretty = json.dumps(json_cookie,
-                        sort_keys=True,
-                        indent=4,
-                        separators=(',', ': '))
-    except Exception as e:
-        return "[ERR: Not JSON data]"
+    cookie_decoded = decoder.decode(cookie)
+    user = cookie_decoded['user_id']
 
-    graph_file = open(GDT_HOME + "graph_file" + cookie, "w")
+    graph_file = open(GDT_HOME + "graph_file" + user, "w")
     graph_file.write(gdt)
 
-    constraints_file = open(GDT_HOME + "blag" + cookie + ".ini", "w")
+    constraints_file = open(GDT_HOME + "blag" + user + ".ini", "w")
     constraints_file.write(constraints)
 
 
 def run_gdt():
     cookie = request.cookies['session']
-    cookie_str = decoder.decode(cookie)
-    try:
-        json_cookie = decoder.flask_loads(cookie_str)
-        pretty = json.dumps(json_cookie,
-                            sort_keys=True,
-                            indent=4,
-                            separators=(',', ': '))
-    except Exception as e:
-        return "[ERR: Not JSON data]"
-    call(["./blag", "graph_file" + cookie, "blag" + cookie + ".ini"], cwd=GDT_HOME)
+    cookie_decoded = decoder.decode(cookie)
+    user = cookie_decoded['user_id']
+    call(["./blag", "graph_file" + user, "blag" + user + ".ini"], cwd=GDT_HOME)
 
 
 def parse_gdt_embedding(gdt_embedding_file):

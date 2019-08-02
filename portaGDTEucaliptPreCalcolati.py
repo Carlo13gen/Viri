@@ -54,9 +54,9 @@ def crossdomain(origin=None, methods=None, headers=None,
     return decorator
 
 
-@app.route('/graphs_output_gdt/<name>/<username>')
+@app.route('/graphs_output_gdt/<name>')
 @crossdomain(origin="*")
-def get_graph_from_outputs(name, username):
+def get_graph_from_outputs(name):
 	return out.get_graph_from_outputs(name)
 
 

@@ -91,7 +91,6 @@ function grafic_output(disegna, curve, curveSwitch, name, numberMaxSolution, roo
     var curve = curveDefined(curve);
     var curveSwitch = curveSwitchDefined(curveSwitch);
     var euristica = euristicaDefined(euristica);
-    var username = usernameDefined(username)
 
     if ( disegna==undefined ){
         var disegna=true;
@@ -100,7 +99,7 @@ function grafic_output(disegna, curve, curveSwitch, name, numberMaxSolution, roo
     d3.select("svg").remove();
     d3.select("#tooltip").remove();
     //console.log(("graphs_gdt/"+name+"/"+cospeciationCost+"/"+duplicationCost+"/"+hostswitchCost+"/"+sortingCost+"/"+numberMaxSolution.toString()+"/"+rootToRoot+"/"+rimuoviCicli+"/"+metodoRimuviCicli+"/"+soluzioniRandomiche+"/"+ maximumHostSwitchDistance));
-	d3.json("http://localhost:1998/graphs_output_gdt/"+name+"/"+username, function(error, dataOriginal) {
+	d3.json("http://localhost:1998/graphs_output_gdt/"+name, function(error, dataOriginal) {
 
         if (error) throw error;
         // Assumption: we only want to draw the first graph_analysis for now.
