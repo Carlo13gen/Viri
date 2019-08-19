@@ -232,17 +232,21 @@ write_check_error
 	int
 main (int argc, char* argv[])
 	{
-        std::ofstream rep_out ("gdt_report");    	// report file
-	
+    	
 	undi_graph       ug;			// input graph-topology
 	draw_undi_graph* dugp = NULL;		// output graph-layout
 	plan_undi_graph* pugp = NULL;
 	
-	
-	if (argc < 3) error ("SYNTAX ERROR  -  MISSING A PARAMETER!")
-	
-	std::string  graph_file_name   = argv[1],
-		options_file_name = argv[2];
+	if (argc < 3) {
+		std::cout << "\nERROR: SYNTAX ERROR  -  MISSING A PARAMETER!" << "\n" << std::flush; 
+		exit(1); 
+	}
+
+	std::string graph_file_name   = argv[1];
+	std::string options_file_name = argv[2];
+    std::string gdt_report_file_name = graph_file_name + ".gdt_report";
+    std::ofstream rep_out (gdt_report_file_name.c_str());    	// report file
+
 	
 	if (!ug.read(graph_file_name)) error ("FILE-ERROR LOADING " << graph_file_name)
 	//if (!ug.is_connected()) error ("Graph must be connected")
