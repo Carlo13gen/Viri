@@ -2,9 +2,7 @@ from lxml import etree
 from subprocess import call
 from graph_analysis import error as err
 from flask import request
-import json
 from varie_supporto import cookie_decoder as decoder
-from flask_cookie_decode import CookieDecode
 
 #GDT_HOME = "/home/diego/Scrivania/tesi/paper_e_programmi_prof/project/graph_analysis/gdt/bin/x86_64/"
 #GDT_HOME = "./graph_analysis/gdt/bin/x86_64/"
@@ -226,8 +224,12 @@ def get_nx_planar_embedding(graph):
     if len(lines) != 11 :
         raise err.NonPlanarGraph("The input graph_analysis was bad")
 
+    cookie = request.cookies['session']
+    cookie_decoded = decoder.decode(cookie)
+    user = cookie_decoded['user_id']
+
     # From here: assume graph_file.gdt contains a planar embedding of the graph_analysis
-    embedding_file = open(GDT_HOME + "graph_file.gdt", "r")
+    embedding_file = open(GDT_HOME + "graph_file" + user + ".gdt", "r")
     gdt_embedding = parse_gdt_embedding(embedding_file)
 
     if planar_graph(gdt_embedding, graph):

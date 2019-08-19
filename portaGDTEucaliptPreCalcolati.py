@@ -1,9 +1,6 @@
 from flask import Flask
-from flask import render_template
 from createJsonWeb import outputCalculator as out
-from createJsonWeb import generaListaFile as glf
-from createJsonWeb import nomeFile as nf
-from salvaDati import salva
+
 
 app = Flask(__name__)
 
@@ -59,6 +56,8 @@ def crossdomain(origin=None, methods=None, headers=None,
 def get_graph_from_outputs(name):
 	return out.get_graph_from_outputs(name)
 
+print(__name__)
+print('__main__')
 
 if __name__ == '__main__':
 	app.debug = True
