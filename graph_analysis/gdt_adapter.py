@@ -3,11 +3,13 @@ from subprocess import call
 from graph_analysis import error as err
 from flask import request
 from varie_supporto import cookie_decoder as decoder
+import os
+import random
 
 #GDT_HOME = "/home/diego/Scrivania/tesi/paper_e_programmi_prof/project/graph_analysis/gdt/bin/x86_64/"
 #GDT_HOME = "./graph_analysis/gdt/bin/x86_64/"
 GDT_HOME = "./graph_analysis/gdt/bin/"
-
+RAND = str(random.randint(0,10000000))
 
 def remove_edge_closure(fixed_graph):
     return fixed_graph.replace("</EDGE>", "")
@@ -143,9 +145,12 @@ def create_constraints_in_gdt(graph):
 def write_gdt_input_files_on_disk(gdt, constraints):
 
     #Prendo il cookie dalla richiesta e lo decodifico estraendone solo lo username
-    cookie = request.cookies['session']
-    cookie_decoded = decoder.decode(cookie)
-    user = cookie_decoded['user_id']
+    if len(request.cookies) == 0:
+        user = RAND
+    else:
+        cookie = request.cookies['session']
+        cookie_decoded = decoder.decode(cookie)
+        user = cookie_decoded['user_id']
 
     graph_file = open(GDT_HOME + "graph_file" + user, "w")
     graph_file.write(gdt)
@@ -155,9 +160,12 @@ def write_gdt_input_files_on_disk(gdt, constraints):
 
 
 def run_gdt():
-    cookie = request.cookies['session']
-    cookie_decoded = decoder.decode(cookie)
-    user = cookie_decoded['user_id']
+    if len(request.cookies) == 0:
+        user = RAND
+    else:
+        cookie = request.cookies['session']
+        cookie_decoded = decoder.decode(cookie)
+        user = cookie_decoded['user_id']
     call(["./blag", "graph_file" + user, "blag" + user + ".ini"], cwd=GDT_HOME)
 
 
@@ -224,9 +232,12 @@ def get_nx_planar_embedding(graph):
     if len(lines) != 11 :
         raise err.NonPlanarGraph("The input graph_analysis was bad")
 
-    cookie = request.cookies['session']
-    cookie_decoded = decoder.decode(cookie)
-    user = cookie_decoded['user_id']
+    if len(request.cookies) == 0:
+        user = RAND
+    else:
+        cookie = request.cookies['session']
+        cookie_decoded = decoder.decode(cookie)
+        user = cookie_decoded['user_id']
 
     # From here: assume graph_file.gdt contains a planar embedding of the graph_analysis
     embedding_file = open(GDT_HOME + "graph_file" + user + ".gdt", "r")
@@ -238,9 +249,17 @@ def get_nx_planar_embedding(graph):
         # To use gdt, we added integer ids to nodes and edges.
         # These ids are still in the graph_analysis, and since the instance is shared, before returning we remove those ids
         remove_gdt_ids_from_graph(graph)
+        os.remove(GDT_HOME + "blag" + RAND + ".ini")
+        os.remove(GDT_HOME + "graph_file" + RAND)
+        os.remove(GDT_HOME + "gdt_report")
+        os.remove(GDT_HOME + "graph_file" + RAND + ".gdt")
         return nx_embedding
 
     else:
+        os.remove(GDT_HOME + "blag" + RAND + ".ini")
+        os.remove(GDT_HOME + "graph_file" + RAND)
+        os.remove(GDT_HOME + "gdt_report")
+        os.remove(GDT_HOME + "graph_file" + RAND + ".gdt")
         raise err.NonPlanarGraph("The input graph_analysis was not planar!")
 
 
