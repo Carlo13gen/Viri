@@ -249,17 +249,17 @@ def get_nx_planar_embedding(graph):
         # To use gdt, we added integer ids to nodes and edges.
         # These ids are still in the graph_analysis, and since the instance is shared, before returning we remove those ids
         remove_gdt_ids_from_graph(graph)
-        os.remove(GDT_HOME + "blag" + RAND + ".ini")
-        os.remove(GDT_HOME + "graph_file" + RAND)
+        os.remove(GDT_HOME + "blag" + user + ".ini")
+        os.remove(GDT_HOME + "graph_file" + user)
         os.remove(GDT_HOME + "gdt_report")
-        os.remove(GDT_HOME + "graph_file" + RAND + ".gdt")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         return nx_embedding
 
     else:
-        os.remove(GDT_HOME + "blag" + RAND + ".ini")
-        os.remove(GDT_HOME + "graph_file" + RAND)
+        os.remove(GDT_HOME + "blag" + user + ".ini")
+        os.remove(GDT_HOME + "graph_file" + user)
         os.remove(GDT_HOME + "gdt_report")
-        os.remove(GDT_HOME + "graph_file" + RAND + ".gdt")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         raise err.NonPlanarGraph("The input graph_analysis was not planar!")
 
 
