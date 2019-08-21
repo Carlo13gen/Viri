@@ -1,0 +1,335 @@
+#NEXUS
+BEGIN TAXA;
+	DIMENSIONS NTAX = 38;
+	TAXLABELS
+		Stellaria
+		'Saponaria officinialis'
+		'Gypsophila repens'
+		'Dianthus carthusianorum'
+		'Dianthus monspessulanus'
+		'Dianthus gratianopolitanus'
+		'Dianthus sylvestris'
+		'Lychnis flos-cuculi'
+		'Lychnis flos-jovis'
+		'Silene acaulis'
+		'Silene otites'
+		'Silene nutans'
+		'Silene dioica'
+		'Silene latifolia'
+		'Silene vulgaris'
+		'Silene lemmonii'
+		'Silene caroliniana'
+		'Silene virginica'
+		MVStel
+		MvSaoff
+		MvDc#1
+		MvDc#2
+		MvDsp1#1
+		MvDsp1#2
+		MvDsp2#1
+		MvDsp2#2
+		MvSot
+		MvLfc
+		MvSn
+		MvSv2
+		MvSd
+		MvSl
+		MvSlem
+		MvLfj
+		McSv1
+		MvSa
+		MvSspA#1
+		MvSspA#2
+		;
+ENDBLOCK;
+
+BEGIN TREES;
+	TRANSLATE
+		H0	h0,
+		H1	Stellaria,
+		H2	h2,
+		H3	h3,
+		H4	h4,
+		H5	'Saponaria officinialis',
+		H6	'Gypsophila repens',
+		H7	h7,
+		H8	h8,
+		H9	'Dianthus carthusianorum',
+		H10	'Dianthus monspessulanus',
+		H11	h11,
+		H12	'Dianthus gratianopolitanus',
+		H13	'Dianthus sylvestris',
+		H14	h14,
+		H15	h15,
+		H16	'Lychnis flos-cuculi',
+		H17	'Lychnis flos-jovis',
+		H18	h18,
+		H19	h19,
+		H20	h20,
+		H21	'Silene acaulis',
+		H22	'Silene otites',
+		H23	'Silene nutans',
+		H24	h24,
+		H25	h25,
+		H26	'Silene dioica',
+		H27	'Silene latifolia',
+		H28	h28,
+		H29	'Silene vulgaris',
+		H30	h30,
+		H31	'Silene lemmonii',
+		H32	h32,
+		H33	'Silene caroliniana',
+		H34	'Silene virginica',
+		P0	p0,
+		P1	p1,
+		P2	p2,
+		P3	p3,
+		P4	p4,
+		P5	MVStel,
+		P6	p6,
+		P7	MvSaoff,
+		P8	p8,
+		P9	MvDc,
+		P10	MvDc#1,
+		P11	MvDc#2,
+		P12	p12,
+		P13	MvDsp1,
+		P14	MvDsp1#1,
+		P15	MvDsp1#2,
+		P16	MvDsp2,
+		P17	MvDsp2#1,
+		P18	MvDsp2#2,
+		P19	p19,
+		P20	p20,
+		P21	MvSot,
+		P22	p22,
+		P23	p23,
+		P24	MvLfc,
+		P25	p25,
+		P26	MvSn,
+		P27	MvSv2,
+		P28	p28,
+		P29	MvSd,
+		P30	MvSl,
+		P31	MvSlem,
+		P32	p32,
+		P33	MvLfj,
+		P34	McSv1,
+		P35	MvSa,
+		P36	MvSspA,
+		P37	MvSspA#1,
+		P38	MvSspA#2
+		;
+	TREE HOST = (H1,(((H5,H6)H4,((H9,H10)H8,(H12,H13)H11)H7)H3,((H16,H17)H15,(((H21,H22)H20,H23)H19,((H26,H27)H25,(H29,(H31,(H33,H34)H32)H30)H28)H24)H18)H14)H2)H0;
+	TREE PARASITE = (((((P5,(P7,((P10,P11)P9,((P14,P15)P13,(P17,P18)P16)P12)P8)P6)P4,((P21,((P24,(P26,P27)P25)P23,(P29,P30)P28)P22)P20,P31)P19)P3,(P33,P34)P32)P2,P35)P1,(P37,P38)P36)P0;
+ENDBLOCK;
+
+BEGIN COPHYLOGENY;
+[RANKS represents the ranks of the nodes in the tree]
+[Syntax is: nodename timezone_from timezone_to]
+	RANKS
+		h0	0	0,
+		Stellaria	0	0,
+		h2	0	0,
+		h3	0	0,
+		h4	0	0,
+		'Saponaria officinialis'	0	0,
+		'Gypsophila repens'	0	0,
+		h7	0	0,
+		h8	0	0,
+		'Dianthus carthusianorum'	0	0,
+		'Dianthus monspessulanus'	0	0,
+		h11	0	0,
+		'Dianthus gratianopolitanus'	0	0,
+		'Dianthus sylvestris'	0	0,
+		h14	0	0,
+		h15	0	0,
+		'Lychnis flos-cuculi'	0	0,
+		'Lychnis flos-jovis'	0	0,
+		h18	0	0,
+		h19	0	0,
+		h20	0	0,
+		'Silene acaulis'	0	0,
+		'Silene otites'	0	0,
+		'Silene nutans'	0	0,
+		h24	0	0,
+		h25	0	0,
+		'Silene dioica'	0	0,
+		'Silene latifolia'	0	0,
+		h28	0	0,
+		'Silene vulgaris'	0	0,
+		h30	0	0,
+		'Silene lemmonii'	0	0,
+		h32	0	0,
+		'Silene caroliniana'	0	0,
+		'Silene virginica'	0	0,
+		p0	0	0,
+		p1	0	0,
+		p2	0	0,
+		p3	0	0,
+		p4	0	0,
+		MVStel	0	0,
+		p6	0	0,
+		MvSaoff	0	0,
+		p8	0	0,
+		MvDc	0	0,
+		MvDc#1	0	0,
+		MvDc#2	0	0,
+		p12	0	0,
+		MvDsp1	0	0,
+		MvDsp1#1	0	0,
+		MvDsp1#2	0	0,
+		MvDsp2	0	0,
+		MvDsp2#1	0	0,
+		MvDsp2#2	0	0,
+		p19	0	0,
+		p20	0	0,
+		MvSot	0	0,
+		p22	0	0,
+		p23	0	0,
+		MvLfc	0	0,
+		p25	0	0,
+		MvSn	0	0,
+		MvSv2	0	0,
+		p28	0	0,
+		MvSd	0	0,
+		MvSl	0	0,
+		MvSlem	0	0,
+		p32	0	0,
+		MvLfj	0	0,
+		McSv1	0	0,
+		MvSa	0	0,
+		MvSspA	0	0,
+		MvSspA#1	0	0,
+		MvSspA#2	0	0
+		;
+[PHI represents the associationss from the parasite leaf nodes to the host leaf nodes]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	PHI
+		MVStel	Stellaria,
+		MvSaoff	'Saponaria officinialis',
+		MvDc#1	'Gypsophila repens',
+		MvDc#2	'Dianthus carthusianorum',
+		MvDsp1#1	'Dianthus carthusianorum',
+		MvDsp1#2	'Dianthus sylvestris',
+		MvDsp2#1	'Dianthus monspessulanus',
+		MvDsp2#2	'Dianthus gratianopolitanus',
+		MvSot	'Silene otites',
+		MvLfc	'Lychnis flos-cuculi',
+		MvSn	'Silene nutans',
+		MvSv2	'Silene vulgaris',
+		MvSd	'Silene dioica',
+		MvSl	'Silene latifolia',
+		MvSlem	'Silene lemmonii',
+		MvLfj	'Lychnis flos-jovis',
+		McSv1	'Silene vulgaris',
+		MvSa	'Silene acaulis',
+		MvSspA#1	'Silene caroliniana',
+		MvSspA#2	'Silene virginica'
+		;
+[POSITIONS represents the x and y position of the node]
+[Syntax is: nodename x_position y_position]
+	POSITIONS
+		h0	42	529,
+		Stellaria	467	104,
+		h2	67	555,
+		h3	343	280,
+		h4	442	179,
+		'Saponaria officinialis'	467	154,
+		'Gypsophila repens'	467	204,
+		h7	392	329,
+		h8	442	280,
+		'Dianthus carthusianorum'	467	255,
+		'Dianthus monspessulanus'	467	305,
+		h11	442	379,
+		'Dianthus gratianopolitanus'	467	354,
+		'Dianthus sylvestris'	467	404,
+		h14	217	704,
+		h15	442	479,
+		'Lychnis flos-cuculi'	467	454,
+		'Lychnis flos-jovis'	467	504,
+		h18	266	754,
+		h19	417	605,
+		h20	442	580,
+		'Silene acaulis'	467	555,
+		'Silene otites'	467	605,
+		'Silene nutans'	467	654,
+		h24	343	829,
+		h25	442	729,
+		'Silene dioica'	467	704,
+		'Silene latifolia'	467	754,
+		h28	392	878,
+		'Silene vulgaris'	467	804,
+		h30	417	905,
+		'Silene lemmonii'	467	854,
+		h32	442	930,
+		'Silene caroliniana'	467	905,
+		'Silene virginica'	467	955,
+		p0	1312	518,
+		p1	1262	469,
+		p2	1237	444,
+		p3	1187	394,
+		p4	1013	218,
+		MVStel	837	44,
+		p6	987	243,
+		MvSaoff	837	94,
+		p8	962	268,
+		MvDc	862	168,
+		MvDc#1	837	143,
+		MvDc#2	837	193,
+		p12	912	318,
+		MvDsp1	862	268,
+		MvDsp1#1	837	243,
+		MvDsp1#2	837	293,
+		MvDsp2	862	369,
+		MvDsp2#1	837	344,
+		MvDsp2#2	837	394,
+		p19	987	593,
+		p20	962	568,
+		MvSot	837	444,
+		p22	937	593,
+		p23	887	543,
+		MvLfc	837	493,
+		p25	862	568,
+		MvSn	837	543,
+		MvSv2	837	593,
+		p28	862	668,
+		MvSd	837	643,
+		MvSl	837	694,
+		MvSlem	837	744,
+		p32	862	818,
+		MvLfj	837	794,
+		McSv1	837	843,
+		MvSa	837	893,
+		MvSspA	862	968,
+		MvSspA#1	837	943,
+		MvSspA#2	837	993
+		;
+[COSTS represents the cost table for the operations 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	COSTS
+		COSPECIATION	0.2975153790,
+		DUPLICATION	0.1978359420,
+		SORTING	0.0557841339,
+		HOSTSWITCH	0.4488645451
+		;
+[OPTIONS represents the options for calculating the reconstruction]
+[Syntax is: option value]
+	OPTIONS
+		RANK	0,
+		LEAFSPECIACIONCOST	1,
+		CHECKCHRONOLOGY	0,
+		AUTOMATICCOSTS	0,
+		SORTING	1,
+		PROBABILITYCOSTS	0,
+		HOSTSWITCH	1,
+		AUTOMATICMETHOD	0,
+		RANDOMSEED	auto,
+		DUPLICATION	1,
+		ROOTMAPPING	0,
+		FULLHOSTSWITCH	0,
+		TAKEOFF	0,
+		RANDOMCYCLES	100000
+		;
+ENDBLOCK;
+
