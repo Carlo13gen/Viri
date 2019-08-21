@@ -41,7 +41,7 @@ def save_user(first_name,last_name, username, pwd):
             return flag
 
 #Passando username path dei file input e output creo una persistenza per i file
-def save_files_path(input_path, output_path, username, desc):
+def save_files_path(nex, output_file, input_path, output_path, username, desc):
     conn = None
     flag = 0
     try:
@@ -54,10 +54,9 @@ def save_files_path(input_path, output_path, username, desc):
                                   database="Viri")
         print("connesso")
         cur = conn.cursor()
-        cur.execute("SELECT id from Utente where username = %s", (username,))
-        user_id = cur.fetchone()
-        record_to_insert = (input_path, output_path, user_id, desc)
-        cur.execute("INSERT INTO File (input_path, output_path, utente, descrizione) VALUES (%s, %s, %s, %s)", record_to_insert)
+        record_to_insert = (nex, output_file, input_path, output_path, username, desc)
+        print(record_to_insert)
+        cur.execute("""INSERT INTO file (nex, output_file, input_path, output_path, utente, descrizione) VALUES (%s, %s, %s, %s, %s, %s)""", record_to_insert)
         conn.commit()
         flag = 1
     except(Exception, psycopg2.Error) as error:
@@ -122,3 +121,31 @@ def find_user(username):
             conn.close()
             print("Connection closed")
             return dati
+
+def get_all_files():
+    conn = None
+    dati = None
+    try:
+        print("connecting to db")
+        conn = psycopg2.connect(user="chiello",
+                                password="postgres",
+                                host="127.0.0.1",
+                                port="5432",
+                                database="Viri")
+        print("connesso")
+        cur = conn.cursor()
+        cur.execute("SELECT nex, utente, descrizione from file")
+        dati = cur.fetchall()
+    except(Exception, psycopg2.Error) as error:
+        if(conn):
+            return (error)
+
+    finally:
+        if(conn):
+            cur.close()
+            conn.close()
+            print("Connection Closed")
+            return dati;
+
+if __name__ == '__main__':
+    save_files_path("GL.nex", "GL.out", "GLnex.path", "GLout.path", "carloiurato", "file GL")
