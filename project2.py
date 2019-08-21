@@ -220,7 +220,7 @@ def login():
 @flask_login.login_required
 def logout():
 	flask_login.logout_user()
-	return render_template('index.html')
+	return redirect('/')
 
 # Templates
 @app.route('/test')

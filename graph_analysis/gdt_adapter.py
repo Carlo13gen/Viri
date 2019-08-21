@@ -227,7 +227,14 @@ def get_nx_planar_embedding(graph):
     write_gdt_input_files_on_disk(gdt_graph, constraints)
     run_gdt()  # This creates the file graph_file.gdt
 
-    gdt_report = open(GDT_HOME + "gdt_report", "r")
+    if len(request.cookies) == 0:
+        user = RAND
+    else:
+        cookie = request.cookies['session']
+        cookie_decoded = decoder.decode(cookie)
+        user = cookie_decoded['user_id']
+
+    gdt_report = open(GDT_HOME + "graph_file" + user +".gdt_report", "r")
     lines = gdt_report.readlines()
     if len(lines) != 11 :
         raise err.NonPlanarGraph("The input graph_analysis was bad")
@@ -251,14 +258,14 @@ def get_nx_planar_embedding(graph):
         remove_gdt_ids_from_graph(graph)
         os.remove(GDT_HOME + "blag" + user + ".ini")
         os.remove(GDT_HOME + "graph_file" + user)
-        os.remove(GDT_HOME + "gdt_report")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt_report")
         os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         return nx_embedding
 
     else:
         os.remove(GDT_HOME + "blag" + user + ".ini")
         os.remove(GDT_HOME + "graph_file" + user)
-        os.remove(GDT_HOME + "gdt_report")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt_report")
         os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         raise err.NonPlanarGraph("The input graph_analysis was not planar!")
 

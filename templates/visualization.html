@@ -37,7 +37,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/drawnHost.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/copia.js') }}"></script>
 
- 
+
 
 
 
@@ -69,7 +69,7 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/ridisegna.js') }}"></script>
 
-    
+
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/changeNumberSolution.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/loadNumberSolution.js') }}"></script>
@@ -77,12 +77,12 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parametri.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/salva.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/calcolaIncroci.js') }}"></script>
-    
 
 
 
 
-    <title>Home</title>
+
+    <title>Co-phylogenetic trees</title>
     <script type="text/javascript">
         mostraOpzioni();
     </script>
@@ -262,25 +262,25 @@ d3.select("#primaRiga")
 <tr>
 	<td>
 		cost co-speciation:
-		</td><td> 
+		</td><td>
 		<input type="text" id="cc" onchange="grafic()">
 	</td>
 
 	<td>
 		cost duplication:
-		</td><td> 
+		</td><td>
 		<input type="text" id="cd" onchange="grafic()">
 	</td>
 
 	<td>
 		cost host-switch:
-	</td><td> 
+	</td><td>
 		<input type="text" id="ch" onchange="grafic()">
 	</td>
 
 	<td>
 		cost sorting ( loss ):
-		</td><td> 
+		</td><td>
 		<input type="text" id="cs" onchange="grafic()">
 	</td>
 
@@ -298,13 +298,13 @@ d3.select("#primaRiga")
 <button hidden=(false) value="ssss" id="oldName"></button>
 
 
-		</td><td> 
+		</td><td>
 		<select id="select"  onchange="changeNexusFile()" >
 		</select>
 	</td>
 	<td>
 		numberMaxSolution :
-		</td><td> 
+		</td><td>
 		<input type="text" id="numberMaxSolution" value="1" onchange="grafic()">
 	</td>
 	<td>
@@ -312,10 +312,10 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		rootToRoot :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" onchange="grafic()" />
 		</td></tr></table>
-	
+
 	</td>
 
 	<td>
@@ -323,10 +323,10 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		soluzioni random :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="soluzioniRandomiche" value="html" onchange="changeRandomSolution()" />
 		</td></tr></table>
-	
+
 	</td>
 
 	</tr>
@@ -346,15 +346,15 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		Togliere time-inconsistence :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="rimuoviCicli" value="html" onchange="grafic()" />
 		</td></tr></table>
-	
+
 	</td>
 
 	<td>
 		max H.-Swi. Dist :
-		</td><td> 
+		</td><td>
 		<input type="text" id="maximumHostSwitchDistance" value="" onchange="grafic()">
 	</td>
 	<td>
@@ -366,7 +366,7 @@ d3.select("#primaRiga")
 <tr>
 	<td>
 		numberSolution :
-		</td><td> 
+		</td><td>
 		<select id="numberSolutionGraph" value="1" onchange="changeNumberSolution()">
 		</select>
 	</td>
@@ -377,7 +377,7 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		longLeaves :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="longLeaves" value="html" checked="checked" onchange="ridisegna()" />
 		</td>
 		</tr></table>
@@ -386,7 +386,7 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		Bloccato :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="bloccato" value="html" onchange="bloccato()" />
 		</td> </tr></table>
 	</td>
@@ -395,7 +395,7 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		curveNonSwitch :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="curve" value="html" checked="checked" onchange="ridisegna()" />
 		</td> </tr></table>
 
@@ -406,19 +406,19 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		curveSwitch :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="curveSwitch" value="html" onchange="ridisegna()" />
 		</td> </tr></table>
 
 	</td>
 
-	<td> 
+	<td>
 		<table>
 		<tr>
 		<td>
 		save:
-		</td><td> 
-				<a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()" >Salva</a>			
+		</td><td>
+				<a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()" >Salva</a>
 		</td>
 		</tr>
 		</table>
@@ -432,7 +432,7 @@ d3.select("#primaRiga")
 		<tr>
 		<td>
 		equalsLevelEqualsHeight :
-		</td><td> 
+		</td><td>
 		<input name="html" type="checkbox" id="equalsLivelEqualsHeight" value="html" onchange="ridisegna()" />
 		</td>
 		</tr></table>
@@ -442,25 +442,25 @@ d3.select("#primaRiga")
 <tr>
 	<td>
 		width :
-		</td><td> 
+		</td><td>
 		<input type="text" id="width" width="100%" onchange="ridisegna()">
 	</td>
 
 	<td>
 		height :
-		</td><td> 
+		</td><td>
 		<input type="text" id="height" width="100%" onchange="ridisegna()">
 	</td>
 
 	<td>
 		separetor width :
-		</td><td> 
+		</td><td>
 		<input type="text" id="select5" onchange="ridisegna()">
 	</td>
 
 	<td>
 		separator Height:
-		</td><td> 
+		</td><td>
 		<input type="text" id="select6" onchange="ridisegna()">
 	</td>
 
@@ -497,9 +497,37 @@ d3.select("#primaRiga")
 -->
 
 
-    <div id="listaFile">
-        <ul></ul>
-    </div>
+    <div id="spazioSvg"> </div>
+
+    <!--<img src="out.gif"> -->
+
+
+    <!--
+<input type="file" id="fileinput" />
+<script type="text/javascript">
+  function readSingleFile(evt) {
+    //Retrieve the first (and only!) File from the FileList object
+    var f = evt.target.files[0];
+
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) {
+	      var contents = e.target.result;
+        alert( "Got the file.n"
+              +"name: " + f.name + "n"
+              +"type: " + f.type + "n"
+              +"size: " + f.size + " bytesn"
+              + "starts with: " + contents.substr(1, contents.indexOf("n"))
+        );
+      }
+      r.readAsText(f);
+    } else {
+      alert("Failed to load file");
+    }
+  }
+
+  document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+</script>
 -->
 
     <div id="problem"></div>
