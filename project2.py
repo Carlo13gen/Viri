@@ -65,8 +65,8 @@ def allowed_file(filename, filename1):
 @app.route('/')
 def home():
 	files = perhand.get_all_files()
-	print(files)
-	return render_template('index.html')
+
+	return render_template('index.html', files=files)
 
 # Templates
 @app.route('/upload')
