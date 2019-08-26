@@ -118,7 +118,7 @@ def upload_file():
 				output_filename = secure_filename(new_out_name)
 				input.save(os.path.join(app.config["INPUT_UPLOAD"], input_filename))
 				output.save(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename))
-				if perhand.save_files_path(input_filename, output_filename, os.path.abspath(os.path.join(app.config["INPUT_UPLOAD"], input_filename)), os.path.abspath(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename)), flask_login.current_user.id, description):
+				if perhand.save_files_path(input_filename, output_filename, os.path.relpath(os.path.join(app.config["INPUT_UPLOAD"], input_filename)), os.path.relpath(os.path.join(app.config["OUTPUT_UPLOAD"], output_filename)), flask_login.current_user.id, description):
 					return redirect(request.url)
 				else:
 					x = 'Something went wrong during the saving on db'
