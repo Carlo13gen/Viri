@@ -130,7 +130,7 @@ def upload_file():
 				ritorno = json.dumps(x)
 				return render_template('upload.html', ritorno=ritorno)
 	else:
-		return render_template('index.html')
+		return redirect('/')
 
 @login_manager.user_loader
 def user_loader(username):
@@ -211,8 +211,7 @@ def login():
 			user = User()
 			user.id = username
 			flask_login.login_user(user)
-			user_logged = json.dumps(username)
-			return render_template('index.html', user_logged=user_logged)
+			return redirect('/')
 		else:
 			x = "Wrong password"
 			risultato = json.dumps(x)
