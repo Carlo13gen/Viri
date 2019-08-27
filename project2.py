@@ -65,7 +65,6 @@ def allowed_file(filename, filename1):
 @app.route('/')
 def home():
 	files = perhand.get_all_files()
-
 	return render_template('index.html', files=files)
 
 # Templates
@@ -191,10 +190,6 @@ def register():
 	else:
 		return render_template('login.html')
 
-@app.route('/prova', methods=['GET'])
-@flask_login.login_required
-def prova():
-	return 'Logged in as: ' + flask_login.current_user.id
 
 @app.route('/login', methods=["POST"])
 def login():
@@ -222,6 +217,11 @@ def login():
 def logout():
 	flask_login.logout_user()
 	return redirect('/')
+
+@app.route('/visualization/<file_name>')
+def view_file(file_name):
+	return render_template('visualization.html', file_name=file_name)
+
 
 # Templates
 @app.route('/test')

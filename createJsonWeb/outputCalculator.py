@@ -27,7 +27,7 @@ def get_graph_from_outputs(name):
 
     if not (os.path.isfile("./memoria_embedding/" + name + ".txt")):
         # i = 0;
-        root_mapping, possible_solutions = solutions.items()[0]
+        root_mapping, possible_solutions = list(solutions.items())[0]
         mapping = possible_solutions[0];
         tempoStartTestPlanare = time.time()
         graph_embedding = pln.planareGDT(original_parasite_tree, original_host_tree, mapping);

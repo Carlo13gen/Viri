@@ -516,7 +516,7 @@ d3.select("#primaRiga")
                     <tr>
                         <td>{% if file[1]==current_user.id %}<button class="btn" href="#"><i class="fa fas fa-pen"></i></button>{% endif %}</td>
                         <td>{% if file[1]==current_user.id %}<button class="btn" href="#"><i class="fa fa-trash"></i></button>{% endif %}</td>
-                        <td><a href="#">{{ file[0] }}</a></td>
+                        <td><a href="/visualization/{{ file[0].split(".")[0] }}">{{ file[0].split(".")[0] }}</a></td>
                         <td>{{ file[1] }}</td>
                         <td>{{ file[2] }}</td>
                     </tr>

@@ -22,7 +22,7 @@ function mostraOpzioni(){
             console.log(username)
             var foo = sessionStorage
             console.log(foo)
-            grafic_output(dataOriginal[0], username)
+            grafic_output(dataOriginal[0])
 
         });
     }

@@ -162,7 +162,7 @@ function parasiteNodesRadiusDefined(parasiteNodesRadius) {
 
 function nameDefined(name) {
     if(name==undefined){
-        var name = document.getElementById("mostraNomeFile").getAttribute("value");
+        var name = document.getElementById("file_name").getAttribute("value");
         //var name = document.getElementById("select").value;
 
     }

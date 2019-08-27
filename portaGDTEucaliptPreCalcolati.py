@@ -1,8 +1,10 @@
 from flask import Flask
 from createJsonWeb import outputCalculator as out
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 from datetime import timedelta
 from flask import make_response, request, current_app
@@ -55,9 +57,6 @@ def crossdomain(origin=None, methods=None, headers=None,
 @crossdomain(origin="*")
 def get_graph_from_outputs(name):
 	return out.get_graph_from_outputs(name)
-
-print(__name__)
-print('__main__')
 
 if __name__ == '__main__':
 	app.debug = True

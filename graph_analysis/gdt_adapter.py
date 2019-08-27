@@ -144,13 +144,7 @@ def create_constraints_in_gdt(graph):
 
 def write_gdt_input_files_on_disk(gdt, constraints):
 
-    #Prendo il cookie dalla richiesta e lo decodifico estraendone solo lo username
-    if len(request.cookies) == 0:
-        user = RAND
-    else:
-        cookie = request.cookies['session']
-        cookie_decoded = decoder.decode(cookie)
-        user = cookie_decoded['user_id']
+    user = RAND
 
     graph_file = open(GDT_HOME + "graph_file" + user, "w")
     graph_file.write(gdt)
@@ -160,12 +154,7 @@ def write_gdt_input_files_on_disk(gdt, constraints):
 
 
 def run_gdt():
-    if len(request.cookies) == 0:
-        user = RAND
-    else:
-        cookie = request.cookies['session']
-        cookie_decoded = decoder.decode(cookie)
-        user = cookie_decoded['user_id']
+    user = RAND
     call(["./blag", "graph_file" + user, "blag" + user + ".ini"], cwd=GDT_HOME)
 
 
@@ -227,24 +216,14 @@ def get_nx_planar_embedding(graph):
     write_gdt_input_files_on_disk(gdt_graph, constraints)
     run_gdt()  # This creates the file graph_file.gdt
 
-    if len(request.cookies) == 0:
-        user = RAND
-    else:
-        cookie = request.cookies['session']
-        cookie_decoded = decoder.decode(cookie)
-        user = cookie_decoded['user_id']
+    user = RAND
 
     gdt_report = open(GDT_HOME + "graph_file" + user +".gdt_report", "r")
     lines = gdt_report.readlines()
     if len(lines) != 11 :
         raise err.NonPlanarGraph("The input graph_analysis was bad")
 
-    if len(request.cookies) == 0:
-        user = RAND
-    else:
-        cookie = request.cookies['session']
-        cookie_decoded = decoder.decode(cookie)
-        user = cookie_decoded['user_id']
+    user = RAND
 
     # From here: assume graph_file.gdt contains a planar embedding of the graph_analysis
     embedding_file = open(GDT_HOME + "graph_file" + user + ".gdt", "r")
