@@ -147,5 +147,25 @@ def get_all_files():
             print("Connection Closed")
             return dati;
 
-if __name__ == '__main__':
-    save_files_path("GL.nex", "GL.out", "GLnex.path", "GLout.path", "carloiurato", "file GL")
+def remove_file(file_name):
+    conn = None
+    try:
+        print("Connecting to db")
+        conn = psycopg2.connect(user="chiello",
+                            password="postgres",
+                            host="127.0.0.1",
+                            port="5432",
+                            database="Viri")
+        print("connesso")
+        cur = conn.cursor()
+        cur.execute("DELETE from file where nex = %s", (file_name,))
+        conn.commit()
+        dati = 1
+    except(Exception, psycopg2.Error) as error:
+        if(conn):
+            return (error)
+    finally:
+        if(conn):
+            cur.close()
+            conn.close()
+            print("Connection closed");

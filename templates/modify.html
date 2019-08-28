@@ -40,7 +40,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/drawnHost.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/copia.js') }}"></script>
 
- 
+
 
 
 
@@ -72,7 +72,7 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/ridisegna.js') }}"></script>
 
-    
+
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/changeNumberSolution.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/loadNumberSolution.js') }}"></script>
@@ -80,7 +80,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parametri.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/salva.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/calcolaIncroci.js') }}"></script>
-    
+
 
 
 
@@ -135,322 +135,15 @@
     <div class="Tit">
         <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} Welcome {{ current_user.id }} {% endif %}</p>
     </div>
-
-
-    <!--
-<nav id=primaRiga hidden="" class="navbar navbar-default navbar-fixed-top" height="10">
-  <div class="container-fluid">
-<script type="text/javascript">
-d3.select("#primaRiga")
-    .transition()
-    .duration(120)
-	.attr("hidden",null)
-d3.select("#primaRiga")
-    .transition()
-    .duration(120)
-	.attr("hidden","")
-
-</script>
-
-
-
-<table  style="visibility">
-
-<tr>
-	<td>
-		cost co-speciation:
-		</td><td> 
-		<input type="text" id="cc" onchange="grafic()">
-	</td>
-
-	<td>
-		cost duplication:
-		</td><td> 
-		<input type="text" id="cd" onchange="grafic()">
-	</td>
-
-	<td>
-		cost host-switch:
-	</td><td> 
-		<input type="text" id="ch" onchange="grafic()">
-	</td>
-
-	<td>
-		cost sorting ( loss ):
-		</td><td> 
-		<input type="text" id="cs" onchange="grafic()">
-	</td>
-
-
-
-
-</tr>
-
-
-<tr >
-
-	<td >
-		file.nex :
-
-<button hidden=(false) value="ssss" id="oldName"></button>
-
-
-		</td><td> 
-		<select id="select"  onchange="changeNexusFile()" >
-		</select>
-	</td>
-	<td>
-		numberMaxSolution :
-		</td><td> 
-		<input type="text" id="numberMaxSolution" value="1" onchange="grafic()">
-	</td>
-	<td>
-			<table>
-		<tr>
-		<td>
-		rootToRoot :
-		</td><td> 
-		<input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" onchange="grafic()" />
-		</td></tr></table>
-	
-	</td>
-
-	<td>
-		<table>
-		<tr>
-		<td>
-		soluzioni random :
-		</td><td> 
-		<input name="html" type="checkbox" id="soluzioniRandomiche" value="html" onchange="changeRandomSolution()" />
-		</td></tr></table>
-	
-	</td>
-
-	</tr>
-	<tr>
-
-	<td>
-<form action="">
-		Cyclicity test model: </td><td>
-		1-Stolzer et al.,2012 <input type="radio" name="linguaggio" value="1" checked="checked" id="test1" onchange="changeTest()" />
-        </td><td>
-        2-Tofigh et al.,2011 <input type="radio" name="linguaggio" value="2" id="test2" onchange="changeTest()" />
-</form>
-	</td>
-
-	<td>
-		<table>
-		<tr>
-		<td>
-		Togliere time-inconsistence :
-		</td><td> 
-		<input name="html" type="checkbox" id="rimuoviCicli" value="html" onchange="grafic()" />
-		</td></tr></table>
-	
-	</td>
-
-	<td>
-		max H.-Swi. Dist :
-		</td><td> 
-		<input type="text" id="maximumHostSwitchDistance" value="" onchange="grafic()">
-	</td>
-	<td>
-		<button onclick="salva()">Piccola</button>
-	</td>
-
-
-</tr>
-<tr>
-	<td>
-		numberSolution :
-		</td><td> 
-		<select id="numberSolutionGraph" value="1" onchange="changeNumberSolution()">
-		</select>
-	</td>
-	</tr>
-
-	<td>
-		<table>
-		<tr>
-		<td>
-		longLeaves :
-		</td><td> 
-		<input name="html" type="checkbox" id="longLeaves" value="html" checked="checked" onchange="ridisegna()" />
-		</td>
-		</tr></table>
-	<td>
-		<table>
-		<tr>
-		<td>
-		Bloccato :
-		</td><td> 
-		<input name="html" type="checkbox" id="bloccato" value="html" onchange="bloccato()" />
-		</td> </tr></table>
-	</td>
-	<td>
-		<table>
-		<tr>
-		<td>
-		curveNonSwitch :
-		</td><td> 
-		<input name="html" type="checkbox" id="curve" value="html" checked="checked" onchange="ridisegna()" />
-		</td> </tr></table>
-
-	</td>
-
-	<td>
-		<table>
-		<tr>
-		<td>
-		curveSwitch :
-		</td><td> 
-		<input name="html" type="checkbox" id="curveSwitch" value="html" onchange="ridisegna()" />
-		</td> </tr></table>
-
-	</td>
-
-	<td> 
-		<table>
-		<tr>
-		<td>
-		save:
-		</td><td> 
-				<a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()" >Salva</a>			
-		</td>
-		</tr>
-		</table>
-
-	</td>
--->
-    <!--
-
-	<td>
-				<table>
-		<tr>
-		<td>
-		equalsLevelEqualsHeight :
-		</td><td> 
-		<input name="html" type="checkbox" id="equalsLivelEqualsHeight" value="html" onchange="ridisegna()" />
-		</td>
-		</tr></table>
-	</td>
-
-</tr>
-<tr>
-	<td>
-		width :
-		</td><td> 
-		<input type="text" id="width" width="100%" onchange="ridisegna()">
-	</td>
-
-	<td>
-		height :
-		</td><td> 
-		<input type="text" id="height" width="100%" onchange="ridisegna()">
-	</td>
-
-	<td>
-		separetor width :
-		</td><td> 
-		<input type="text" id="select5" onchange="ridisegna()">
-	</td>
-
-	<td>
-		separator Height:
-		</td><td> 
-		<input type="text" id="select6" onchange="ridisegna()">
-	</td>
-
-</tr>
-<tr>
-	<td>
-	<form action="">
-		Heuristics: </td><td>
-		1- Rapp. <input type="radio" name="linguaggio" value="1" id="euristica1" onchange="ridisegna()" />
-        </td><td>
-        2- GDT Universal. <input type="radio" name="linguaggio" checked="checked" value="2" id="euristica2" onchange="ridisegna()"" />
-        </td><td>
-        3- GDT for Solution. <input type="radio" name="linguaggio" value="3" id="euristica3" onchange="ridisegna()"" />
-
-	</form>
-	</td>
-
-</tr>
-
-</table>
-
-<form action="/test" method="GET" autocomplete="off" >
-    Password:<br>
-    <input type="text" name="testo" value="Pippo col cane">
-    <br><br>
-    <input type="submit" value="Login">
-</form>
--->
-
-
-    <!--
-</div>
-</nav>
--->
-
-
-    <div class="tabella" id="tabella">
-        <table class="table table-sm table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">Modify</th>
-                    <th scope="col">Remove</th>
-                    <th scope="col">File</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for file in files%}
-                    <tr>
-                        <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/modify/{{ file[0].split(".")[0] }}'"><i class="fa fas fa-pen"></i></button>{% endif %}</td>
-                        <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/remove/{{ file[0].split(".")[0] }}'"><i class="fa fa-trash"></i></button>{% endif %}</td>
-                        <td><a href="/visualization/{{ file[0].split(".")[0] }}">{{ file[0].split(".")[0] }}</a></td>
-                        <td>{{ file[1] }}</td>
-                        <td>{{ file[2] }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-
-    <div id="problem"></div>
-    <!--
-<nav id=sottoRiga class="navbar navbar-default navbar-static-bottom"></nav>
-
-<nav id=sottoRiga class="navbar navbar-inverse navbar-fixed-bottom">
-
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" id="tooltip" >VIRI</a>
+    <div class="container-fluid">
+    <form method="post" action="/modify">
+        <label for="description">File name: {{ file_name }} write down the new description</label>
+        <input class="form-control" type="text" maxlength="255" placeholder="New description" name="description">
+        <div>
+            <button type="submit" class="btn btn-primary">Upload</button>
         </div>
-       </div>
-       <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 0.916667px;">
-          <ul class="nav navbar-nav">
-          	<li id="tooltip">
-
-        	</li>
-           </ul>
-       </div>
-
-</nav>
-
--->
-
-
-
+        </form>
+    </form>
+    </div>
 </body>
-
 </html>

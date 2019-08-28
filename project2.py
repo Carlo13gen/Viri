@@ -222,6 +222,19 @@ def logout():
 def view_file(file_name):
 	return render_template('visualization.html', file_name=file_name)
 
+@app.route('/remove/<file_name>')
+@flask_login.login_required
+def remove_file(file_name):
+	file_name = file_name + ".nex"
+	perhand.remove_file(file_name)
+	return redirect('/')
+
+@app.route('/modify/<file_name>')
+@flask_login.login_required
+def modify_page(file_name):
+	return render_template("modify.html", file_name=file_name)
+
+
 
 # Templates
 @app.route('/test')
