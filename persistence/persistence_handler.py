@@ -169,3 +169,25 @@ def remove_file(file_name):
             cur.close()
             conn.close()
             print("Connection closed");
+
+def update_description(description, file_name):
+    conn = None
+    try:
+        print("connecting to db")
+        conn = psycopg2.connect(user="chiello",
+                                password="postgres",
+                                host="127.0.0.1",
+                                port="5432",
+                                database="Viri")
+        print("Connesso")
+        cur = conn.cursor()
+        cur.execute("UPDATE file SET descrizione = %s where nex = %s", (description, file_name,))
+        conn.commit()
+    except(Exception, psycopg2.Error) as error:
+        if(conn):
+            return (error)
+    finally:
+        if(conn):
+            cur.close()
+            conn.close()
+            print("Connection closed");

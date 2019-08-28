@@ -234,6 +234,13 @@ def remove_file(file_name):
 def modify_page(file_name):
 	return render_template("modify.html", file_name=file_name)
 
+@app.route('/update/<file_name>', methods=["GET", "POST"])
+@flask_login.login_required
+def modify(file_name):
+	file_name = file_name + ".nex"
+	description = request.form['description']
+	perhand.update_description(description, file_name)
+	return redirect('/')
 
 
 # Templates

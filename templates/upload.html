@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!-- CSS libs -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/upload.css') }}" />
 
     <!--JS libs -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script>
@@ -40,9 +41,9 @@
 
     <nav class="navbar navbar-default navbar-static-top"></nav>
     <div>
-        <h4 class="title">{{ current_user.id }}</h4>
+        <p class="title">Welcome {{ current_user.id }}</p>
     </div>
-    <div class="container-fluid">
+    <div class="file_uploader container-fluid">
         <div class="modal-title">
             <h4>Upload new file</h4>
         </div>
@@ -60,10 +61,10 @@
                 <input type="text" class="form-control" id="input_description" maxlength="255" name="description" placeholder="Enter description" required>
 
             </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="button">Upload</button>
         </form>
         <div>
-            <h4>
+            <h4 class="ritorno">
                 {{ ritorno }}
             </h4>
         </div>
