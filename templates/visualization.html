@@ -108,12 +108,7 @@
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
                 <ul class="nav navbar-nav">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="mostraNomeFile"> FileNex <span class="caret"></span></a>
-                        <ul class="dropdown-menu" id="ulListaFile">
 
-                        </ul>
-                    </li>
 
                     <li><a>Current solution:</a></li>
                     <li class="dropdown">
@@ -123,48 +118,6 @@
                         </ul>
                     </li>
 
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Options <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a>Eucalypt options</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>	Max. # of solutions computed: <input type="text" id="numberMaxSolution" placeholder="Max" size="5" value="1" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                            <li><a>	Root-to-root mapping: <input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()" />
-				</a></li>
-                            <li><a>Random sampling: <input name="html" type="checkbox" id="soluzioniRandomiche" value="html" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Costs <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a>Reconciliation costs used by Eucalypt</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>Cospeciation:    <input type="text" size="5" id="cc" placeholder="-1" {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                            <li><a>Duplication: 	<input type="text" size="5" id="cd" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                            <li><a>Sorting: 		<input type="text" size="5" id="cs" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                            <li><a>Host-switch: 	<input type="text" size="5" id="ch" placeholder="1"  {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()"></a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>Max host-switch distance:	<input type="text" id="maximumHostSwitchDistance" size="10" placeholder="Infinite" value="" {% if user_logged is undefined %} disabled {% endif %} onchange="grafic()">
-            </a>  </li>
-
-                        </ul>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Time consistency <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a>Eucalypt filtering of time-inconsistent solutions</a></li>
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Enable filtering: <input name="html" type="checkbox" id="rimuoviCicli" value="html" disabled {% if current_user.id is undefined %} disabled {% endif %} onchange="grafic()" /></a></li>
-                                <li><a><input type="radio" name="linguaggio" value="1" checked="checked" id="test1" {% if current_user.id is undefined %} disabled {% endif %} onchange="changeTest()" /> Filtering based on [Stolzer et al., 2012]</a></li>
-                                <li><a><input type="radio" name="linguaggio" value="2" id="test2" {% if current_user.id is undefined %} disabled {% endif %} onchange="changeTest()" /> Filtering based on [Tofigh et al., 2011]</a></li>
-
-                            </ul>
-                        </li>
 
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heuristics <span class="caret"></span></a>
@@ -236,7 +189,7 @@
     <nav class="navbar navbar-default navbar-static-top"></nav>
 
     <div class="Tit">
-        <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} {{ current_user.id }} {% endif %}</p>
+        <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} Welcome {{ current_user.id }} {% endif %}</p>
         <p id="file_name" hidden value="{{ file_name }}"></p>
     </div>
 

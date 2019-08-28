@@ -75,19 +75,19 @@ function grafic(disegna, curve, curveSwitch, name, numberMaxSolution, rootToRoot
 
 }
 
-function grafic_output(disegna, curve, curveSwitch, name, numberMaxSolution, rootToRoot, cospeciationCost, duplicationCost, hostswitchCost, sortingCost, longLeaves, equalsLivelEqualsHeight, separatorBetweenHostNodesWidth,separatorBetweenHostNodesHight, height, width, rimuoviCicli, metodoRimuviCicli, soluzioniRandomiche, euristica, username ){
-    var maximumHostSwitchDistance = maximumHostSwitchDistanceDefined(maximumHostSwitchDistance);
-    var soluzioniRandomiche= metodoSoluzioniRandomDefined(soluzioniRandomiche);
-    var metodoRimuviCicli = metodoRimuviCicliDefined(metodoRimuviCicli);
-    var rimuoviCicli=rimuoviCicliDefined(rimuoviCicli);
+function grafic_output(disegna, curve, curveSwitch, name, rootToRoot, cospeciationCost, duplicationCost, hostswitchCost, sortingCost, longLeaves, equalsLivelEqualsHeight, separatorBetweenHostNodesWidth,separatorBetweenHostNodesHight, height, width, euristica ){
+    //var maximumHostSwitchDistance = maximumHostSwitchDistanceDefined(maximumHostSwitchDistance);
+    //var soluzioniRandomiche= metodoSoluzioniRandomDefined(soluzioniRandomiche);
+    //var metodoRimuviCicli = metodoRimuviCicliDefined(metodoRimuviCicli);
+    //var rimuoviCicli=rimuoviCicliDefined(rimuoviCicli);
     var name = nameDefined(name);
     var number = numberDefined(number);
-    var rootToRoot = rootToRootDefined(rootToRoot);
-    var cospeciationCost = cospeciationCostDefined(cospeciationCost);
-    var duplicationCost = duplicationCostDefined(duplicationCost);
-    var hostswitchCost = hostswitchCostDefined(hostswitchCost);
-    var sortingCost = sortingCostDefined(sortingCost);
-    var numberMaxSolution = numberMaxSolutionDefined(numberMaxSolution);
+    //var rootToRoot = rootToRootDefined(rootToRoot);
+    //var cospeciationCost = cospeciationCostDefined(cospeciationCost);
+    //var duplicationCost = duplicationCostDefined(duplicationCost);
+    //var hostswitchCost = hostswitchCostDefined(hostswitchCost);
+    //var sortingCost = sortingCostDefined(sortingCost);
+    //var numberMaxSolution = numberMaxSolutionDefined(numberMaxSolution);
     var curve = curveDefined(curve);
     var curveSwitch = curveSwitchDefined(curveSwitch);
     var euristica = euristicaDefined(euristica);
