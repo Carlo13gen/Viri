@@ -1,17 +1,19 @@
 function mostraOpzioni(){
     function listaFile(){
 
-        d3.json("http://localhost:8000/list_of_file", function(error, dataOriginal) {
+        //d3.json("http://localhost:8000/list_of_file", function(error, dataOriginal) {
 
 
-            if (error) throw error;
+            //if (error) throw error;
 
             //var p = document.getElementById("select");
             //  p.innerHTML = st;
 
-            grafic_output(document.getElementById("file_name"))
 
-        });
+
+        //});
+
+        grafic_output(document.getElementById("file_name"))
     }
 
     listaFile();
@@ -36,7 +38,7 @@ function cambiaFile(nomeFile){
 
 
 
-function getListaFileNexus(){
+/*function getListaFileNexus(){
     var listaFileNexus=[];
     function listaFile(){
 
@@ -50,4 +52,4 @@ function getListaFileNexus(){
 
     listaFile();
     return listaFileNexus;
-}
+}*/

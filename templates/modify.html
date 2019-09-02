@@ -6,6 +6,7 @@
     <!-- CSS libs -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/modify.css') }}" />
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 
@@ -135,12 +136,12 @@
     <div class="Tit">
         <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} Welcome {{ current_user.id }} {% endif %}</p>
     </div>
-    <div class="container-fluid">
+    <div class="file_modifier container">
     <form class="form" method="post" action="/update/{{ file_name }}">
-        <label for="description">File name: {{ file_name }} write down the new description</label>
-        <input class="form-control" type="text" maxlength="255" placeholder="New description" name="description">
+        <label class="lab" for="description">File name: {{ file_name }} write down the new description</label>
+        <input class="form-control" type="text" maxlength="1500" placeholder="New description" name="description">
         <div>
-            <button type="submit" class="btn btn-primary">Upload</button>
+            <button type="submit" class="button">Upload</button>
         </div>
         </form>
     </form>

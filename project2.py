@@ -225,8 +225,11 @@ def view_file(file_name):
 @app.route('/remove/<file_name>')
 @flask_login.login_required
 def remove_file(file_name):
-	file_name = file_name + ".nex"
-	perhand.remove_file(file_name)
+	file_name_nex = file_name + ".nex"
+	output_name = file_name + ".out"
+	perhand.remove_file(file_name_nex)
+	os.remove(app.config['INPUT_UPLOAD'] + "/" + file_name_nex)
+	os.remove(app.config['OUTPUT_UPLOAD'] + "/" + output_name)
 	return redirect('/')
 
 @app.route('/modify/<file_name>')
