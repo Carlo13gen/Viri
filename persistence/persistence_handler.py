@@ -3,6 +3,12 @@ from persistence import config as config
 
 import time
 
+USER = "chiello"
+PASSWORD = "postgres"
+HOST = "127.0.0.1"
+PORT = "5432"
+DATABASE = "Viri"
+
 #Funzion che connettendosi a un database salva un'istanza di utente
 def save_user(first_name,last_name, username, pwd):
     conn = None
@@ -10,11 +16,11 @@ def save_user(first_name,last_name, username, pwd):
     try:
         '''params = config.config()'''
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                  password="postgres",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                  password=PASSWORD,
+                                  host=HOST,
+                                  port=PORT,
+                                  database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         cur.execute("SELECT * from Utente where username = %s", (username,))
@@ -47,11 +53,11 @@ def save_files_path(nex, output_file, input_path, output_path, username, desc):
     try:
         '''params = config.config()'''
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                  password="postgres",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         record_to_insert = (nex, output_file, input_path, output_path, username, desc)
@@ -76,11 +82,11 @@ def search_user_pwd(user):
     try:
         '''params = config.config()'''
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                  password="postgres",
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         cur.execute("SELECT password, flag from Utente where username = %s", (user,))
@@ -103,11 +109,11 @@ def find_user(username):
     try:
         '''params = config.config()'''
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                password="postgres",
-                                host="127.0.0.1",
-                                port="5432",
-                                database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         cur.execute("SELECT username from Utente where username = %s", (username,))
@@ -127,11 +133,11 @@ def get_all_files():
     dati = None
     try:
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                password="postgres",
-                                host="127.0.0.1",
-                                port="5432",
-                                database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         cur.execute("SELECT nex, utente, descrizione from file")
@@ -151,11 +157,11 @@ def remove_file(file_name):
     conn = None
     try:
         print("Connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                            password="postgres",
-                            host="127.0.0.1",
-                            port="5432",
-                            database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("connesso")
         cur = conn.cursor()
         cur.execute("DELETE from file where nex = %s", (file_name,))
@@ -174,11 +180,11 @@ def update_description(description, file_name):
     conn = None
     try:
         print("connecting to db")
-        conn = psycopg2.connect(user="chiello",
-                                password="postgres",
-                                host="127.0.0.1",
-                                port="5432",
-                                database="Viri")
+        conn = psycopg2.connect(user=USER,
+                                password=PASSWORD,
+                                host=HOST,
+                                port=PORT,
+                                database=DATABASE)
         print("Connesso")
         cur = conn.cursor()
         cur.execute("UPDATE file SET descrizione = %s where nex = %s", (description, file_name,))
