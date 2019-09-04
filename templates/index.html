@@ -396,6 +396,7 @@ d3.select("#primaRiga")
                 <tr>
                     <th scope="col">Modify</th>
                     <th scope="col">Remove</th>
+                    <th scope="col">Draw</th>
                     <th scope="col">File</th>
                     <th scope="col">User</th>
                     <th scope="col">Description</th>
@@ -406,7 +407,8 @@ d3.select("#primaRiga")
                     <tr>
                         <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/modify/{{ file[0].split(".")[0] }}'"><i class="fa fas fa-pen"></i></button>{% endif %}</td>
                         <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/remove/{{ file[0].split(".")[0] }}'"><i class="fa fa-trash"></i></button>{% endif %}</td>
-                        <td><a href="/visualization/{{ file[0].split(".")[0] }}">{{ file[0].split(".")[0] }}</a></td>
+                        <td><button class="btn" onclick="location.href='/visualization/{{ file[0].split(".")[0] }}'"><i class="fa fas fa-eye"></i></button></td>
+                        <td>{{ file[0].split(".")[0] }}</td>
                         <td>{{ file[1] }}</td>
                         <td>{{ file[2] }}</td>
                     </tr>
