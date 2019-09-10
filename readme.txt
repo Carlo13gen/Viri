@@ -1,12 +1,28 @@
 
 INSTALLAZIONE:
 
-istallare pip
-istallare flask
-istallare networkx
+installare pip
+installare flask
+installare networkx (attenzione alla versione)
+installare postgresql
+
+Per configurare postgresql e creare tutte le tabelle necessarie avviare lo script install_postgres.sh e successivamente per testare che la creazione delle
+tabelle sia avvenuta correttamente lanciare lo script test_postgres.sh
+
+Successivamente vanno modificate le configurazioni di accesso a postgres. Dall'utente in cui ci si trova digitare sul terminale: psql -d Viri
+Dopodichè il comando: ALTER USER "nome_utente" with password "nuova_password";
+
+A questo punto dovrebbe essere cambiata la password per "nome_utente" in "nuova_password", modificare /persistance/persistance_handler.py
+settando ogni valore indicato con le seguenti stringhe: USER = "nome_utente"
+                                                        PASSWORD = "nuova_password"
+                                                        HOST = "127.0.0.1"
+                                                        PORT = "5432"
+                                                        DATABASE = "Viri"
+
 
 LANCIO:
 
+Cambiare la variabile di sistema $TERM se necessario in gnome-terminal (TERM=gnome-terminal)
 esegui ./avvio.sh
 (si aprono 4 finestrelle)
 
