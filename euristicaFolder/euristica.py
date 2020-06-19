@@ -26,7 +26,7 @@ def euristicaGDT(original_parasite_tree, original_host_tree, mapping, graph5):
 		lunghezzaSalto = 2
 	else:
 		lunghezzaSalto = int(math.ceil(math.sqrt(numeroDiArchiTolti)))-1;
-	print lunghezzaSalto
+	print(lunghezzaSalto)
 	#print graph5.edges()
 
 	while i<numeroDiArchiTolti :

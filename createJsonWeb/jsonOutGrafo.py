@@ -42,7 +42,7 @@ def get_graphs_using_gdt_cost(name,cospeciationCost,duplicationCost,hostswitchCo
 		graphs_json_result=""
 
 		if not (os.path.isfile("./memoria_embedding/"+name+".txt")):	
-			i=0;
+			#i = 0;
 			root_mapping, possible_solutions = solutions.items()[0]
 			mapping = possible_solutions[0];
 			tempoStartTestPlanare = time.time()

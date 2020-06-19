@@ -1,0 +1,253 @@
+#NEXUS
+BEGIN TAXA;
+	DIMENSIONS NTAX = 28;
+	TAXLABELS
+		'Elasmostethus humeralis'
+		'Elasmostethus brevis'
+		'Elasmostethus nubilus'
+		'Lindbergicoris gramineua'
+		'Elasmucha putoni'
+		'Elasmucha dorsalis'
+		'Elasmucha signoreti'
+		'Sastragala scutellata'
+		'Sastragala esakii'
+		'Acanthosoma haemorrhoidale'
+		'Acanthosoma forficula'
+		'Acanthosoma labiduroides'
+		'Acanthosoma denticaudum'
+		'Acanthosoma giganteum'
+		'E. humeralis'
+		'E. brevis'
+		'E. nubilus'
+		'L. gramineus'
+		'E. putoni'
+		'E. dorsalis'
+		'E. signoreti'
+		'S. scutellata'
+		'S. esakii'
+		'A. haemorrhoidale'
+		'A. labiduroides'
+		'A. forficula'
+		'A. denticaudum'
+		'A. giganteum'
+		;
+ENDBLOCK;
+
+BEGIN TREES;
+	TRANSLATE
+		H0	h0,
+		H1	h1,
+		H2	h2,
+		H3	'Elasmostethus humeralis',
+		H4	'Elasmostethus brevis',
+		H5	'Elasmostethus nubilus',
+		H6	h6,
+		H7	h7,
+		H8	'Lindbergicoris gramineua',
+		H9	h9,
+		H10	h10,
+		H11	'Elasmucha putoni',
+		H12	'Elasmucha dorsalis',
+		H13	'Elasmucha signoreti',
+		H14	h14,
+		H15	h15,
+		H16	'Sastragala scutellata',
+		H17	'Sastragala esakii',
+		H18	h18,
+		H19	'Acanthosoma haemorrhoidale',
+		H20	h20,
+		H21	'Acanthosoma forficula',
+		H22	h22,
+		H23	'Acanthosoma labiduroides',
+		H24	h24,
+		H25	'Acanthosoma denticaudum',
+		H26	'Acanthosoma giganteum',
+		P0	p0,
+		P1	p1,
+		P2	p2,
+		P3	p3,
+		P4	p4,
+		P5	'E. humeralis',
+		P6	'E. brevis',
+		P7	'E. nubilus',
+		P8	'L. gramineus',
+		P9	p9,
+		P10	p10,
+		P11	'E. putoni',
+		P12	'E. dorsalis',
+		P13	'E. signoreti',
+		P14	p14,
+		P15	p15,
+		P16	'S. scutellata',
+		P17	'S. esakii',
+		P18	p18,
+		P19	'A. haemorrhoidale',
+		P20	'A. labiduroides',
+		P21	p21,
+		P22	'A. forficula',
+		P23	'A. denticaudum',
+		P24	'A. giganteum'
+		;
+	TREE HOST = (((H3,H4)H2,H5)H1,((H8,((H11,H12)H10,H13)H9)H7,((H16,H17)H15,(H19,(H21,(H23,(H25,H26)H24)H22)H20)H18)H14)H6)H0;
+	TREE PARASITE = (((((P5,P6)P4,P7)P3,P8)P2,((P11,P12)P10,P13)P9)P1,((P16,P17)P15,(P19,P20,(P22,P23,P24)P21)P18)P14)P0;
+ENDBLOCK;
+
+BEGIN COPHYLOGENY;
+[RANKS represents the ranks of the nodes in the tree]
+[Syntax is: nodename timezone_from timezone_to]
+	RANKS
+		h0	0	0,
+		h1	0	0,
+		h2	0	0,
+		'Elasmostethus humeralis'	0	0,
+		'Elasmostethus brevis'	0	0,
+		'Elasmostethus nubilus'	0	0,
+		h6	0	0,
+		h7	0	0,
+		'Lindbergicoris gramineua'	0	0,
+		h9	0	0,
+		h10	0	0,
+		'Elasmucha putoni'	0	0,
+		'Elasmucha dorsalis'	0	0,
+		'Elasmucha signoreti'	0	0,
+		h14	0	0,
+		h15	0	0,
+		'Sastragala scutellata'	0	0,
+		'Sastragala esakii'	0	0,
+		h18	0	0,
+		'Acanthosoma haemorrhoidale'	0	0,
+		h20	0	0,
+		'Acanthosoma forficula'	0	0,
+		h22	0	0,
+		'Acanthosoma labiduroides'	0	0,
+		h24	0	0,
+		'Acanthosoma denticaudum'	0	0,
+		'Acanthosoma giganteum'	0	0,
+		p0	0	0,
+		p1	0	0,
+		p2	0	0,
+		p3	0	0,
+		p4	0	0,
+		'E. humeralis'	0	0,
+		'E. brevis'	0	0,
+		'E. nubilus'	0	0,
+		'L. gramineus'	0	0,
+		p9	0	0,
+		p10	0	0,
+		'E. putoni'	0	0,
+		'E. dorsalis'	0	0,
+		'E. signoreti'	0	0,
+		p14	0	0,
+		p15	0	0,
+		'S. scutellata'	0	0,
+		'S. esakii'	0	0,
+		p18	0	0,
+		'A. haemorrhoidale'	0	0,
+		'A. labiduroides'	0	0,
+		p21	0	0,
+		'A. forficula'	0	0,
+		'A. denticaudum'	0	0,
+		'A. giganteum'	0	0
+		;
+[PHI represents the associationss from the parasite leaf nodes to the host leaf nodes]
+[Syntax is: parasite_leaf_name host_leaf_name]
+	PHI
+		'E. humeralis'	'Elasmostethus humeralis',
+		'E. brevis'	'Elasmostethus brevis',
+		'E. nubilus'	'Elasmostethus nubilus',
+		'L. gramineus'	'Lindbergicoris gramineua',
+		'E. putoni'	'Elasmucha putoni',
+		'E. dorsalis'	'Elasmucha dorsalis',
+		'E. signoreti'	'Elasmucha signoreti',
+		'S. scutellata'	'Sastragala scutellata',
+		'S. esakii'	'Sastragala esakii',
+		'A. haemorrhoidale'	'Acanthosoma haemorrhoidale',
+		'A. labiduroides'	'Acanthosoma labiduroides',
+		'A. forficula'	'Acanthosoma forficula',
+		'A. denticaudum'	'Acanthosoma denticaudum',
+		'A. giganteum'	'Acanthosoma giganteum'
+		;
+[POSITIONS represents the x and y position of the node]
+[Syntax is: nodename x_position y_position]
+	POSITIONS
+		h0	152	459,
+		h1	428	184,
+		h2	453	159,
+		'Elasmostethus humeralis'	478	133,
+		'Elasmostethus brevis'	478	184,
+		'Elasmostethus nubilus'	478	234,
+		h6	227	534,
+		h7	403	358,
+		'Lindbergicoris gramineua'	478	283,
+		h9	428	384,
+		h10	453	358,
+		'Elasmucha putoni'	478	334,
+		'Elasmucha dorsalis'	478	384,
+		'Elasmucha signoreti'	478	433,
+		h14	328	634,
+		h15	453	508,
+		'Sastragala scutellata'	478	484,
+		'Sastragala esakii'	478	534,
+		h18	378	684,
+		'Acanthosoma haemorrhoidale'	478	583,
+		h20	403	709,
+		'Acanthosoma forficula'	478	634,
+		h22	428	733,
+		'Acanthosoma labiduroides'	478	684,
+		h24	453	759,
+		'Acanthosoma denticaudum'	478	733,
+		'Acanthosoma giganteum'	478	784,
+		p0	1128	460,
+		p1	952	284,
+		p2	877	209,
+		p3	852	184,
+		p4	828	160,
+		'E. humeralis'	802	134,
+		'E. brevis'	802	184,
+		'E. nubilus'	802	235,
+		'L. gramineus'	802	284,
+		p9	852	385,
+		p10	828	359,
+		'E. putoni'	802	334,
+		'E. dorsalis'	802	385,
+		'E. signoreti'	802	434,
+		p14	952	634,
+		p15	828	509,
+		'S. scutellata'	802	484,
+		'S. esakii'	802	535,
+		p18	903	684,
+		'A. haemorrhoidale'	802	584,
+		'A. labiduroides'	802	634,
+		p21	852	734,
+		'A. forficula'	802	684,
+		'A. denticaudum'	802	734,
+		'A. giganteum'	802	784
+		;
+[COSTS represents the cost table for the operations 'COSPECIATION', 'DUPLICATION', 'EXTINCTION', 'SORTING' and 'HOSTSWITCH']
+[Syntax is: operation cost]
+	COSTS
+		COSPECIATION	0.0566037736,
+		DUPLICATION	0.2830188679,
+		SORTING	0.0943396226,
+		HOSTSWITCH	0.5660377358
+		;
+[OPTIONS represents the options for calculating the reconstruction]
+[Syntax is: option value]
+	OPTIONS
+		RANK	0,
+		AUTOMATICCOSTS	0,
+		CHECKCHRONOLOGY	0,
+		LEAFSPECIACIONCOST	0,
+		SORTING	1,
+		PROBABILITYCOSTS	0,
+		HOSTSWITCH	1,
+		AUTOMATICMETHOD	0,
+		RANDOMSEED	auto,
+		DUPLICATION	1,
+		ROOTMAPPING	0,
+		FULLHOSTSWITCH	0,
+		TAKEOFF	0,
+		RANDOMCYCLES	100000
+		;
+ENDBLOCK;
+

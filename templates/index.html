@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <!-- CSS libs -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icicle-plus-tree.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
 
     <!-- JS libs -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script>
@@ -81,11 +86,7 @@
 
 
 
-    <title>Co-phylogenetic trees</title>
-    <script type="text/javascript">
-        mostraOpzioni();
-
-    </script>
+    <title>Home</title>
 
 
 </head>
@@ -106,118 +107,20 @@
             </div>
 
             <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
-                <ul class="nav navbar-nav">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="mostraNomeFile"> FileNex <span class="caret"></span></a>
-                        <ul class="dropdown-menu" id="ulListaFile">
-
-                        </ul>
-                    </li>
-
-                    <li><a>Current solution:</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="mostraNumeroSoluzione" value="1"> 1 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" id="numberSolutionGraph">
-
-                        </ul>
-                    </li>
-
-
-
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Options <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a>Eucalypt options</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>	Max. # of solutions computed: <input type="text" id="numberMaxSolution" placeholder="Max" size="5" value="1" onchange="grafic()"></a></li>
-                            <li><a>	Root-to-root mapping: <input name="html" type="checkbox" id="rootToRoot" value="html" checked="checked" onchange="grafic()" />
-				</a></li>
-                            <li><a>Random sampling: <input name="html" type="checkbox" id="soluzioniRandomiche" value="html" onchange="grafic()"></a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Costs <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a>Reconciliation costs used by Eucalypt</a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>Cospeciation:    <input type="text" size="5" id="cc" placeholder="-1" onchange="grafic()"></a></li>
-                            <li><a>Duplication: 	<input type="text" size="5" id="cd" placeholder="1"  onchange="grafic()"></a></li>
-                            <li><a>Sorting: 		<input type="text" size="5" id="cs" placeholder="1"  onchange="grafic()"></a></li>
-                            <li><a>Host-switch: 	<input type="text" size="5" id="ch" placeholder="1"  onchange="grafic()"></a></li>
-                            <li class="divider" role="separator"></li>
-                            <li><a>Max host-switch distance:	<input type="text" id="maximumHostSwitchDistance" size="10" placeholder="Infinite" value="" onchange="grafic()">
-            </a>  </li>
-
-                        </ul>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Time consistency <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a>Eucalypt filtering of time-inconsistent solutions</a></li>
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Enable filtering: <input name="html" type="checkbox" id="rimuoviCicli" value="html" onchange="grafic()" /></a></li>
-                                <li><a><input type="radio" name="linguaggio" value="1" checked="checked" id="test1" onchange="changeTest()" /> Filtering based on [Stolzer et al., 2012]</a></li>
-                                <li><a><input type="radio" name="linguaggio" value="2" id="test2" onchange="changeTest()" /> Filtering based on [Tofigh et al., 2011]</a></li>
-
-                            </ul>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heuristics <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a><input type="radio" name="linguaggio" value="1" id="euristica1" onchange="ridisegna()" /> Rapp. </a></li>
-                                <li><a><input type="radio" name="linguaggio" checked="checked" value="2" id="euristica2" onchange="ridisegna()"/> GDT Universal. </a></li>
-                                <li><a><input type="radio" name="linguaggio" value="3" id="euristica3" onchange="ridisegna()" /> GDT for Solution. </a></li>
-				                <li><a><input type="radio" name="linguaggio" value="4" id="euristica4" onchange="ridisegna()"/> Random </a></li>
-				                <li><a><input type="radio" name="linguaggio" value="5" id="euristica5" onchange="ridisegna()"/> Hierarchy sort </a></li>
-                            </ul>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-
-                                <li><a>Non-switch edges: &nbsp;<input name="non-switch-edges" type="radio" id="curve" value="html" checked="checked" onchange="ridisegna()" /> curves &nbsp;<input name="non-switch-edges" type="radio" id="curve" value="html" onchange="ridisegna()" /> straight-lines</a></li>
-                                <li><a>Switch edges: &nbsp;<input name="switch-edges" type="radio" id="curveSwitch" value="html" checked="checked" onchange="ridisegna()" /> curves &nbsp;<input name="switch-edges" type="radio" id="curveSwitch" value="html" onchange="ridisegna()" /> straight-lines</a></li>
-
-                                <!--li><a>curveSwitch :<input name="html" type="checkbox" id="curveSwitch" value="html" checked="checked" onchange="ridisegna()" /> </a></li-->
-
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Width: <input type="text" id="width" size="10" onchange="ridisegna()"></a></li>
-                                <li><a>Height: <input type="text" id="height" size="10" onchange="ridisegna()"></a></li>
-
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Separator width: <input type="text" id="select5" size="5" placeholder="0" onchange="ridisegna()"></a></li>
-                                <li><a>Separator height: <input type="text" id="select6" size="5" placeholder="0" onchange="ridisegna()"></a></li>
-
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Leaves to the floor:	<input name="html" type="checkbox" id="longLeaves" value="html" checked="checked" onchange="ridisegna()" /></a></li>
-				 
-
-                                <li><a>Same level same height: <input name="html" type="checkbox" id="equalsLivelEqualsHeight" value="html" onchange="ridisegna()" /></a></li>
-                                <li class="divider" role="separator"></li>
-
-                                <li><a>Blocked host tree: <input name="html" type="checkbox" id="bloccato" value="html" onchange="bloccato()" /></a></li>
-                            </ul>
-                        </li>
-
-                </ul>
-
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:javascript: (function () { var e = document.createElement('script'); e.setAttribute('src', 'https://nytimes.github.io/svg-crowbar/svg-crowbar.js'); e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })()">Save</a></li>
-                </ul>
+                {% if current_user.id is undefined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/login_form">LOGIN</a></li>
+                    </ul>
+                {% endif %}
+                {% if current_user.id is defined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/upload">UPLOAD</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                {% endif %}
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -225,6 +128,10 @@
     </nav>
 
     <nav class="navbar navbar-default navbar-static-top"></nav>
+
+    <div class="Tit">
+        <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} Welcome {{ current_user.id }} {% endif %}</p>
+    </div>
 
 
     <!--
@@ -484,38 +391,33 @@ d3.select("#primaRiga")
 -->
 
 
-    <div id="spazioSvg"> </div>
+    <div class="tabella" id="tabella">
+        <table class="table table-sm table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Modify</th>
+                    <th scope="col">Remove</th>
+                    <th scope="col">Draw</th>
+                    <th scope="col">File</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files%}
+                    <tr>
+                        <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/modify/{{ file[0].split(".")[0] }}'"><i class="fa fas fa-pen"></i></button>{% endif %}</td>
+                        <td>{% if file[1]==current_user.id %}<button class="btn" onclick="location.href='/remove/{{ file[0].split(".")[0] }}'"><i class="fa fa-trash"></i></button>{% endif %}</td>
+                        <td><button class="btn" onclick="location.href='/visualization/{{ file[0].split(".")[0] }}'"><i class="fa fas fa-eye"></i></button></td>
+                        <td>{{ file[0].split(".")[0] }}</td>
+                        <td>{{ file[1] }}</td>
+                        <td>{{ file[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <!--<img src="out.gif"> -->
-
-
-    <!--
-<input type="file" id="fileinput" />
-<script type="text/javascript">
-  function readSingleFile(evt) {
-    //Retrieve the first (and only!) File from the FileList object
-    var f = evt.target.files[0]; 
-
-    if (f) {
-      var r = new FileReader();
-      r.onload = function(e) { 
-	      var contents = e.target.result;
-        alert( "Got the file.n" 
-              +"name: " + f.name + "n"
-              +"type: " + f.type + "n"
-              +"size: " + f.size + " bytesn"
-              + "starts with: " + contents.substr(1, contents.indexOf("n"))
-        );  
-      }
-      r.readAsText(f);
-    } else { 
-      alert("Failed to load file");
-    }
-  }
-
-  document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
-</script>
--->
 
     <div id="problem"></div>
     <!--

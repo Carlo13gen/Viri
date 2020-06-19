@@ -1,11 +1,15 @@
 from lxml import etree
 from subprocess import call
-import error as err
+from graph_analysis import error as err
+from flask import request
+from varie_supporto import cookie_decoder as decoder
+import os
+import random
 
 #GDT_HOME = "/home/diego/Scrivania/tesi/paper_e_programmi_prof/project/graph_analysis/gdt/bin/x86_64/"
 #GDT_HOME = "./graph_analysis/gdt/bin/x86_64/"
 GDT_HOME = "./graph_analysis/gdt/bin/"
-
+RAND = str(random.randint(0,10000000))
 
 def remove_edge_closure(fixed_graph):
     return fixed_graph.replace("</EDGE>", "")
@@ -19,6 +23,7 @@ def fix_symbols(string_graph):
 
 def fix_new_lines_and_tabs_for_graph(string_graph):
 
+    #Tutti i valori sono stati cambiati in tipo byte per ritrnare al punto di prima riportare a stringhe semplicemente levando b e rimenttendo doppi apici
     return string_graph\
         .replace("<NODELIST>", "\n\t<NODELIST>")\
         .replace("</NODELIST>", "\n\t</NODELIST>")\
@@ -44,7 +49,7 @@ def fix_new_lines_and_tabs_for_constraints(string_constraints):
 
 
 def add_constraints_header(string_constraints):
-    return '<BOFF VERSION="1.2"/>' + string_constraints
+    return '<BOFF VERSION="1.2"/>' + string_constraints.decode('utf-8')
 
 
 def assign_ids_to_edges(graph):
@@ -95,7 +100,7 @@ def convert_graph_to_gdt(graph):
 
     # Get the graph_analysis
     string_graph = etree.tostring(root)
-    final_graph = fix_symbols(string_graph)
+    final_graph = fix_symbols(string_graph.decode('utf-8'))
     final_graph = remove_edge_closure(final_graph)
     final_graph = fix_new_lines_and_tabs_for_graph(final_graph)
 
@@ -139,15 +144,18 @@ def create_constraints_in_gdt(graph):
 
 def write_gdt_input_files_on_disk(gdt, constraints):
 
-    graph_file = open(GDT_HOME + "graph_file", "w")
+    user = RAND
+
+    graph_file = open(GDT_HOME + "graph_file" + user, "w")
     graph_file.write(gdt)
 
-    constraints_file = open(GDT_HOME + "blag.ini", "w")
+    constraints_file = open(GDT_HOME + "blag" + user + ".ini", "w")
     constraints_file.write(constraints)
 
 
 def run_gdt():
-    call(["./blag", "graph_file", "blag.ini"], cwd=GDT_HOME)
+    user = RAND
+    call(["./blag", "graph_file" + user, "blag" + user + ".ini"], cwd=GDT_HOME)
 
 
 def parse_gdt_embedding(gdt_embedding_file):
@@ -208,13 +216,17 @@ def get_nx_planar_embedding(graph):
     write_gdt_input_files_on_disk(gdt_graph, constraints)
     run_gdt()  # This creates the file graph_file.gdt
 
-    gdt_report = open(GDT_HOME + "gdt_report", "r")
+    user = RAND
+
+    gdt_report = open(GDT_HOME + "graph_file" + user +".gdt_report", "r")
     lines = gdt_report.readlines()
     if len(lines) != 11 :
         raise err.NonPlanarGraph("The input graph_analysis was bad")
 
+    user = RAND
+
     # From here: assume graph_file.gdt contains a planar embedding of the graph_analysis
-    embedding_file = open(GDT_HOME + "graph_file.gdt", "r")
+    embedding_file = open(GDT_HOME + "graph_file" + user + ".gdt", "r")
     gdt_embedding = parse_gdt_embedding(embedding_file)
 
     if planar_graph(gdt_embedding, graph):
@@ -223,9 +235,17 @@ def get_nx_planar_embedding(graph):
         # To use gdt, we added integer ids to nodes and edges.
         # These ids are still in the graph_analysis, and since the instance is shared, before returning we remove those ids
         remove_gdt_ids_from_graph(graph)
+        os.remove(GDT_HOME + "blag" + user + ".ini")
+        os.remove(GDT_HOME + "graph_file" + user)
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt_report")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         return nx_embedding
 
     else:
+        os.remove(GDT_HOME + "blag" + user + ".ini")
+        os.remove(GDT_HOME + "graph_file" + user)
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt_report")
+        os.remove(GDT_HOME + "graph_file" + user + ".gdt")
         raise err.NonPlanarGraph("The input graph_analysis was not planar!")
 
 

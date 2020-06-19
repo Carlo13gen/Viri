@@ -11,6 +11,7 @@ function metodoSoluzioniRandomDefined(soluzioniRandomiche){
 
 function maximumHostSwitchDistanceDefined(maximumHostSwitchDistance){
     if( maximumHostSwitchDistance ==undefined){
+        //if not set is NaN
         var maximumHostSwitchDistance = parseFloat(document.getElementById("maximumHostSwitchDistance").value);
     }
     return maximumHostSwitchDistance;
@@ -161,7 +162,7 @@ function parasiteNodesRadiusDefined(parasiteNodesRadius) {
 
 function nameDefined(name) {
     if(name==undefined){
-        var name = document.getElementById("mostraNomeFile").getAttribute("value");
+        var name = document.getElementById("file_name").getAttribute("value");
         //var name = document.getElementById("select").value;
 
     }

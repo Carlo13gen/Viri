@@ -1,0 +1,36 @@
+.title{
+    text-align: center;
+    font-size: 7rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.mtitle{
+    font-size: 2rem;
+}
+
+.file_uploader{
+    margin-top: 6rem;
+}
+
+.button {
+    font-family: "Roboto", sans-serif;
+     text-transform: uppercase;
+    font-size: 1.5rem;
+     outline: 0;
+     background: white;
+     border-color: #607d8b;
+    border-width: thin;
+    border-radius: 10px;
+    width: 100%;
+     padding: 15px;
+     color: #607d8b;
+    alignment: center;
+    cursor: pointer;
+    width: 25rem;
+}
+
+
+.button:hover,.form button:active,.form button:focus {
+  background: #607d8b;
+    color: white;
+}

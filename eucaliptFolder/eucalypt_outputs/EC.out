@@ -1,0 +1,19 @@
+#--------------------
+#Host tree          = (h006,((h005,h004)!H3,((h003,h002)!H7,(h001,h000)!H10)!H6)!H2)!H0
+#Parasite tree      = ((((h000-001,(((h000-002,h001-002)!P7,h001-001)!P6,(h002-002,(h002-001,h003-001)!P13)!P11)!P5)!P3,h004-001)!P2,h005-001)!P1,h006-001)!P0
+#Host tree size     = 13
+#Parasite tree size = 19
+#Leaf mapping       = {h002-002=h002, h006-001=h006, h003-001=h003, h001-001=h001, h000-001=h000, h001-002=h001, h004-001=h004, h000-002=h000, h005-001=h005, h002-001=h002}
+#--------------------
+#Co-speciation cost = -1.000
+#Duplication cost   = 1.000
+#Host-switch cost   = 1.000
+#Loss cost          = 1.000
+#Maximum jump       = No limit
+#Optimum cost       = 1.000
+#--------------------
+#Root mapping = !P0@!H0
+!P0@!H0, !P1@!H2, !P2@!H6, h004-001@h004, !P3@!H6, h000-001@h000, !P5@!H7, !P6@!H10, !P7@h000, h001-002@h001, h000-002@h000, h001-001@h001, !P11@!H7, h002-002@h002, !P13@h003, h002-001@h002, h003-001@h003, h005-001@h005, h006-001@h006
+#Number of solutions = 1
+#--------------------
+#Total number of solutions = 1

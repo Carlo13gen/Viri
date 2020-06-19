@@ -1,5 +1,6 @@
 import networkx as nx
 from networkx.readwrite import json_graph
+import functools
 
 
 def flag_switch_edges(parasite_tree, host_tree, mappings):
@@ -97,7 +98,7 @@ def label_host_tree_nodes(embedding, graph):
 			return
 
 		supporto=[]
-		other_edge_position = sorted( other_edge_position, cmp=lambda x,y: x-y )
+		other_edge_position = sorted( other_edge_position, key=functools.cmp_to_key(lambda x,y: x-y))
 		
 		numeroArchiParassiti = len(other_edge_position)
 		for i in range(0, numeroArchiParassiti):

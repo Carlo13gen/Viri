@@ -1,0 +1,348 @@
+
+<UNDISECTION>
+	<NODELIST>
+		<NODE>
+			1
+			<EDGE> 43 <-
+			<EDGE> 1 ->
+		</NODE>
+		<NODE>
+			2
+			<EDGE> 7 <-
+			<EDGE> 2 ->
+		</NODE>
+		<NODE>
+			3
+			<EDGE> 5 <-
+			<EDGE> 3 ->
+		</NODE>
+		<NODE>
+			4
+			<EDGE> 6 <-
+			<EDGE> 4 ->
+		</NODE>
+		<NODE>
+			5
+			<EDGE> 5 ->
+			<EDGE> 6 ->
+			<EDGE> 8 <-
+		</NODE>
+		<NODE>
+			6
+			<EDGE> 7 ->
+			<EDGE> 23 <-
+			<EDGE> 8 ->
+		</NODE>
+		<NODE>
+			7
+			<EDGE> 11 <-
+			<EDGE> 9 ->
+		</NODE>
+		<NODE>
+			8
+			<EDGE> 12 <-
+			<EDGE> 10 ->
+		</NODE>
+		<NODE>
+			9
+			<EDGE> 11 ->
+			<EDGE> 21 <-
+			<EDGE> 12 ->
+		</NODE>
+		<NODE>
+			10
+			<EDGE> 15 <-
+			<EDGE> 13 ->
+		</NODE>
+		<NODE>
+			11
+			<EDGE> 16 <-
+			<EDGE> 14 ->
+		</NODE>
+		<NODE>
+			12
+			<EDGE> 15 ->
+			<EDGE> 19 <-
+			<EDGE> 16 ->
+		</NODE>
+		<NODE>
+			13
+			<EDGE> 20 <-
+			<EDGE> 17 ->
+			<EDGE> 18 ->
+		</NODE>
+		<NODE>
+			14
+			<EDGE> 19 ->
+			<EDGE> 20 ->
+			<EDGE> 22 <-
+		</NODE>
+		<NODE>
+			15
+			<EDGE> 21 ->
+			<EDGE> 24 <-
+			<EDGE> 22 ->
+		</NODE>
+		<NODE>
+			16
+			<EDGE> 23 ->
+			<EDGE> 29 <-
+			<EDGE> 24 ->
+		</NODE>
+		<NODE>
+			17
+			<EDGE> 27 <-
+			<EDGE> 25 ->
+		</NODE>
+		<NODE>
+			18
+			<EDGE> 28 <-
+			<EDGE> 26 ->
+		</NODE>
+		<NODE>
+			19
+			<EDGE> 27 ->
+			<EDGE> 30 <-
+			<EDGE> 28 ->
+		</NODE>
+		<NODE>
+			20
+			<EDGE> 29 ->
+			<EDGE> 41 <-
+			<EDGE> 30 ->
+		</NODE>
+		<NODE>
+			21
+			<EDGE> 33 <-
+			<EDGE> 31 ->
+		</NODE>
+		<NODE>
+			22
+			<EDGE> 34 <-
+			<EDGE> 32 ->
+		</NODE>
+		<NODE>
+			23
+			<EDGE> 33 ->
+			<EDGE> 39 <-
+			<EDGE> 34 ->
+		</NODE>
+		<NODE>
+			24
+			<EDGE> 37 <-
+			<EDGE> 35 ->
+		</NODE>
+		<NODE>
+			25
+			<EDGE> 38 <-
+			<EDGE> 36 ->
+		</NODE>
+		<NODE>
+			26
+			<EDGE> 37 ->
+			<EDGE> 38 ->
+			<EDGE> 40 <-
+		</NODE>
+		<NODE>
+			27
+			<EDGE> 39 ->
+			<EDGE> 40 ->
+			<EDGE> 42 <-
+		</NODE>
+		<NODE>
+			28
+			<EDGE> 41 ->
+			<EDGE> 44 <-
+			<EDGE> 42 ->
+		</NODE>
+		<NODE>
+			29
+			<EDGE> 43 ->
+			<EDGE> 44 ->
+			<EDGE> 45 ->
+		</NODE>
+		<NODE>
+			30
+			<EDGE> 45 <-
+			<EDGE> 46 ->
+			<EDGE> 47 ->
+		</NODE>
+		<NODE>
+			31
+			<EDGE> 47 <-
+			<EDGE> 73 <-
+		</NODE>
+		<NODE>
+			32
+			<EDGE> 46 <-
+			<EDGE> 49 ->
+			<EDGE> 48 ->
+		</NODE>
+		<NODE>
+			33
+			<EDGE> 4 <-
+			<EDGE> 79 <-
+		</NODE>
+		<NODE>
+			34
+			<EDGE> 48 <-
+			<EDGE> 51 ->
+			<EDGE> 50 ->
+		</NODE>
+		<NODE>
+			35
+			<EDGE> 51 <-
+			<EDGE> 52 ->
+			<EDGE> 74 ->
+		</NODE>
+		<NODE>
+			36
+			<EDGE> 50 <-
+			<EDGE> 54 ->
+		</NODE>
+		<NODE>
+			37
+			<EDGE> 25 <-
+			<EDGE> 53 <-
+		</NODE>
+		<NODE>
+			38
+			<EDGE> 17 <-
+			<EDGE> 52 <-
+		</NODE>
+		<NODE>
+			39
+			<EDGE> 55 ->
+		</NODE>
+		<NODE>
+			40
+			<EDGE> 54 <-
+			<EDGE> 77 ->
+		</NODE>
+		<NODE>
+			41
+			<EDGE> 14 <-
+		</NODE>
+		<NODE>
+			42
+			<EDGE> 55 <-
+			<EDGE> 57 ->
+			<EDGE> 58 ->
+		</NODE>
+		<NODE>
+			43
+			<EDGE> 58 <-
+			<EDGE> 60 ->
+			<EDGE> 59 ->
+		</NODE>
+		<NODE>
+			44
+			<EDGE> 3 <-
+			<EDGE> 57 <-
+		</NODE>
+		<NODE>
+			45
+			<EDGE> 60 <-
+			<EDGE> 61 ->
+			<EDGE> 62 ->
+		</NODE>
+		<NODE>
+			46
+			<EDGE> 59 <-
+			<EDGE> 63 ->
+		</NODE>
+		<NODE>
+			47
+			<EDGE> 10 <-
+			<EDGE> 62 <-
+		</NODE>
+		<NODE>
+			48
+			<EDGE> 9 <-
+			<EDGE> 61 <-
+		</NODE>
+		<NODE>
+			49
+			<EDGE> 26 <-
+		</NODE>
+		<NODE>
+			50
+			<EDGE> 63 <-
+			<EDGE> 64 ->
+			<EDGE> 80 ->
+		</NODE>
+		<NODE>
+			51
+			<EDGE> 2 <-
+			<EDGE> 65 <-
+		</NODE>
+		<NODE>
+			52
+			<EDGE> 18 <-
+			<EDGE> 64 <-
+		</NODE>
+		<NODE>
+			53
+			<EDGE> 66 ->
+			<EDGE> 67 ->
+		</NODE>
+		<NODE>
+			54
+			<EDGE> 1 <-
+			<EDGE> 56 <-
+		</NODE>
+		<NODE>
+			55
+			<EDGE> 67 <-
+			<EDGE> 69 ->
+			<EDGE> 68 ->
+		</NODE>
+		<NODE>
+			56
+			<EDGE> 32 <-
+			<EDGE> 66 <-
+		</NODE>
+		<NODE>
+			57
+			<EDGE> 69 <-
+			<EDGE> 71 ->
+			<EDGE> 70 ->
+		</NODE>
+		<NODE>
+			58
+			<EDGE> 31 <-
+			<EDGE> 68 <-
+		</NODE>
+		<NODE>
+			59
+			<EDGE> 36 <-
+			<EDGE> 71 <-
+		</NODE>
+		<NODE>
+			60
+			<EDGE> 35 <-
+			<EDGE> 70 <-
+		</NODE>
+		<NODE>
+			61
+			<EDGE> 13 <-
+			<EDGE> 53 ->
+			<EDGE> 75 ->
+			<EDGE> 74 <-
+		</NODE>
+		<NODE>
+			62
+			<EDGE> 75 <-
+			<EDGE> 56 ->
+			<EDGE> 73 ->
+			<EDGE> 77 <-
+		</NODE>
+		<NODE>
+			63
+			<EDGE> 49 <-
+			<EDGE> 65 ->
+			<EDGE> 79 ->
+			<EDGE> 80 <-
+		</NODE>
+	</NODELIST>
+</UNDISECTION>

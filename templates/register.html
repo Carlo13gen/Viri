@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/check_pwd/check.js') }}"></script>
+</head>
+<body>
+    <nav id=primaRiga class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a href="/" class="navbar-brand"> VIRI </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+
+                {% if current_user.id is undefined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/login_form">LOGIN</a></li>
+                    </ul>
+                {% endif %}
+                {% if current_user.id is defined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/upload">UPLOAD</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+
+    </nav>
+
+    <div class="login-page">
+    <div class="form">
+        <h4 class="title">REGISTER</h4>
+        <form action="/register" method="POST" class="register-form">
+            <label for="input_text">First Name*</label>
+            <input type="text" placeholder="first name" maxlength="20" name="first" pattern="[A-Za-z0-9]{1,20}" required/>
+            <label for="input_text">Last Name*</label>
+            <input type="text" placeholder="last name" maxlength="20" name="last" pattern="[A-Za-z0-9]{1,20}" required />
+            <label for="input_text">Username*</label>
+            <input type="text" placeholder="username" maxlength="20" name="username" pattern="[A-Za-z0-9]{1,20}" required/>
+            <label for="input_password">Password*</label>
+            <input id="password" type="password" placeholder="password" maxlength="25" pattern="[^ ]{1,20}" name="password" required onkeyup="check();"/>
+            <label for="input_password">Confirm Password*</label>
+            <input id="confirm_password" type="password" placeholder="confirm password" pattern="[^ ]{1,20}" maxlength="25" required onkeyup="check();"/>
+            <span id="message"></span>
+            <button id="button" type="submit" disabled>create</button>
+            <p class="message">Already registered? <a href="/login_form">Sign In</a></p>
+            <p class="message">If the registration is ok you will be redirected to login page</p>
+        </form>
+    </div>
+    <div>
+        <h4>{{ ritorno }}</h4>
+    </div>
+    </div>
+</body>
+</html>

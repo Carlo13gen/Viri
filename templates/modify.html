@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS libs -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lib/bootstrap/bootstrap.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/modify.css') }}" />
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/icicle-plus-tree.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- JS libs -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/d3/d3.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery/jquery-2.2.3.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap/bootstrap.js') }}"></script>
+
+    <!-- JS -->
+
+    <!-- OperationOfGraph -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findNodeById.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findChildrenIdsOfHostOrParasiteNode.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findLeftOrRightChildId.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/numberOfChildrenSwitchingHost.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findChildNotSwitchingHostId.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/operationOfGraph/findParentIdsOfHostOrParasiteNode.js') }}"></script>
+
+    <!-- Host -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesXCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesWidth.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesBoxesHeight.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesDepths.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/hostNodesBoxesYCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/computeHeightOfHostTree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/extendHostNodesBoxesHeight.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/computeSVGPathHost.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/drawnHost.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/host/copia.js') }}"></script>
+
+
+
+
+
+    <!-- Parasite -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/parasiteNodesYCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/parasiteNodesXCoordinates.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/computeSVGPathSwitchEdgesParasiteTree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/computeSVGPathNonSwitchEdgesParasiteTree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteNodes.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteEdgeSwitch.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parasite/drawnParassiteEdgeNonSwitch.js') }}"></script>
+
+
+
+
+
+    <!-- FirstOperation -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/firstOperation/euristica.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/firstOperation/precalcolo.js') }}"></script>
+
+    <!-- Main -->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/mostraOpzioni.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/down.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/icicle-tree.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/ridisegna.js') }}"></script>
+
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/changeNumberSolution.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/loadNumberSolution.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/animazioni.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/parametri.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/salva.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/co-phylogeny/calcolaIncroci.js') }}"></script>
+
+
+
+
+
+    <title>Home</title>
+
+
+</head>
+
+<body>
+
+    <nav id=primaRiga class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="/"> VIRI </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+
+                {% if current_user.id is undefined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/login_form">LOGIN</a></li>
+                    </ul>
+                {% endif %}
+                {% if current_user.id is defined %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/upload">UPLOAD</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">LOGOUT</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+
+    </nav>
+
+    <nav class="navbar navbar-default navbar-static-top"></nav>
+
+    <div class="Tit">
+        <p id="title_user" class="Title" value="{{ current_user.id }}" >{% if current_user.id is defined %} Welcome {{ current_user.id }} {% endif %}</p>
+    </div>
+    <div class="file_modifier container">
+    <form class="form" method="post" action="/update/{{ file_name }}">
+        <label class="lab" for="description">File name: {{ file_name }} write down the new description</label>
+        <input class="form-control" type="text" maxlength="1500" placeholder="New description" name="description">
+        <div>
+            <button type="submit" class="button">Upload</button>
+        </div>
+        </form>
+    </form>
+    </div>
+</body>
+</html>
